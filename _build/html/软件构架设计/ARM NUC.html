@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ARM NUC &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="UML有没有用" href="UML有没有用.html" />
+    <link rel="prev" title="Multiarch概念调查" href="Multiarch概念调查.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">软件架构设计</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="从单元测试理解软件.html">从单元测试理解软件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="名可名.html">名可名</a></li>
+<li class="toctree-l2"><a class="reference internal" href="小国寡民.html">小国寡民</a></li>
+<li class="toctree-l2"><a class="reference internal" href="需求分析的中心思路.html">需求分析的中心思路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于自然语言编程的方向问题.html">关于自然语言编程的方向问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="反者道之动——欣赏架构设计的基本逻辑.html">反者道之动——欣赏架构设计的基本逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="让代码变立体.html">让代码变立体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="生成优秀的架构.html">生成优秀的架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分支设计要领.html">分支设计要领</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做项目管理.html">怎样做项目管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="谈谈子女教育问题.html">谈谈子女教育问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="两种基本的构架表述方法.html">两种基本的构架表述方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弱者道之用——谈技术工作中的守弱问题.html">弱者道之用——谈技术工作中的守弱问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在Linux下做性能分析.html">在Linux下做性能分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的0层逻辑.html">架构设计的0层逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解耦设计.html">解耦设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做高层设计.html">怎么做高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解架构版本.html">理解架构版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCIE总线的保序模型.html">PCIE总线的保序模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="做与不做都是战略.html">做与不做都是战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="海洋战术式的软件设计方法.html">海洋战术式的软件设计方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解耦和不解耦.html">解耦和不解耦</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈“守弱”.html">再谈“守弱”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="互斥算法设计.html">互斥算法设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="英文版本的“弱者道之用”.html">英文版本的“弱者道之用”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是“守”.html">什么是“守”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从用户功能开始构架系统框架.html">从用户功能开始构架系统框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux发行版的库软件包组织.html">Linux发行版的库软件包组织</a></li>
+<li class="toctree-l2"><a class="reference internal" href="地址空间的故事.html">地址空间的故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="工作和读书有什么不同.html">工作和读书有什么不同</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样快速调试Linux内核.html">怎样快速调试Linux内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计中的“少了”和“多了”的问题.html">架构设计中的“少了”和“多了”的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux iommu和vfio概念空间解构.html">Linux iommu和vfio概念空间解构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做代码Review.html">怎样做代码Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做客户访谈.html">怎样做客户访谈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RancherOS架构分析.html">RancherOS架构分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈什么是软件架构.html">再谈什么是软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大道曰守，当时曰行.html">大道曰守，当时曰行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不为天下先.html">不为天下先</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于AI的胡说八道.html">关于AI的胡说八道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="学习本质？.html">学习本质？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“设计的流程”和“代码的流程”.html">“设计的流程”和“代码的流程”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="概要设计不是代码.html">概要设计不是代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“病病”.html">“病病”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于架构师的爱恨情仇——《黑客帝国》世界观解读.html">关于架构师的爱恨情仇——《黑客帝国》世界观解读</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vfio-mdev逻辑空间分析.html">vfio-mdev逻辑空间分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux Socket 0拷贝特性.html">Linux Socket 0拷贝特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="用户态DMA的问题.html">用户态DMA的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiprocess Support for Linux IOMMU driver.html">Multiprocess Support for Linux IOMMU driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux RAS特性分析.html">Linux RAS特性分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="写论文.html">写论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基于“语义”编程.html">基于“语义”编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从学习assert的用法开始理解如何写“专业的程序”.html">从学习assert的用法开始理解如何写“专业的程序”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构的存在性.html">架构的存在性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Makefile概念入门.html">Makefile概念入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM服务器进展小结.html">ARM服务器进展小结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做初步的需求分析.html">怎么做初步的需求分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于设计方案中的逻辑链问题.html">关于设计方案中的逻辑链问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从逻辑链问题讨论怎么做高层设计.html">从逻辑链问题讨论怎么做高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="工程逻辑链.html">工程逻辑链</a></li>
+<li class="toctree-l2"><a class="reference internal" href="为什么你会在你的数据中心中部署ARM服务器.html">为什么你会在你的数据中心中部署ARM服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何为libvirt设置虚拟主机.html">如何为libvirt设置虚拟主机</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给普通人解释Spectre和Meltdown安全漏洞.html">给普通人解释Spectre和Meltdown安全漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给程序员解释Spectre和Meltdown漏洞.html">给程序员解释Spectre和Meltdown漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Is retpoline really safe.html">Is retpoline really safe?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="逻辑链，道，学和架构工作的本质.html">逻辑链，道，学和架构工作的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Serverless是什么——谈如何捕获一个特性的架构本质.html">Serverless是什么——谈如何捕获一个特性的架构本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="道法自然.html">道法自然</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自然，守弱和Plan B.html">自然，守弱和Plan B</a></li>
+<li class="toctree-l2"><a class="reference internal" href="守弱的内涵和外延.html">守弱的内涵和外延</a></li>
+<li class="toctree-l2"><a class="reference internal" href="找到道法自然的“度”.html">找到道法自然的“度”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Specification的写法问题.html">Specification的写法问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="小姐和丫鬟的故事.html">小姐和丫鬟的故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="知不知.html">知不知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCIE总线的地址问题.html">PCIE总线的地址问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="气和深度学习.html">气和深度学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="单元测试的效果问题.html">单元测试的效果问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Requirement Analyzing vs. Voting.html">Requirement Analyzing vs. Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽离设计逻辑.html">抽离设计逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="盗夸.html">盗夸</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽象还是不抽象的问题.html">抽象还是不抽象的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tegra TX2一瞥.html">Tegra TX2一瞥</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Progress and confusion of the IOMMU name space.html">Progress and confusion of the IOMMU name space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一样还是不一样.html">一样还是不一样</a></li>
+<li class="toctree-l2"><a class="reference internal" href="运营还是交付.html">运营还是交付</a></li>
+<li class="toctree-l2"><a class="reference internal" href="科普一下GPL和开源软件.html">科普一下GPL和开源软件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么确定道.html">怎么确定道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="回调还是直调.html">回调还是直调</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口的封装层次问题.html">接口的封装层次问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git的基本架构欣赏.html">git的基本架构欣赏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="让设计自生.html">让设计自生</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构控制的从权问题.html">架构控制的从权问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计的需求问题.html">设计的需求问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="性能优化的目标问题.html">性能优化的目标问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="加速器和其他硬件的区别.html">加速器和其他硬件的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="君子与其练达不若朴鲁与其曲谨不若疏狂.html">君子与其练达不若朴鲁与其曲谨不若疏狂</a></li>
+<li class="toctree-l2"><a class="reference internal" href="有无之道——一个新的软件架构定义.html">有无之道——一个新的软件架构定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是管理.html">什么是管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从香农熵谈设计文档写作.html">从香农熵谈设计文档写作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YVR18资料关注点.html">YVR18资料关注点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解关联.html">理解关联</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何撰写技术交底书.html">如何撰写技术交底书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiniband概念空间分析.html">infiniband概念空间分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈什么是高层设计.html">再谈什么是高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈“法自然”的设计思路.html">再谈“法自然”的设计思路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计规范.html">设计规范</a></li>
+<li class="toctree-l2"><a class="reference internal" href="开源交付.html">开源交付</a></li>
+<li class="toctree-l2"><a class="reference internal" href="道纪.html">道纪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="X86上的ARM Linux调试环境.html">X86上的ARM Linux调试环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IOMMU的现状和发展.html">IOMMU的现状和发展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="单元测试的强与弱问题.html">单元测试的强与弱问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="做事，做名，绩效主义，以及架构战略.html">做事，做名，绩效主义，以及架构战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="没有规则的规则.html">没有规则的规则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大成若缺.html">大成若缺</a></li>
+<li class="toctree-l2"><a class="reference internal" href="非易失内存随想.html">非易失内存随想</a></li>
+<li class="toctree-l2"><a class="reference internal" href="参考平台.html">参考平台</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个例子：名的边界效应.html">一个例子：名的边界效应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽象问题的模型.html">抽象问题的模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="另一个例子：名的边界效应.html">另一个例子：名的边界效应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Zircon架构简单分析1: Overview.html">Zircon架构简单分析1: Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在qemu中模拟设备.html">在qemu中模拟设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="国产操作系统问题.html">国产操作系统问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件飞线.html">软件飞线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="状态机方法.html">状态机方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一些典型的架构设计错误.html">一些典型的架构设计错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从CPU和TPU的不同语言抽象看抽象原则.html">从CPU和TPU的不同语言抽象看抽象原则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="限制管理.html">限制管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WarpDrive as a General Heterogeneous Platform.html">WarpDrive as a General Heterogeneous Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiarch概念调查.html">Multiarch概念调查</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ARM NUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UML有没有用.html">UML有没有用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="推演一个Buffer分配的语法设计.html">推演一个Buffer分配的语法设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构师和项目经理的基本职责问题.html">架构师和项目经理的基本职责问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="锁使用设计.html">锁使用设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从内核终止用户态程序的IO访问.html">从内核终止用户态程序的IO访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epoll和select.html">epoll和select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="状态机退出方法.html">状态机退出方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不为天下先2.html">不为天下先2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计逻辑和代码逻辑.html">设计逻辑和代码逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="流水线深度.html">流水线深度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="谁是主线？.html">谁是主线？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解指令集.html">理解指令集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给使用设备的进程发信号.html">给使用设备的进程发信号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux设备异常复位逻辑分析.html">Linux设备异常复位逻辑分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="投资开源社区的基本逻辑.html">投资开源社区的基本逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个Linux死锁信息分析.html">一个Linux死锁信息分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何说谎.html">如何说谎</a></li>
+<li class="toctree-l2"><a class="reference internal" href="代码生成器.html">代码生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弟子规：美国军方禁止在C语言程序中使用malloc.html">弟子规：美国军方禁止在C语言程序中使用malloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自下而上和自上而下的设计.html">自下而上和自上而下的设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="正面竞争.html">正面竞争</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不知为美.html">不知为美</a></li>
+<li class="toctree-l2"><a class="reference internal" href="高层封装的设计战略.html">高层封装的设计战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="产业生态的原理和作用.html">产业生态的原理和作用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弯道问题.html">弯道问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="无名概念的深入探讨.html">无名概念的深入探讨</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解释On-Chip Debug和Off-Chip Debug.html">解释On-Chip Debug和Off-Chip Debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口和名称空间辨识.html">接口和名称空间辨识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RISCV WMO和TSO具体解决什么问题.html">RISCV WMO和TSO具体解决什么问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="利益链.html">利益链</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从C的for和Python的for聊起.html">从C的for和Python的for聊起</a></li>
+<li class="toctree-l2"><a class="reference internal" href="安全建模问题讨论.html">安全建模问题讨论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Accelerator vs. Co-processor.html">Accelerator vs. Co-processor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个逻辑空间控制的例子：uacce生命周期管理.html">一个逻辑空间控制的例子：uacce生命周期管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件构架设计的入题角度问题.html">软件构架设计的入题角度问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口分层的问题.html">接口分层的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="对Cache Coherence的重理解.html">对Cache Coherence的重理解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口定义的工作模型.html">接口定义的工作模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux_net和net-next分支的维护策略.html">Linux net和net-next分支的维护策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WarpDrive用户态方案重构建议.html">WarpDrive用户态方案重构建议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="主线逻辑.html">主线逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的粗与细问题.html">架构设计的粗与细问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="狂人日记读后感——名称空间囚笼.html">狂人日记读后感——名称空间囚笼</a></li>
+<li class="toctree-l2"><a class="reference internal" href="写程序和写小说的区别.html">写程序和写小说的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈《弟子规》问题.html">再谈《弟子规》问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解弱内存顺序模型.html">理解弱内存顺序模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="思维上的洞2.html">思维上的洞2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="后软件时代和技术沙盘陷阱.html">后软件时代和技术沙盘陷阱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做项目管理2.html">怎么做项目管理2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="语言的控制力问题.html">语言的控制力问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分享我的Linux内核开发环境.html">分享我的Linux内核开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="开发视图.html">开发视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="概念视图.html">概念视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="处理视图.html">处理视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="语言控制力问题.html">语言控制力问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="新手设计文档典型错误.html">新手设计文档典型错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="讨论：OpenCL2.0SVM有什么好？.html">讨论：OpenCL2.0SVM有什么好？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计逻辑的细致和严密问题.html">设计逻辑的细致和严密问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="逻辑的平面和立体问题.html">逻辑的平面和立体问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自由和约束.html">自由和约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给非专业人士介绍架构设计工作.html">给非专业人士介绍架构设计工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AML工作原理快速调研.html">AML工作原理快速调研</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu_PCIe总线结构.html">qemu PCIe总线结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM64_Linux_Kernel_5.7无法GDB调试问题.html">ARM64 Linux Kernel 5.7无法GDB调试问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分层抽象.html">分层抽象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="见素抱朴：一个关于交付的例子.html">见素抱朴：一个关于交付的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="三个锦囊.html">三个锦囊</a></li>
+<li class="toctree-l2"><a class="reference internal" href="多核MMU和ASID管理逻辑.html">多核MMU和ASID管理逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PMA和PA方案对比.html">PMA和PA方案对比</a></li>
+<li class="toctree-l2"><a class="reference internal" href="真假架构设计.html">真假架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样写标准提案.html">怎样写标准提案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="安全问题的本质.html">安全问题的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="名称内涵的发展.html">名称内涵的发展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="标准和设计的区别.html">标准和设计的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cond_mutex模型.html">cond/mutex模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个例子：架构的重要性和从权.html">一个例子：架构的重要性和从权</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nvdimm_AD模式的内核应用模型.html">nvdimm AD模式的内核应用模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="早期架构设计问题.html">早期架构设计问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="所谓内部设计.html">所谓内部设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“知不知”如何影响决策的？.html">“知不知”如何影响决策的？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“优秀架构设计”.html">“优秀架构设计”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux_Kernel架构赏析.html">Linux Kernel架构赏析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="说说对协程的看法.html">说说对协程的看法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计和实施的对齐和同步问题.html">架构设计和实施的对齐和同步问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个关于4+1视图的案例：从概念视图开始.html">一个关于4+1视图的案例：从概念视图开始</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“硬件状态机”.html">“硬件状态机”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计的减熵原理.html">设计的减熵原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binfmt概念空间建模.html">binfmt概念空间建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计入门知识.html">架构设计入门知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的大忌：我没错.html">架构设计的大忌：我没错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“解决方案”.html">“解决方案”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="管理上的判断和技术上的判断.html">管理上的判断和技术上的判断</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基于逻辑链建立约束.html">基于逻辑链建立约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="高级需求分析.html">高级需求分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="False_Sharing.html">假共享内存(False Sharing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="芯片验证软件的4+1方法.html">芯片验证软件的4+1方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件之硬.html">软件之硬</a></li>
+<li class="toctree-l2"><a class="reference internal" href="诚其意.html">诚其意</a></li>
+<li class="toctree-l2"><a class="reference internal" href="把什么放入架构设计.html">把什么放入架构设计</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">软件架构设计</a> &raquo;</li>
+        
+      <li>ARM NUC</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/软件构架设计/ARM NUC.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="arm-nuc">
+<h1>ARM NUC<a class="headerlink" href="#arm-nuc" title="永久链接至标题">¶</a></h1>
+<p>上周刚参加完Linaro Connect BKK19，有很多独立的逻辑链需要建，其中ARM Server开发
+者生态运营这个主题是比较开放的，我在这里公开讨论吧。只是把逻辑链组织一下，不代
+表任何人或者任何组织的立场。</p>
+<p>BKK19的演讲胶片大部分是公开的，我行文过程中涉及的文档读者都可以从这里下载：
+Linaro connect Bangkok 2019 Resources。（提示：演讲编号的第一个数字表示第几天的
+演讲。tr前缀的表示是培训）</p>
+<p>我从演讲201讲起，201介绍了使用LLVM用于交叉编译要解决的问题，老实说，看到这个进
+展，我暂时是不打算在交叉环境中就那么引入LLVM的（个例另说），要解决的问题有点多
+了。我的感想是，LLVM算是相当火的一个平台了，围绕它建生态的大公司哪个都是举足轻
+重的，但即使这样，它的准备度也不过如此。编译内核也算是个重点工作了，但根据演讲
+112，x86平台上都还有不少out of tree的补丁才能搞定，从这里我们看到新建一个生态的
+难度有多大。生态不是被设计出来的，生态是人多走出来的路，所以营造生态，其实只是
+铺条小路，希望走的人图方便，多走走这条路，让小路变成大路。但如果人家本来就不需
+要向那边去，你铺条大路出来都没有意义。</p>
+<p>这个观点，从另两个例子来看可能会更明显，演讲412和418（一个来自ARM一个来自Redhat
+）里面描述了这样的现象：对很多自由软件来说，找到x86的本地编译方案比较容易，但找
+到交叉编译就比较困难了。但反过来，对于ARM平台，找到交叉编译的方法比较容易，要找
+到本地编译反而就很困难。从构架设计上来说，autoconf，Make，CMake等这些工具都没有
+偏向性，谁作为host，target和build都是可以的，但实际上，用户还是会分路走，因为
+x86的基本盘就是PC和服务器，arm的基本盘就是IoT和手机。你构架设计的“小路”，在不同
+市场上踩出来的大路是不一样的。</p>
+<p>这些变数都出现在PC作为开发平台上，PC是x86的，你编译服务器上的软件，就是本地编译
+，因为那你的目标系统和你的Host是一样的。你编译手机软件，就是交叉编译，因为你的
+Target和Host就是不一样的。手上能随时调度一台服务器出来用的开发者，根本不占整个
+开发群体的主流，这一点，看看Linaro的各种拿Hikey和Dragon Board做的方案（包括服务
+器软件方案）就看出来了。我现场玩了一下用Snapdragon 835, 850做的Laptop，老实说，
+这个性能我也是接受不了的。</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/linaro-ad1.jpg" src="../_images/linaro-ad1.jpg" />
+</div>
+</div></blockquote>
+<p>ARM Server这条路就有趣了，它需要的软件设计的时候都考虑是本地编译的，但作为ARM，
+他们又被按交叉编译来考虑，这个生态就比较难受了。我们只有两条路：要不彻底把ARM
+Server当做一个交叉目标，要不我们就必须有自己的PC。这一点，即使我们现在已经做到
+所有的服务器发行版都可以直接安装到服务器上，都没有改变。</p>
+<p>但PC，本身就是个非常麻烦的生态，驱动，应用，全都是问题，买台x86 PC回来，除了用
+于开发，还可以用于日常使用，但买台ARM PC回来，就只能用于开发了。</p>
+<p>所以Linaro这两年都是用96Board做初步代替，但96Board这堆渣渣，用来做手机还勉强拿
+得出手，你用来编译Linux内核？只能当玩具。现在能拿来开发性能最强的可能是日本
+Cocionext的SynQuacer了，但对一般开发者来说，这个性能还是没法接受的。</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/synquacer.jpg" src="../_images/synquacer.jpg" />
+</div>
+<p>SynQuacer内部结构</p>
+</div></blockquote>
+<p>演讲302构想了一种开发者用机需求：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/linaro-ad2.jpg" src="../_images/linaro-ad2.jpg" />
+</div>
+</div></blockquote>
+<p>我觉得其他部分难度其实都不大，最麻烦的可能是HDMI，这也是为什么96Board派系都用手
+机芯片来做，因为这些货都集成GPU。但单插显卡就有个显卡生态的问题。所以，其实我觉
+得，既然代替不了PC，不如就直接出BMC接口，当做Headless开发服务器来用，这应该现在
+这种情况的最好选择。</p>
+<p>另一方面，现在手机大幅蚕食PC作为个人娱乐终端的市场，让PC彻底变成一个生产力工具
+，也算是做这样的开发PC的一个利好。有一个基本的平台后，有需要的开发者使能一个
+PCIE插槽的显示设备，应该也不是太难的事情。</p>
+<p>演讲302中提到上个月Linus的一个评价，我在网上搜索了一下，没有找到原始出处，但
+zdnet上的完整表述是这样的：</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Some people think that &quot;the cloud&quot; means that the instruction</div>
+<div class="line">set doesn't matter. Develop at home, deploy in the cloud.</div>
+<div class="line">That's bull***t. If you develop on x86, then you're going to</div>
+<div class="line">want to deploy on x86, because you'll be able to run what you</div>
+<div class="line">test &quot;at home&quot; (and by &quot;at home&quot; I don't mean literally in your</div>
+<div class="line">home, but in your work environment.</div>
+<div class="line"><br /></div>
+<div class="line">Which means that you'll happily pay a bit more for x86 cloud</div>
+<div class="line">hosting, simply because it matches what you can test on your own</div>
+<div class="line">local setup, and the errors you get will translate better.</div>
+<div class="line"><br /></div>
+<div class="line">This is true even if what you mostly do is something ostensibly</div>
+<div class="line">cross-platform like just run perl scripts or whatever. Simply</div>
+<div class="line">because you'll want to have as similar an environment as possible,</div>
+<div class="line">Which in turn means that cloud providers will end up making more</div>
+<div class="line">money from their x86 side, which means that they'll prioritize it,</div>
+<div class="line">and any ARM offerings will be secondary and probably relegated to</div>
+<div class="line">the mindless dregs (maybe front-end, maybe just static html, that</div>
+<div class="line">kind of stuff).</div>
+</div>
+</div></blockquote>
+<p>我想我理解Linus的观点，实际上，很多不再写代码的人可能不一定能理解：也许大部分工
+程师都不肯承认，其实现在基本上不让你可以立即运行某个构想，你根本就没有办法判断
+某个设计是否可行的。我在BKK19的会场上，看他们谈到Fuego测试框架。他们一边在上面
+讲，我一边在会场直接就安装运行了整个前端后端，立即就可以判断这个构架是什么样的
+，你让我回去再找台服务器装？我可能就直接不考虑它了。或者你让我仅凭讲述就理解那
+个东西的架构？这也基本上是不可能的。</p>
+<p>这些都是复杂度导致的。</p>
+<p>现在的软件复杂度已经远远超过20年前。20年前我开发GSM上的软件，为了让它跑起来，我
+需要把天线，BTS，BSC，MSC，VLR，HLR全部开起来。就算要调10行的代码，我都得独占整
+个房间的实验室和全部的机架。现在这样开发？早死了。现在我要开发一个网站，前端，
+后端，一堆的VM+Docker，基本上都可以在我的一台PC上搞定，最多再开一台，基本上就那
+么回事了。你还想独占一个机架？这个哪有效率啊。而且就算Packet这种提供裸机服务的
+提供商，租用服务器也要每小时1个美金，想想人家的水电和折旧，这个根本就不贵。但我
+大部分时间用不上啊，这种模式实在不好接受。这种情况下，想要普通的开发者使用服务
+器一侧的服务，你不提供和那边一样的开发平台，真的太难接受了。这条路不打通，始终
+还是要被压着打。</p>
+<p>302把这样的PC称为ARM的NCU，NCU是x86 mini developer机器（国内网上的报价是3000人
+民币这个级别），我觉得确实是ARM PC的一个设计方向。</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="UML有没有用.html" class="btn btn-neutral float-right" title="UML有没有用" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Multiarch概念调查.html" class="btn btn-neutral float-left" title="Multiarch概念调查" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

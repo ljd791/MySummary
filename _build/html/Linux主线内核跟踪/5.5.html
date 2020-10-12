@@ -1,0 +1,312 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.5 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="5.6" href="5.6.html" />
+    <link rel="prev" title="5.4" href="5.4.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../软件构架设计/README.html">软件架构设计</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">Linux主线内核跟踪</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5.0.html">5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.1.html">5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2.html">5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3.html">5.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.4.html">5.4</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#btrfschecksum">BTRFS提升了Checksum效率</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#io-uring">IO_uring大幅增强</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kunit">Kunit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aql">AQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cifs">CIFS增强</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">支持网络设备换名和加多个名字</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bpf">BPF提升</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">海思</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5.6.html">5.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7.html">5.7</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">Linux主线内核跟踪</a> &raquo;</li>
+        
+      <li>5.5</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Linux主线内核跟踪/5.5.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5.5<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>2020-01-26</p>
+<p>（这个版本被另一个科普文档索引了，所以写得比较白痴）</p>
+<div class="section" id="btrfschecksum">
+<h2>BTRFS提升了Checksum效率<a class="headerlink" href="#btrfschecksum" title="永久链接至标题">¶</a></h2>
+<p>这个优化让这个文件系统的部分操作速度提升80%。同时增加了一个特性：使用Raid1（就
+是磁盘一次可以写多份的可靠性技术）的时候可以写3、4份（原来只能是双份）。这组修
+改来自Suse，一个Linux发行版提供商，他们的其中一个卖点是BTRFS文件系统支持比较好
+。</p>
+</div>
+<div class="section" id="io-uring">
+<h2>IO_uring大幅增强<a class="headerlink" href="#io-uring" title="永久链接至标题">¶</a></h2>
+<p>这是几个版本前刚加入的异步io特性，取代原来Linux Aio接口，通过共享内存取代系统调
+用提升效率。这个特性来自独立开发者Jens Axboe，他是Facebook负责IO调度性能的工程
+师，他为什么干这个工作我们也不难猜。</p>
+</div>
+<div class="section" id="kunit">
+<h2>Kunit<a class="headerlink" href="#kunit" title="永久链接至标题">¶</a></h2>
+<p>一个新的单元测试框架，代码来自亚马逊德国。</p>
+</div>
+<div class="section" id="aql">
+<h2>AQL<a class="headerlink" href="#aql" title="永久链接至标题">¶</a></h2>
+<p>一个提升Wifi性能的新的调度算法，主要开发力量来自Google等几个公司。</p>
+</div>
+<div class="section" id="cifs">
+<h2>CIFS增强<a class="headerlink" href="#cifs" title="永久链接至标题">¶</a></h2>
+<p>Comon Interface文件系统，是Windows网络目录共享的基础。本增强让它可以作为根文件
+系统使用，这个修改的代码主要来自微软。</p>
+</div>
+<div class="section" id="id2">
+<h2>支持网络设备换名和加多个名字<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>代码来自Mellanox，一个著名的网卡提供商</p>
+</div>
+<div class="section" id="bpf">
+<h2>BPF提升<a class="headerlink" href="#bpf" title="永久链接至标题">¶</a></h2>
+<p>代码主要来自Vmware</p>
+</div>
+<div class="section" id="id3">
+<h2>其他<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ul>
+<li><p class="first">把xfs的回写代码提升到vfs框架中，变成所有文件系统都可以利用的功能，这个修改来
+自独立贡献者Christoph Hellwig，但最终接纳代码的人来自Oracle（接纳就意味着评审
+，测试等各种工作量的付出）</p>
+</li>
+<li><p class="first">xfs的大量其他优化，来自Redhat。xfs是Redhat Linux发型版支持的重要文件系统</p>
+</li>
+<li><p class="first">ext4fs增加了direct io特性，提升了O_DIRECT map的性能。这个补丁很典型：</p>
+<blockquote>
+<div><p><a class="reference external" href="https://lore.kernel.org/linux-ext4/cover.1572949325.git.mbobrowski&#64;mbobrowski.org/">https://lore.kernel.org/linux-ext4/cover.1572949325.git.mbobrowski&#64;mbobrowski.org/</a></p>
+</div></blockquote>
+<p>修改的人我不认识，但Review的人一个来自Suse，一个来自IBM，而最终合入的人来自麻
+省理工。</p>
+</li>
+<li><p class="first">……其他更多的修改包括块设备，虚拟化，调试，内存，加密，网络，驱动等等等等，这
+里不再一一列举。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>海思<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>鲲鹏920 perf性能分析中增加更多的硬件事件</li>
+<li>鲲鹏920 sas驱动增加更多调试功能</li>
+<li>支持鲲鹏920硬件随机数产生</li>
+<li>支持鲲鹏920 RSA算法硬件加速</li>
+<li>支持鲲鹏920 对称加密硬件加速</li>
+<li>鲲鹏920 zip加速引擎支持用户态共享，为下个版本合入WarpDrive功能做准备</li>
+<li>增加x86便携机电源WMI控制接口</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>参考<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="https://kernelnewbies.org/LinuxChanges">https://kernelnewbies.org/LinuxChanges</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="5.6.html" class="btn btn-neutral float-right" title="5.6" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="5.4.html" class="btn btn-neutral float-left" title="5.4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

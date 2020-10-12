@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.1 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="5.2" href="5.2.html" />
+    <link rel="prev" title="5.0" href="5.0.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../软件构架设计/README.html">软件架构设计</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">Linux主线内核跟踪</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5.0.html">5.0</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#io-uring">io_uring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fanotify">fanotify增强</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pidfd-sned-signal">pidfd_sned_signal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">把持久内存真当内存用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teo">TEO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2038年问题的最后准备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dm-crypt">直接使用dm-crypt的分区启动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#livepatchreplace-cumulative">LivePatch支持replace和积累（Cumulative）补丁</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5.2.html">5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3.html">5.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.4.html">5.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.5.html">5.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.6.html">5.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7.html">5.7</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">Linux主线内核跟踪</a> &raquo;</li>
+        
+      <li>5.1</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Linux主线内核跟踪/5.1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5.1<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="io-uring">
+<h2>io_uring<a class="headerlink" href="#io-uring" title="永久链接至标题">¶</a></h2>
+<p>AIO的升级，用户态的库在这里：<a class="reference external" href="http://git.kernel.dk/cgit/liburing">http://git.kernel.dk/cgit/liburing</a></p>
+<p>原来是aio_read, aio_write，这两个函数进去一个控制结构，可以设定信号，然后等信号来再做出响应。
+这个接口问题很多：</p>
+<ol class="arabic simple">
+<li>只支持O_DIRECT</li>
+<li>metadata不足的时候，还是会等待</li>
+<li>API需要不小的拷贝</li>
+</ol>
+<p>新的接口是个ringbuffer，靠mmap做共享内存，然后做通讯。</p>
+</div>
+<div class="section" id="fanotify">
+<h2>fanotify增强<a class="headerlink" href="#fanotify" title="永久链接至标题">¶</a></h2>
+<p>这个特性2.6.36加入，比inotify scales更好，这个版本支持super block root watch.</p>
+</div>
+<div class="section" id="pidfd-sned-signal">
+<h2>pidfd_sned_signal<a class="headerlink" href="#pidfd-sned-signal" title="永久链接至标题">¶</a></h2>
+<p>用pidfd_send_signal代替原来直接基于pid发signal的形式，这样就不会因为pid重用杀错
+人。</p>
+</div>
+<div class="section" id="id2">
+<h2>把持久内存真当内存用<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>Intel的人做的，好像是把qemu的内存整个放在这个内存上，然后用来离线迁移？驱动更新
+在drivers/dax/pmem.c中，DAX：direct access to differentialed memory，这个东西通
+过mmap到/dev/daxX.Y来实现的。</p>
+</div>
+<div class="section" id="teo">
+<h2>TEO<a class="headerlink" href="#teo" title="永久链接至标题">¶</a></h2>
+<p>在原来的两个Idle Governor：Menu和Ladder外，增加了一个TEO，Timer Events Oriented
+Governor。Ladder（一点点休眠下去，缺点是要深睡很慢）Menu（根据任务数合作激活历
+史来猜）TEO（基于始终中断的激活历史来猜，因为如果是tickless内核，不考虑IO，我们
+知道什么时候才需要醒）</p>
+</div>
+<div class="section" id="id3">
+<h2>2038年问题的最后准备<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p>把所有time_t，无论在32位还是64位机器上，都改成了64bit，相关API，比如futex在32位
+上变成futex_time32，64位上叫futex_time64。</p>
+<p>这样的接口包括： adjtimex(), clock_adjtime(), clock_getres(), clock_gettime(),
+clock_nanosleep(), clock_settime(), futex(), io_getevents(), io_pgetevents(),
+mq_timedsend(), mq_timedreceive(), nanosleep(), ppoll(), pselect6(),
+recvmmsg(), rt_sigtimedwait(), sched_rr_get_interval(), semtimedop(),
+timer_gettime(), timer_settime(), timerfd_gettime(), timerfd_settime(), and
+utimensat()</p>
+<p>这些是大方向修改，但其实我们不知道还有多少小地方还会有问题。</p>
+</div>
+<div class="section" id="dm-crypt">
+<h2>直接使用dm-crypt的分区启动<a class="headerlink" href="#dm-crypt" title="永久链接至标题">¶</a></h2>
+<p>它包括两个改进：</p>
+<ol class="arabic simple">
+<li>提前dm-crypt的初始化时间</li>
+<li><dl class="first docutils">
+<dt>通过模块参数直接开始启动分区（取代dm-setup)：</dt>
+<dd>::
+dm-mod.create=&lt;name&gt;,&lt;uuid&gt;,&lt;minor&gt;,&lt;flags&gt;,&lt;table&gt;[,&lt;table&gt;+][;&lt;name&gt;,&lt;uuid&gt;,&lt;minor&gt;,&lt;flags&gt;,&lt;table&gt;[,&lt;table&gt;+]+]</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="livepatchreplace-cumulative">
+<h2>LivePatch支持replace和积累（Cumulative）补丁<a class="headerlink" href="#livepatchreplace-cumulative" title="永久链接至标题">¶</a></h2>
+<p>LivePatch依赖三个特性：
+1. kprobe
+2. ftrace（function trace要开了）
+3. livepatch
+4. 支持模块（查看：/proc/sys/kernel/modules_disabled）</p>
+<p>控制点：/sys/kernel/livepatch</p>
+<p>打了Patch，这里会有tained标记：/proc/sys/kernel/tainted</p>
+</div>
+<div class="section" id="id4">
+<h2>其他<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li>/proc/stat本来是在读的时候累加的，为了做优化，现在变成直接统计的时候就加在一个变量上，加快速度。</li>
+<li>Socinext的SC2000加进来了</li>
+<li>海思相关的就两个，一个sas加debugfs，一个是k3升级dma引擎</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h2>参考<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="https://kernelnewbies.org/LinuxChanges">https://kernelnewbies.org/LinuxChanges</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="5.2.html" class="btn btn-neutral float-right" title="5.2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="5.0.html" class="btn btn-neutral float-left" title="5.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

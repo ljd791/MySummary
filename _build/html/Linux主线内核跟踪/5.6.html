@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.6 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="5.7" href="5.7.html" />
+    <link rel="prev" title="5.5" href="5.5.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../软件构架设计/README.html">软件架构设计</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">Linux主线内核跟踪</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5.0.html">5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.1.html">5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2.html">5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3.html">5.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.4.html">5.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.5.html">5.5</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wireguard">Wireguard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usb4">usb4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#time-namespace">time namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mptcp">MPTCP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zonefs">zonefs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">海思</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5.7.html">5.7</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">Linux主线内核跟踪</a> &raquo;</li>
+        
+      <li>5.6</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Linux主线内核跟踪/5.6.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5.6<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>2020-3-29发布</p>
+<div class="section" id="wireguard">
+<h2>Wireguard<a class="headerlink" href="#wireguard" title="永久链接至标题">¶</a></h2>
+<p>一个新的VPN框架，号称可以像ssh那样用。三层加密。
+wireguard.ko，wg命令。:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># wg genkey</span>
+<span class="c1"># ip link add wg0 type wireguard</span>
+<span class="c1"># ip addr add 10.0.0.1/24 wg0</span>
+<span class="c1"># wg set wg0 private-key &lt;private-key-file&gt;</span>
+<span class="c1"># ip link set wg0 up</span>
+<span class="c1"># wg set wg0 peer &lt;public-key&gt; allowed-ips 10.0.0.2/32 endpoint &lt;ip-addr&gt;:44556</span>
+</pre></div>
+</div>
+<p>另一端也一样设，两边就用公网IP互联起来，然后在三层上支持wg0进行VPN通讯了。</p>
+</div>
+<div class="section" id="usb4">
+<h2>usb4<a class="headerlink" href="#usb4" title="永久链接至标题">¶</a></h2>
+<p>usb4基本上就是Thunderbolt 3的改版，兼容Thunderbolt 3，Linux原来就支持
+Thunderbolt 3，这次仅仅是在这上面修改。驱动的位置：./drivers/thunderbolt/usb4.c
+，Intel的人改的。</p>
+</div>
+<div class="section" id="time-namespace">
+<h2>time namespace<a class="headerlink" href="#time-namespace" title="永久链接至标题">¶</a></h2>
+<p>每个ns一个时钟机制，包括boottime，墙钟。settime，timer_create等的结果控制在ns之
+内。</p>
+</div>
+<div class="section" id="mptcp">
+<h2>MPTCP<a class="headerlink" href="#mptcp" title="永久链接至标题">¶</a></h2>
+<p>多路TCP，比如可以让wifi和5g合起来做链路，上面实现一个tcp链接。</p>
+</div>
+<div class="section" id="zonefs">
+<h2>zonefs<a class="headerlink" href="#zonefs" title="永久链接至标题">¶</a></h2>
+<p>不同特性的存储混合组合成的fs。主要指conversional的和sequential两种，mount以后就
+有con和seq两个子目录，里面放的内容会走到不同的介质上。</p>
+<p>暂时想不到这鬼东西有啥用。</p>
+</div>
+<div class="section" id="id2">
+<h2>海思<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>王州上传了dma引擎</li>
+<li>徐仔波上传了sec2的AEAD驱动</li>
+<li>bmc增加了debugfs的vram调试信息，suse的人改的</li>
+<li>John合入了spi flash controller的驱动</li>
+<li>郭寒军给1620s合了一个I2c驱动</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h2>其他<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>BTRFS支持提供SSD wearing方面的优化</li>
+<li>vboxsf，virtualbox的共享目录文件系统，现在主线化了</li>
+<li>pidfd加了一个新调用pidfd_getfd()，这个框架的主要目的是避免pid重新分配导致获取
+另一个pid对不上的问题</li>
+<li>dmabuf支持heap，意图取代Android ION</li>
+<li>在ARM64上对osq_lock进行优化（用wfe），这个spinlock的实现类似mcs_lock，用于
+mutex和rwsem</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>参考<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="https://kernelnewbies.org/LinuxChanges">https://kernelnewbies.org/LinuxChanges</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="5.7.html" class="btn btn-neutral float-right" title="5.7" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="5.5.html" class="btn btn-neutral float-left" title="5.5" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

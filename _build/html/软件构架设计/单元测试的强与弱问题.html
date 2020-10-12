@@ -1,0 +1,1213 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>单元测试的强与弱问题 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="做事，做名，绩效主义，以及架构战略" href="做事，做名，绩效主义，以及架构战略.html" />
+    <link rel="prev" title="IOMMU的现状和发展" href="IOMMU的现状和发展.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">软件架构设计</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="从单元测试理解软件.html">从单元测试理解软件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="名可名.html">名可名</a></li>
+<li class="toctree-l2"><a class="reference internal" href="小国寡民.html">小国寡民</a></li>
+<li class="toctree-l2"><a class="reference internal" href="需求分析的中心思路.html">需求分析的中心思路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于自然语言编程的方向问题.html">关于自然语言编程的方向问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="反者道之动——欣赏架构设计的基本逻辑.html">反者道之动——欣赏架构设计的基本逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="让代码变立体.html">让代码变立体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="生成优秀的架构.html">生成优秀的架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分支设计要领.html">分支设计要领</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做项目管理.html">怎样做项目管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="谈谈子女教育问题.html">谈谈子女教育问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="两种基本的构架表述方法.html">两种基本的构架表述方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弱者道之用——谈技术工作中的守弱问题.html">弱者道之用——谈技术工作中的守弱问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在Linux下做性能分析.html">在Linux下做性能分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的0层逻辑.html">架构设计的0层逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解耦设计.html">解耦设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做高层设计.html">怎么做高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解架构版本.html">理解架构版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCIE总线的保序模型.html">PCIE总线的保序模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="做与不做都是战略.html">做与不做都是战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="海洋战术式的软件设计方法.html">海洋战术式的软件设计方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解耦和不解耦.html">解耦和不解耦</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈“守弱”.html">再谈“守弱”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="互斥算法设计.html">互斥算法设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="英文版本的“弱者道之用”.html">英文版本的“弱者道之用”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是“守”.html">什么是“守”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从用户功能开始构架系统框架.html">从用户功能开始构架系统框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux发行版的库软件包组织.html">Linux发行版的库软件包组织</a></li>
+<li class="toctree-l2"><a class="reference internal" href="地址空间的故事.html">地址空间的故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="工作和读书有什么不同.html">工作和读书有什么不同</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样快速调试Linux内核.html">怎样快速调试Linux内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计中的“少了”和“多了”的问题.html">架构设计中的“少了”和“多了”的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux iommu和vfio概念空间解构.html">Linux iommu和vfio概念空间解构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做代码Review.html">怎样做代码Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做客户访谈.html">怎样做客户访谈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RancherOS架构分析.html">RancherOS架构分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈什么是软件架构.html">再谈什么是软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大道曰守，当时曰行.html">大道曰守，当时曰行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不为天下先.html">不为天下先</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于AI的胡说八道.html">关于AI的胡说八道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="学习本质？.html">学习本质？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“设计的流程”和“代码的流程”.html">“设计的流程”和“代码的流程”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="概要设计不是代码.html">概要设计不是代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“病病”.html">“病病”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于架构师的爱恨情仇——《黑客帝国》世界观解读.html">关于架构师的爱恨情仇——《黑客帝国》世界观解读</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vfio-mdev逻辑空间分析.html">vfio-mdev逻辑空间分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux Socket 0拷贝特性.html">Linux Socket 0拷贝特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="用户态DMA的问题.html">用户态DMA的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiprocess Support for Linux IOMMU driver.html">Multiprocess Support for Linux IOMMU driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux RAS特性分析.html">Linux RAS特性分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="写论文.html">写论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基于“语义”编程.html">基于“语义”编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从学习assert的用法开始理解如何写“专业的程序”.html">从学习assert的用法开始理解如何写“专业的程序”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构的存在性.html">架构的存在性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Makefile概念入门.html">Makefile概念入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM服务器进展小结.html">ARM服务器进展小结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做初步的需求分析.html">怎么做初步的需求分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于设计方案中的逻辑链问题.html">关于设计方案中的逻辑链问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从逻辑链问题讨论怎么做高层设计.html">从逻辑链问题讨论怎么做高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="工程逻辑链.html">工程逻辑链</a></li>
+<li class="toctree-l2"><a class="reference internal" href="为什么你会在你的数据中心中部署ARM服务器.html">为什么你会在你的数据中心中部署ARM服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何为libvirt设置虚拟主机.html">如何为libvirt设置虚拟主机</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给普通人解释Spectre和Meltdown安全漏洞.html">给普通人解释Spectre和Meltdown安全漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给程序员解释Spectre和Meltdown漏洞.html">给程序员解释Spectre和Meltdown漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Is retpoline really safe.html">Is retpoline really safe?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="逻辑链，道，学和架构工作的本质.html">逻辑链，道，学和架构工作的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Serverless是什么——谈如何捕获一个特性的架构本质.html">Serverless是什么——谈如何捕获一个特性的架构本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="道法自然.html">道法自然</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自然，守弱和Plan B.html">自然，守弱和Plan B</a></li>
+<li class="toctree-l2"><a class="reference internal" href="守弱的内涵和外延.html">守弱的内涵和外延</a></li>
+<li class="toctree-l2"><a class="reference internal" href="找到道法自然的“度”.html">找到道法自然的“度”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Specification的写法问题.html">Specification的写法问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="小姐和丫鬟的故事.html">小姐和丫鬟的故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="知不知.html">知不知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCIE总线的地址问题.html">PCIE总线的地址问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="气和深度学习.html">气和深度学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="单元测试的效果问题.html">单元测试的效果问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Requirement Analyzing vs. Voting.html">Requirement Analyzing vs. Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽离设计逻辑.html">抽离设计逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="盗夸.html">盗夸</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽象还是不抽象的问题.html">抽象还是不抽象的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tegra TX2一瞥.html">Tegra TX2一瞥</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Progress and confusion of the IOMMU name space.html">Progress and confusion of the IOMMU name space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一样还是不一样.html">一样还是不一样</a></li>
+<li class="toctree-l2"><a class="reference internal" href="运营还是交付.html">运营还是交付</a></li>
+<li class="toctree-l2"><a class="reference internal" href="科普一下GPL和开源软件.html">科普一下GPL和开源软件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么确定道.html">怎么确定道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="回调还是直调.html">回调还是直调</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口的封装层次问题.html">接口的封装层次问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git的基本架构欣赏.html">git的基本架构欣赏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="让设计自生.html">让设计自生</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构控制的从权问题.html">架构控制的从权问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计的需求问题.html">设计的需求问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="性能优化的目标问题.html">性能优化的目标问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="加速器和其他硬件的区别.html">加速器和其他硬件的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="君子与其练达不若朴鲁与其曲谨不若疏狂.html">君子与其练达不若朴鲁与其曲谨不若疏狂</a></li>
+<li class="toctree-l2"><a class="reference internal" href="有无之道——一个新的软件架构定义.html">有无之道——一个新的软件架构定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是管理.html">什么是管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从香农熵谈设计文档写作.html">从香农熵谈设计文档写作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YVR18资料关注点.html">YVR18资料关注点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解关联.html">理解关联</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何撰写技术交底书.html">如何撰写技术交底书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiniband概念空间分析.html">infiniband概念空间分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈什么是高层设计.html">再谈什么是高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈“法自然”的设计思路.html">再谈“法自然”的设计思路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计规范.html">设计规范</a></li>
+<li class="toctree-l2"><a class="reference internal" href="开源交付.html">开源交付</a></li>
+<li class="toctree-l2"><a class="reference internal" href="道纪.html">道纪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="X86上的ARM Linux调试环境.html">X86上的ARM Linux调试环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IOMMU的现状和发展.html">IOMMU的现状和发展</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">单元测试的强与弱问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="做事，做名，绩效主义，以及架构战略.html">做事，做名，绩效主义，以及架构战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="没有规则的规则.html">没有规则的规则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大成若缺.html">大成若缺</a></li>
+<li class="toctree-l2"><a class="reference internal" href="非易失内存随想.html">非易失内存随想</a></li>
+<li class="toctree-l2"><a class="reference internal" href="参考平台.html">参考平台</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个例子：名的边界效应.html">一个例子：名的边界效应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽象问题的模型.html">抽象问题的模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="另一个例子：名的边界效应.html">另一个例子：名的边界效应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Zircon架构简单分析1: Overview.html">Zircon架构简单分析1: Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在qemu中模拟设备.html">在qemu中模拟设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="国产操作系统问题.html">国产操作系统问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件飞线.html">软件飞线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="状态机方法.html">状态机方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一些典型的架构设计错误.html">一些典型的架构设计错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从CPU和TPU的不同语言抽象看抽象原则.html">从CPU和TPU的不同语言抽象看抽象原则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="限制管理.html">限制管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WarpDrive as a General Heterogeneous Platform.html">WarpDrive as a General Heterogeneous Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiarch概念调查.html">Multiarch概念调查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM NUC.html">ARM NUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UML有没有用.html">UML有没有用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="推演一个Buffer分配的语法设计.html">推演一个Buffer分配的语法设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构师和项目经理的基本职责问题.html">架构师和项目经理的基本职责问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="锁使用设计.html">锁使用设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从内核终止用户态程序的IO访问.html">从内核终止用户态程序的IO访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epoll和select.html">epoll和select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="状态机退出方法.html">状态机退出方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不为天下先2.html">不为天下先2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计逻辑和代码逻辑.html">设计逻辑和代码逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="流水线深度.html">流水线深度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="谁是主线？.html">谁是主线？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解指令集.html">理解指令集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给使用设备的进程发信号.html">给使用设备的进程发信号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux设备异常复位逻辑分析.html">Linux设备异常复位逻辑分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="投资开源社区的基本逻辑.html">投资开源社区的基本逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个Linux死锁信息分析.html">一个Linux死锁信息分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何说谎.html">如何说谎</a></li>
+<li class="toctree-l2"><a class="reference internal" href="代码生成器.html">代码生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弟子规：美国军方禁止在C语言程序中使用malloc.html">弟子规：美国军方禁止在C语言程序中使用malloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自下而上和自上而下的设计.html">自下而上和自上而下的设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="正面竞争.html">正面竞争</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不知为美.html">不知为美</a></li>
+<li class="toctree-l2"><a class="reference internal" href="高层封装的设计战略.html">高层封装的设计战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="产业生态的原理和作用.html">产业生态的原理和作用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弯道问题.html">弯道问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="无名概念的深入探讨.html">无名概念的深入探讨</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解释On-Chip Debug和Off-Chip Debug.html">解释On-Chip Debug和Off-Chip Debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口和名称空间辨识.html">接口和名称空间辨识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RISCV WMO和TSO具体解决什么问题.html">RISCV WMO和TSO具体解决什么问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="利益链.html">利益链</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从C的for和Python的for聊起.html">从C的for和Python的for聊起</a></li>
+<li class="toctree-l2"><a class="reference internal" href="安全建模问题讨论.html">安全建模问题讨论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Accelerator vs. Co-processor.html">Accelerator vs. Co-processor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个逻辑空间控制的例子：uacce生命周期管理.html">一个逻辑空间控制的例子：uacce生命周期管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件构架设计的入题角度问题.html">软件构架设计的入题角度问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口分层的问题.html">接口分层的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="对Cache Coherence的重理解.html">对Cache Coherence的重理解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口定义的工作模型.html">接口定义的工作模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux_net和net-next分支的维护策略.html">Linux net和net-next分支的维护策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WarpDrive用户态方案重构建议.html">WarpDrive用户态方案重构建议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="主线逻辑.html">主线逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的粗与细问题.html">架构设计的粗与细问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="狂人日记读后感——名称空间囚笼.html">狂人日记读后感——名称空间囚笼</a></li>
+<li class="toctree-l2"><a class="reference internal" href="写程序和写小说的区别.html">写程序和写小说的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈《弟子规》问题.html">再谈《弟子规》问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解弱内存顺序模型.html">理解弱内存顺序模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="思维上的洞2.html">思维上的洞2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="后软件时代和技术沙盘陷阱.html">后软件时代和技术沙盘陷阱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做项目管理2.html">怎么做项目管理2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="语言的控制力问题.html">语言的控制力问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分享我的Linux内核开发环境.html">分享我的Linux内核开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="开发视图.html">开发视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="概念视图.html">概念视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="处理视图.html">处理视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="语言控制力问题.html">语言控制力问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="新手设计文档典型错误.html">新手设计文档典型错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="讨论：OpenCL2.0SVM有什么好？.html">讨论：OpenCL2.0SVM有什么好？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计逻辑的细致和严密问题.html">设计逻辑的细致和严密问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="逻辑的平面和立体问题.html">逻辑的平面和立体问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自由和约束.html">自由和约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给非专业人士介绍架构设计工作.html">给非专业人士介绍架构设计工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AML工作原理快速调研.html">AML工作原理快速调研</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu_PCIe总线结构.html">qemu PCIe总线结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM64_Linux_Kernel_5.7无法GDB调试问题.html">ARM64 Linux Kernel 5.7无法GDB调试问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分层抽象.html">分层抽象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="见素抱朴：一个关于交付的例子.html">见素抱朴：一个关于交付的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="三个锦囊.html">三个锦囊</a></li>
+<li class="toctree-l2"><a class="reference internal" href="多核MMU和ASID管理逻辑.html">多核MMU和ASID管理逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PMA和PA方案对比.html">PMA和PA方案对比</a></li>
+<li class="toctree-l2"><a class="reference internal" href="真假架构设计.html">真假架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样写标准提案.html">怎样写标准提案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="安全问题的本质.html">安全问题的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="名称内涵的发展.html">名称内涵的发展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="标准和设计的区别.html">标准和设计的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cond_mutex模型.html">cond/mutex模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个例子：架构的重要性和从权.html">一个例子：架构的重要性和从权</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nvdimm_AD模式的内核应用模型.html">nvdimm AD模式的内核应用模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="早期架构设计问题.html">早期架构设计问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="所谓内部设计.html">所谓内部设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“知不知”如何影响决策的？.html">“知不知”如何影响决策的？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“优秀架构设计”.html">“优秀架构设计”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux_Kernel架构赏析.html">Linux Kernel架构赏析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="说说对协程的看法.html">说说对协程的看法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计和实施的对齐和同步问题.html">架构设计和实施的对齐和同步问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个关于4+1视图的案例：从概念视图开始.html">一个关于4+1视图的案例：从概念视图开始</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“硬件状态机”.html">“硬件状态机”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计的减熵原理.html">设计的减熵原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binfmt概念空间建模.html">binfmt概念空间建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计入门知识.html">架构设计入门知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的大忌：我没错.html">架构设计的大忌：我没错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“解决方案”.html">“解决方案”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="管理上的判断和技术上的判断.html">管理上的判断和技术上的判断</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基于逻辑链建立约束.html">基于逻辑链建立约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="高级需求分析.html">高级需求分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="False_Sharing.html">假共享内存(False Sharing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="芯片验证软件的4+1方法.html">芯片验证软件的4+1方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件之硬.html">软件之硬</a></li>
+<li class="toctree-l2"><a class="reference internal" href="诚其意.html">诚其意</a></li>
+<li class="toctree-l2"><a class="reference internal" href="把什么放入架构设计.html">把什么放入架构设计</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">软件架构设计</a> &raquo;</li>
+        
+      <li>单元测试的强与弱问题</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/软件构架设计/单元测试的强与弱问题.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>单元测试的强与弱问题<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>最近看了一个项目做的单元测试，很不满意——单元测试框架做得太好了。</p>
+<p>单元测试的框架不能做得太好，单元测试的主角是被测试的那个代码，不是单元测试的框
+架，把单元测试框架做得太好，结果就是测试效果大打折扣。</p>
+<p>这就好比你盖房子，脚手架搭得比房子还漂亮，房子有可能搭的好吗？</p>
+<p>我们看一些细节，比如你测试Linux内核的一个模块，这个模块包含了&lt;include/sched.h&gt;
+，用到里面的struct task_struct {}。你应该怎么打桩？有人会找一个Linux版本，把这
+个结构整个拷贝进来：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>struct task_struct {
+#ifdef CONFIG_THREAD_INFO_IN_TASK
+        /*
+         * For reasons of header soup (see current_thread_info()), this
+         * must be the first element of task_struct.
+         */
+        struct thread_info              thread_info;
+#endif
+        /* -1 unrunnable, 0 runnable, &gt;0 stopped: */
+        volatile long                   state;
+
+        /*
+         * This begins the randomizable portion of task_struct. Only
+         * scheduling-critical items should be added above here.
+         */
+        randomized_struct_fields_start
+
+        void                            *stack;
+        atomic_t                        usage;
+        /* Per task flags (PF_*), defined further below: */
+        unsigned int                    flags;
+        unsigned int                    ptrace;
+
+#ifdef CONFIG_SMP
+        struct llist_node               wake_entry;
+        int                             on_cpu;
+#ifdef CONFIG_THREAD_INFO_IN_TASK
+        /* Current CPU: */
+        unsigned int                    cpu;
+#endif
+        unsigned int                    wakee_flips;
+        unsigned long                   wakee_flip_decay_ts;
+        struct task_struct              *last_wakee;
+
+        /*
+         * recent_used_cpu is initially set as the last CPU used by a task
+         * that wakes affine another task. Waker/wakee relationships can
+         * push tasks around a CPU where each wakeup moves to the next one.
+         * Tracking a recently used CPU allows a quick search for a recently
+         * used CPU that may be idle.
+         */
+        int                             recent_used_cpu;
+        int                             wake_cpu;
+#endif
+        int                             on_rq;
+
+        int                             prio;
+        int                             static_prio;
+        int                             normal_prio;
+        unsigned int                    rt_priority;
+
+        const struct sched_class        *sched_class;
+        struct sched_entity             se;
+        struct sched_rt_entity          rt;
+#ifdef CONFIG_CGROUP_SCHED
+        struct task_group               *sched_task_group;
+#endif
+        struct sched_dl_entity          dl;
+
+#ifdef CONFIG_PREEMPT_NOTIFIERS
+        /* List of struct preempt_notifier: */
+        struct hlist_head               preempt_notifiers;
+#endif
+
+#ifdef CONFIG_BLK_DEV_IO_TRACE
+        unsigned int                    btrace_seq;
+#endif
+
+        unsigned int                    policy;
+        int                             nr_cpus_allowed;
+        cpumask_t                       cpus_allowed;
+
+#ifdef CONFIG_PREEMPT_RCU
+        int                             rcu_read_lock_nesting;
+        union rcu_special               rcu_read_unlock_special;
+        struct list_head                rcu_node_entry;
+        struct rcu_node                 *rcu_blocked_node;
+#endif /* #ifdef CONFIG_PREEMPT_RCU */
+
+#ifdef CONFIG_TASKS_RCU
+        unsigned long                   rcu_tasks_nvcsw;
+        u8                              rcu_tasks_holdout;
+        u8                              rcu_tasks_idx;
+        int                             rcu_tasks_idle_cpu;
+        struct list_head                rcu_tasks_holdout_list;
+#endif /* #ifdef CONFIG_TASKS_RCU */
+
+        struct sched_info               sched_info;
+
+        struct list_head                tasks;
+#ifdef CONFIG_SMP
+        struct plist_node               pushable_tasks;
+        struct rb_node                  pushable_dl_tasks;
+#endif
+
+        struct mm_struct                *mm;
+        struct mm_struct                *active_mm;
+
+        /* Per-thread vma caching: */
+        struct vmacache                 vmacache;
+
+#ifdef SPLIT_RSS_COUNTING
+        struct task_rss_stat            rss_stat;
+#endif
+        int                             exit_state;
+        int                             exit_code;
+        int                             exit_signal;
+        /* The signal sent when the parent dies: */
+        int                             pdeath_signal;
+        /* JOBCTL_*, siglock protected: */
+        unsigned long                   jobctl;
+
+        /* Used for emulating ABI behavior of previous Linux versions: */
+        unsigned int                    personality;
+
+        /* Scheduler bits, serialized by scheduler locks: */
+        unsigned                        sched_reset_on_fork:1;
+        unsigned                        sched_contributes_to_load:1;
+        unsigned                        sched_migrated:1;
+        unsigned                        sched_remote_wakeup:1;
+#ifdef CONFIG_PSI
+        unsigned                        sched_psi_wake_requeue:1;
+#endif
+
+        /* Force alignment to the next boundary: */
+        unsigned                        :0;
+
+        /* Unserialized, strictly &#39;current&#39; */
+
+        /* Bit to tell LSMs we&#39;re in execve(): */
+        unsigned                        in_execve:1;
+        unsigned                        in_iowait:1;
+#ifndef TIF_RESTORE_SIGMASK
+        unsigned                        restore_sigmask:1;
+#endif
+#ifdef CONFIG_MEMCG
+        unsigned                        in_user_fault:1;
+#endif
+#ifdef CONFIG_COMPAT_BRK
+        unsigned                        brk_randomized:1;
+#endif
+#ifdef CONFIG_CGROUPS
+        /* disallow userland-initiated cgroup migration */
+        unsigned                        no_cgroup_migration:1;
+#endif
+#ifdef CONFIG_BLK_CGROUP
+        /* to be used once the psi infrastructure lands upstream. */
+        unsigned                        use_memdelay:1;
+#endif
+
+        /*
+         * May usercopy functions fault on kernel addresses?
+         * This is not just a single bit because this can potentially nest.
+         */
+        unsigned int                    kernel_uaccess_faults_ok;
+
+        unsigned long                   atomic_flags; /* Flags requiring atomic access. */
+
+        struct restart_block            restart_block;
+
+        pid_t                           pid;
+        pid_t                           tgid;
+
+#ifdef CONFIG_STACKPROTECTOR
+        /* Canary value for the -fstack-protector GCC feature: */
+        unsigned long                   stack_canary;
+#endif
+        /*
+         * Pointers to the (original) parent process, youngest child, younger sibling,
+         * older sibling, respectively.  (p-&gt;father can be replaced with
+         * p-&gt;real_parent-&gt;pid)
+         */
+
+        /* Real parent process: */
+        struct task_struct __rcu        *real_parent;
+
+        /* Recipient of SIGCHLD, wait4() reports: */
+        struct task_struct __rcu        *parent;
+
+        /*
+         * Children/sibling form the list of natural children:
+         */
+        struct list_head                children;
+        struct list_head                sibling;
+        struct task_struct              *group_leader;
+
+        /*
+         * &#39;ptraced&#39; is the list of tasks this task is using ptrace() on.
+         *
+         * This includes both natural children and PTRACE_ATTACH targets.
+         * &#39;ptrace_entry&#39; is this task&#39;s link on the p-&gt;parent-&gt;ptraced list.
+         */
+        struct list_head                ptraced;
+        struct list_head                ptrace_entry;
+
+        /* PID/PID hash table linkage. */
+        struct pid                      *thread_pid;
+        struct hlist_node               pid_links[PIDTYPE_MAX];
+        struct list_head                thread_group;
+        struct list_head                thread_node;
+
+        struct completion               *vfork_done;
+
+        /* CLONE_CHILD_SETTID: */
+        int __user                      *set_child_tid;
+
+        /* CLONE_CHILD_CLEARTID: */
+        int __user                      *clear_child_tid;
+
+        u64                             utime;
+        u64                             stime;
+#ifdef CONFIG_ARCH_HAS_SCALED_CPUTIME
+        u64                             utimescaled;
+        u64                             stimescaled;
+#endif
+        u64                             gtime;
+        struct prev_cputime             prev_cputime;
+#ifdef CONFIG_VIRT_CPU_ACCOUNTING_GEN
+        struct vtime                    vtime;
+#endif
+
+#ifdef CONFIG_NO_HZ_FULL
+        atomic_t                        tick_dep_mask;
+#endif
+        /* Context switch counts: */
+        unsigned long                   nvcsw;
+        unsigned long                   nivcsw;
+
+        /* Monotonic time in nsecs: */
+        u64                             start_time;
+
+        /* Boot based time in nsecs: */
+        u64                             real_start_time;
+
+        /* MM fault and swap info: this can arguably be seen as either mm-specific or thread-specific: */
+        unsigned long                   min_flt;
+        unsigned long                   maj_flt;
+
+#ifdef CONFIG_POSIX_TIMERS
+        struct task_cputime             cputime_expires;
+        struct list_head                cpu_timers[3];
+#endif
+
+        /* Process credentials: */
+
+        /* Tracer&#39;s credentials at attach: */
+        const struct cred __rcu         *ptracer_cred;
+
+        /* Objective and real subjective task credentials (COW): */
+        const struct cred __rcu         *real_cred;
+
+        /* Effective (overridable) subjective task credentials (COW): */
+        const struct cred __rcu         *cred;
+
+        /*
+         * executable name, excluding path.
+         *
+         * - normally initialized setup_new_exec()
+         * - access it with [gs]et_task_comm()
+         * - lock it with task_lock()
+         */
+        char                            comm[TASK_COMM_LEN];
+
+        struct nameidata                *nameidata;
+
+#ifdef CONFIG_SYSVIPC
+        struct sysv_sem                 sysvsem;
+        struct sysv_shm                 sysvshm;
+#endif
+#ifdef CONFIG_DETECT_HUNG_TASK
+        unsigned long                   last_switch_count;
+        unsigned long                   last_switch_time;
+#endif
+        /* Filesystem information: */
+        struct fs_struct                *fs;
+
+        /* Open file information: */
+        struct files_struct             *files;
+
+        /* Namespaces: */
+        struct nsproxy                  *nsproxy;
+
+        /* Signal handlers: */
+        struct signal_struct            *signal;
+        struct sighand_struct           *sighand;
+        sigset_t                        blocked;
+        sigset_t                        real_blocked;
+        /* Restored if set_restore_sigmask() was used: */
+        sigset_t                        saved_sigmask;
+        struct sigpending               pending;
+        unsigned long                   sas_ss_sp;
+        size_t                          sas_ss_size;
+        unsigned int                    sas_ss_flags;
+
+        struct callback_head            *task_works;
+
+        struct audit_context            *audit_context;
+#ifdef CONFIG_AUDITSYSCALL
+        kuid_t                          loginuid;
+        unsigned int                    sessionid;
+#endif
+        struct seccomp                  seccomp;
+
+        /* Thread group tracking: */
+        u32                             parent_exec_id;
+        u32                             self_exec_id;
+
+        /* Protection against (de-)allocation: mm, files, fs, tty, keyrings, mems_allowed, mempolicy: */
+        spinlock_t                      alloc_lock;
+
+        /* Protection of the PI data structures: */
+        raw_spinlock_t                  pi_lock;
+
+        struct wake_q_node              wake_q;
+
+#ifdef CONFIG_RT_MUTEXES
+        /* PI waiters blocked on a rt_mutex held by this task: */
+        struct rb_root_cached           pi_waiters;
+        /* Updated under owner&#39;s pi_lock and rq lock */
+        struct task_struct              *pi_top_task;
+        /* Deadlock detection and priority inheritance handling: */
+        struct rt_mutex_waiter          *pi_blocked_on;
+#endif
+
+#ifdef CONFIG_DEBUG_MUTEXES
+        /* Mutex deadlock detection: */
+        struct mutex_waiter             *blocked_on;
+#endif
+
+#ifdef CONFIG_TRACE_IRQFLAGS
+        unsigned int                    irq_events;
+        unsigned long                   hardirq_enable_ip;
+        unsigned long                   hardirq_disable_ip;
+        unsigned int                    hardirq_enable_event;
+        unsigned int                    hardirq_disable_event;
+        int                             hardirqs_enabled;
+        int                             hardirq_context;
+        unsigned long                   softirq_disable_ip;
+        unsigned long                   softirq_enable_ip;
+        unsigned int                    softirq_disable_event;
+        unsigned int                    softirq_enable_event;
+        int                             softirqs_enabled;
+        int                             softirq_context;
+#endif
+
+#ifdef CONFIG_LOCKDEP
+# define MAX_LOCK_DEPTH                 48UL
+        u64                             curr_chain_key;
+        int                             lockdep_depth;
+        unsigned int                    lockdep_recursion;
+        struct held_lock                held_locks[MAX_LOCK_DEPTH];
+#endif
+
+#ifdef CONFIG_UBSAN
+        unsigned int                    in_ubsan;
+#endif
+
+        /* Journalling filesystem info: */
+        void                            *journal_info;
+
+        /* Stacked block device info: */
+        struct bio_list                 *bio_list;
+
+#ifdef CONFIG_BLOCK
+        /* Stack plugging: */
+        struct blk_plug                 *plug;
+#endif
+
+        /* VM state: */
+        struct reclaim_state            *reclaim_state;
+
+        struct backing_dev_info         *backing_dev_info;
+
+        struct io_context               *io_context;
+
+        /* Ptrace state: */
+        unsigned long                   ptrace_message;
+        kernel_siginfo_t                *last_siginfo;
+
+        struct task_io_accounting       ioac;
+#ifdef CONFIG_PSI
+        /* Pressure stall state */
+        unsigned int                    psi_flags;
+#endif
+#ifdef CONFIG_TASK_XACCT
+        /* Accumulated RSS usage: */
+        u64                             acct_rss_mem1;
+        /* Accumulated virtual memory usage: */
+        u64                             acct_vm_mem1;
+        /* stime + utime since last update: */
+        u64                             acct_timexpd;
+#endif
+#ifdef CONFIG_CPUSETS
+        /* Protected by -&gt;alloc_lock: */
+        nodemask_t                      mems_allowed;
+        /* Seqence number to catch updates: */
+        seqcount_t                      mems_allowed_seq;
+        int                             cpuset_mem_spread_rotor;
+        int                             cpuset_slab_spread_rotor;
+#endif
+#ifdef CONFIG_CGROUPS
+        /* Control Group info protected by css_set_lock: */
+        struct css_set __rcu            *cgroups;
+        /* cg_list protected by css_set_lock and tsk-&gt;alloc_lock: */
+        struct list_head                cg_list;
+#endif
+#ifdef CONFIG_INTEL_RDT
+        u32                             closid;
+        u32                             rmid;
+#endif
+#ifdef CONFIG_FUTEX
+        struct robust_list_head __user  *robust_list;
+#ifdef CONFIG_COMPAT
+        struct compat_robust_list_head __user *compat_robust_list;
+#endif
+        struct list_head                pi_state_list;
+        struct futex_pi_state           *pi_state_cache;
+#endif
+#ifdef CONFIG_PERF_EVENTS
+        struct perf_event_context       *perf_event_ctxp[perf_nr_task_contexts];
+        struct mutex                    perf_event_mutex;
+        struct list_head                perf_event_list;
+#endif
+#ifdef CONFIG_DEBUG_PREEMPT
+        unsigned long                   preempt_disable_ip;
+#endif
+#ifdef CONFIG_NUMA
+        /* Protected by alloc_lock: */
+        struct mempolicy                *mempolicy;
+        short                           il_prev;
+        short                           pref_node_fork;
+#endif
+#ifdef CONFIG_NUMA_BALANCING
+        int                             numa_scan_seq;
+        unsigned int                    numa_scan_period;
+        unsigned int                    numa_scan_period_max;
+        int                             numa_preferred_nid;
+        unsigned long                   numa_migrate_retry;
+        /* Migration stamp: */
+        u64                             node_stamp;
+        u64                             last_task_numa_placement;
+        u64                             last_sum_exec_runtime;
+        struct callback_head            numa_work;
+
+        struct numa_group               *numa_group;
+
+        /*
+         * numa_faults is an array split into four regions:
+         * faults_memory, faults_cpu, faults_memory_buffer, faults_cpu_buffer
+         * in this precise order.
+         *
+         * faults_memory: Exponential decaying average of faults on a per-node
+         * basis. Scheduling placement decisions are made based on these
+         * counts. The values remain static for the duration of a PTE scan.
+         * faults_cpu: Track the nodes the process was running on when a NUMA
+         * hinting fault was incurred.
+         * faults_memory_buffer and faults_cpu_buffer: Record faults per node
+         * during the current scan window. When the scan completes, the counts
+         * in faults_memory and faults_cpu decay and these values are copied.
+         */
+        unsigned long                   *numa_faults;
+        unsigned long                   total_numa_faults;
+
+        /*
+         * numa_faults_locality tracks if faults recorded during the last
+         * scan window were remote/local or failed to migrate. The task scan
+         * period is adapted based on the locality of the faults with different
+         * weights depending on whether they were shared or private faults
+         */
+        unsigned long                   numa_faults_locality[3];
+
+        unsigned long                   numa_pages_migrated;
+#endif /* CONFIG_NUMA_BALANCING */
+
+#ifdef CONFIG_RSEQ
+        struct rseq __user *rseq;
+        u32 rseq_len;
+        u32 rseq_sig;
+        /*
+         * RmW on rseq_event_mask must be performed atomically
+         * with respect to preemption.
+         */
+        unsigned long rseq_event_mask;
+#endif
+
+        struct tlbflush_unmap_batch     tlb_ubc;
+
+        struct rcu_head                 rcu;
+
+        /* Cache last used pipe for splice(): */
+        struct pipe_inode_info          *splice_pipe;
+
+        struct page_frag                task_frag;
+
+#ifdef CONFIG_TASK_DELAY_ACCT
+        struct task_delay_info          *delays;
+#endif
+
+#ifdef CONFIG_FAULT_INJECTION
+        int                             make_it_fail;
+        unsigned int                    fail_nth;
+#endif
+        /*
+         * When (nr_dirtied &gt;= nr_dirtied_pause), it&#39;s time to call
+         * balance_dirty_pages() for a dirty throttling pause:
+         */
+        int                             nr_dirtied;
+        int                             nr_dirtied_pause;
+        /* Start of a write-and-pause period: */
+        unsigned long                   dirty_paused_when;
+
+#ifdef CONFIG_LATENCYTOP
+        int                             latency_record_count;
+        struct latency_record           latency_record[LT_SAVECOUNT];
+#endif
+        /*
+         * Time slack values; these are used to round up poll() and
+         * select() etc timeout values. These are in nanoseconds.
+         */
+        u64                             timer_slack_ns;
+        u64                             default_timer_slack_ns;
+
+#ifdef CONFIG_KASAN
+        unsigned int                    kasan_depth;
+#endif
+
+#ifdef CONFIG_FUNCTION_GRAPH_TRACER
+        /* Index of current stored address in ret_stack: */
+        int                             curr_ret_stack;
+
+        /* Stack of return addresses for return function tracing: */
+        struct ftrace_ret_stack         *ret_stack;
+
+        /* Timestamp for last schedule: */
+        unsigned long long              ftrace_timestamp;
+
+        /*
+         * Number of functions that haven&#39;t been traced
+         * because of depth overrun:
+         */
+        atomic_t                        trace_overrun;
+
+        /* Pause tracing: */
+        atomic_t                        tracing_graph_pause;
+#endif
+
+#ifdef CONFIG_TRACING
+        /* State flags for use by tracers: */
+        unsigned long                   trace;
+
+        /* Bitmask and counter of trace recursion: */
+        unsigned long                   trace_recursion;
+#endif /* CONFIG_TRACING */
+
+#ifdef CONFIG_KCOV
+        /* Coverage collection mode enabled for this task (0 if disabled): */
+        unsigned int                    kcov_mode;
+
+        /* Size of the kcov_area: */
+        unsigned int                    kcov_size;
+
+        /* Buffer for coverage collection: */
+        void                            *kcov_area;
+
+        /* KCOV descriptor wired with this task or NULL: */
+        struct kcov                     *kcov;
+#endif
+
+#ifdef CONFIG_MEMCG
+        struct mem_cgroup               *memcg_in_oom;
+        gfp_t                           memcg_oom_gfp_mask;
+        int                             memcg_oom_order;
+
+        /* Number of pages to reclaim on returning to userland: */
+        unsigned int                    memcg_nr_pages_over_high;
+
+        /* Used by memcontrol for targeted memcg charge: */
+        struct mem_cgroup               *active_memcg;
+#endif
+
+#ifdef CONFIG_BLK_CGROUP
+        struct request_queue            *throttle_queue;
+#endif
+
+#ifdef CONFIG_UPROBES
+        struct uprobe_task              *utask;
+#endif
+#if defined(CONFIG_BCACHE) || defined(CONFIG_BCACHE_MODULE)
+        unsigned int                    sequential_io;
+        unsigned int                    sequential_io_avg;
+#endif
+#ifdef CONFIG_DEBUG_ATOMIC_SLEEP
+        unsigned long                   task_state_change;
+#endif
+        int                             pagefault_disabled;
+#ifdef CONFIG_MMU
+        struct task_struct              *oom_reaper_list;
+#endif
+#ifdef CONFIG_VMAP_STACK
+        struct vm_struct                *stack_vm_area;
+#endif
+#ifdef CONFIG_THREAD_INFO_IN_TASK
+        /* A live task holds one reference: */
+        atomic_t                        stack_refcount;
+#endif
+#ifdef CONFIG_LIVEPATCH
+        int patch_state;
+#endif
+#ifdef CONFIG_SECURITY
+        /* Used by LSM modules for access restriction: */
+        void                            *security;
+#endif
+
+#ifdef CONFIG_GCC_PLUGIN_STACKLEAK
+        unsigned long                   lowest_stack;
+        unsigned long                   prev_lowest_stack;
+#endif
+
+        /*
+         * New fields for task_struct should be added above here, so that
+         * they are included in the randomized portion of task_struct.
+         */
+        randomized_struct_fields_end
+
+        /* CPU-specific state of this task: */
+        struct thread_struct            thread;
+
+        /*
+         * WARNING: on x86, &#39;thread_struct&#39; contains a variable-sized
+         * structure.  It *MUST* be at the end of &#39;task_struct&#39;.
+         *
+         * Do not put anything below here!
+         */
+};
+</pre></div>
+</div>
+<p>够长吧？——不够。</p>
+<p>这个结构里面还用了用到了thread_info这个结构呢，然后接着把thread_info也定义进来
+，thread_info又用了另一个结构呢，你又把里面那个解构定义进来？——疯了。</p>
+<p>哪里需要这么复杂呢，这样定义就好了：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">task_struct</span> <span class="p">{};</span>
+</pre></div>
+</div>
+<p>然后你用到哪个成员，往里面补一个int member就结了。打桩，打桩。你打的是桩，不是
+真东西。你盖的是脚手架，不是房子啊。脚手架的投资比房子大，房子的建设必然受脚手
+架的影响的啊。</p>
+<p>你桩做得很精巧，很多用例肯定就上不去的呀。(注1）</p>
+<p>再来一个例子。比如你的程序调用了remap_pfn_range()，这个桩应该怎么打？有人会这样
+打：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">remap_pfn_range</span><span class="p">(</span><span class="n">struct</span> <span class="n">vm_area_struct</span> <span class="o">*</span><span class="n">vma</span><span class="p">,</span> <span class="n">unsigned</span> <span class="n">long</span> <span class="n">addr</span><span class="p">,</span>
+                    <span class="n">unsigned</span> <span class="n">long</span> <span class="n">pfn</span><span class="p">,</span> <span class="n">unsigned</span> <span class="n">long</span> <span class="n">size</span><span class="p">,</span> <span class="n">pgprot_t</span> <span class="n">prot</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>真是吃饱没事干，你都没有放用例进去呢，这么复杂干什么？这样就可以啦：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define remap_pfn_range(...) 0</span>
+</pre></div>
+</div>
+<p>还有kmalloc应该怎么打？显然你不需要这样：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="n">__always_inline</span> <span class="n">void</span> <span class="o">*</span><span class="n">kmalloc</span><span class="p">(</span><span class="n">size_t</span> <span class="n">size</span><span class="p">,</span> <span class="n">gfp_t</span> <span class="n">flags</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这样就可以啦：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">char</span> <span class="o">*</span> <span class="n">testcase101_mem</span><span class="p">[</span><span class="mi">1024</span><span class="p">];</span>
+<span class="n">void</span> <span class="o">*</span><span class="n">kmalloc</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">testcase</span><span class="o">==</span><span class="mi">101</span><span class="p">)</span>
+     <span class="k">return</span> <span class="n">testcase101_mem</span><span class="p">;</span>
+   <span class="k">return</span> <span class="n">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>这才是打桩。你要测试的是你的程序，你要全部聚焦到你的程序的：</p>
+<p>在各种极端的情况下，查找有没有遗漏？资源有没有泄漏？计算结果是否正确？等等等等
+。这些逻辑才是核心，核心的不是你的测试桩。比如下面这个程序：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>static inline int my_iommu_map(struct queue *q,
+                                      struct qfile_region *qfr)
+{
+        struct device *dev = q-&gt;myhw-&gt;pdev;
+        struct iommu_domain *domain = iommu_get_domain_for_dev(dev);
+        int i, j, ret;
+
+        if (!domain)
+                return -ENODEV;
+
+        for (i = 0; i &lt; qfr-&gt;nr_pages; i++) {
+                get_page(qfr-&gt;pages[i]);
+                ret = iommu_map(domain, qfr-&gt;iova + i * PAGE_SIZE,
+                                page_to_phys(qfr-&gt;pages[i]),
+                                PAGE_SIZE, qfr-&gt;prot | q-&gt;uacce-&gt;prot);
+                if (ret) {
+                        dev_err(dev, &quot;iommu_map page %i fail %d\n&quot;, i, ret);
+                        goto err_with_map_pages;
+                }
+        }
+
+        return 0;
+
+err_with_map_pages:
+        for (j = i-1; j &gt;= 0; j--) {
+                iommu_unmap(domain, qfr-&gt;iova + j * PAGE_SIZE, PAGE_SIZE);
+                put_page(qfr-&gt;pages[j]);
+        }
+        return ret;
+}
+</pre></div>
+</div>
+<p>你看，单元测试的聚焦点应该是：nr_pages是0， 1， 10的时候，这个流程是不是正确的
+。iommu_map()在第一次，中间，最后一次的时候失败的话，是不是所有map过的page都被
+释放了，所有page没有被get过。</p>
+<p>（实际上，这个流程是有错误的，但肉眼很难看出来，但单元测试可以很轻易找出这个错
+误）</p>
+<p>而至于page_to_phys()怎么实现，关你鬼事。那是另一个系统实现得对不对，或者你对那
+个系统的预期或者理解对不对的问题，那是集成测试的范畴，不是单元测试的范畴。</p>
+<p>写程序的时候我很强调每个语句的“语义”，但单元测试的时候，我们要彻底忘掉“语义”，
+眼中只有“循环”，“赋值”，“退出”这样的概念。在这个时候，dev_err不是打印，
+put_page()不是释放，它们都只是流程中的一个“经过点”。你不是要模拟一个真正的错误
+日志或者内存释放。你要验证你设计的流程，是不是按你设定的路径在走。</p>
+<p>关于单元测试本身的观点，我表达完了，最后说说构架和哲学。很多人觉得，我“严格要求
+”，事事做到“尽善尽美”肯定是没有错的。这是一个很生动的例子：你的观点是不对的。天
+之道，高者抑之，下者举之。把事情做成是要动脑子的，是要“准”的，不是要“极致”的。</p>
+<p>而不确定目的，无所谓“准”。</p>
+<p>所以，我们要警惕两个设计中的常见误区。第一，不定义目的，不考虑目的，只要“努力”。</p>
+<p>第二，寻求表面的好看：好比前面我提到的测试框架。开始的时候其实不是这样的，但发
+展一段时间以后，或者独立交个一个团队后，这个团队要展现自己的“能力”，“绩效”，就
+忍不住要炫技了。对那个团队来说，这个无可厚非。但对架构师来说，让非主角“好看”，“
+强”，就是让主业务“失去关注和重点”，“弱”。强弱的转变，可以发生得很快。</p>
+<p>九层之台，起于垒土。在垒土的阶段就应该呈现为垒土，如果这个阶段就呈现为高台，这
+个台就垒不起来。</p>
+<p>注1：关于是否自己mock所有的头文件的问题</p>
+<p>我基于本文和一个实际的例子在部门内部做了一个培训，现场不少人对不使用Linux的全集
+头文件来做桩有不同意见。</p>
+<p>这个问题首先这样说：你如果能保证聚焦到把各种极端流程都验证过，你怎么打桩，这个
+不是关键问题。我们的重点不在这里。我的关注点是你把头文件搭得太好了，你失去了从
+结构，定义这些角度注入数据的能力了。如果你的情形是都能解决，我没有意见。</p>
+<p>其次是这样，很多人可能有一个误区，觉得这样打桩法，工作量很大。其实你要试一试，
+我的经验是，每个模块的对外接口都是有限的，这个工作量其实相当有限。</p>
+<p>最后说点玄学。我大学的时候看了很多黄易的武侠小说，里面的超级高手，常常在大战前
+做一件事：为自己削一根长矛，或者打一把剑。以保证自己在大战前，对自己的武器有一
+个“点点滴滴”的认识。</p>
+<p>我个人觉得自己为每个用到的外部接口打桩，作用也在这里。单元测试的目的，说到底是
+提升对自己代码的信心。你一两万行的代码，几十个函数，变成一个模块，然后黑盒地扔
+到机架上，BIOS中，然后你一跑，有数据出来了。你知道里面经历了什么？该走的流程有
+没有走过，各种边界有没有碰过？</p>
+<p>UT是一个削长矛的过程，而确切知道，你自己的模块对各种结构的定义是什么。是这个削
+长矛过程的一部分，这个必要性，你做一次就发现了。</p>
+<p>这是我的经验。</p>
+<p>补充2019/5/10：</p>
+<p>这个文档上一次编辑的时间是2018年12月，我写完后，对应团队没有接受我的意见，继续
+按原来的方案做UT，我给他们留了一句话：你们这样玩，撑不过一年。现在过了不到半年
+，他们的测试例都废了……这个事情证明了我的观点，但我一点都高兴不起来，因为这些资
+源一定程度上也是我的。认知是成本，不过如此。</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="做事，做名，绩效主义，以及架构战略.html" class="btn btn-neutral float-right" title="做事，做名，绩效主义，以及架构战略" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="IOMMU的现状和发展.html" class="btn btn-neutral float-left" title="IOMMU的现状和发展" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

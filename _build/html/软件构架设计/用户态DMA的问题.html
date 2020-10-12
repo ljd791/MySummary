@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>用户态DMA的问题 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Multiprocess Support for Linux IOMMU driver" href="Multiprocess Support for Linux IOMMU driver.html" />
+    <link rel="prev" title="Linux Socket 0拷贝特性" href="Linux Socket 0拷贝特性.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">软件架构设计</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="从单元测试理解软件.html">从单元测试理解软件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="名可名.html">名可名</a></li>
+<li class="toctree-l2"><a class="reference internal" href="小国寡民.html">小国寡民</a></li>
+<li class="toctree-l2"><a class="reference internal" href="需求分析的中心思路.html">需求分析的中心思路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于自然语言编程的方向问题.html">关于自然语言编程的方向问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="反者道之动——欣赏架构设计的基本逻辑.html">反者道之动——欣赏架构设计的基本逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="让代码变立体.html">让代码变立体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="生成优秀的架构.html">生成优秀的架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分支设计要领.html">分支设计要领</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做项目管理.html">怎样做项目管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="谈谈子女教育问题.html">谈谈子女教育问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="两种基本的构架表述方法.html">两种基本的构架表述方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弱者道之用——谈技术工作中的守弱问题.html">弱者道之用——谈技术工作中的守弱问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在Linux下做性能分析.html">在Linux下做性能分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的0层逻辑.html">架构设计的0层逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解耦设计.html">解耦设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做高层设计.html">怎么做高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解架构版本.html">理解架构版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCIE总线的保序模型.html">PCIE总线的保序模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="做与不做都是战略.html">做与不做都是战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="海洋战术式的软件设计方法.html">海洋战术式的软件设计方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解耦和不解耦.html">解耦和不解耦</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈“守弱”.html">再谈“守弱”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="互斥算法设计.html">互斥算法设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="英文版本的“弱者道之用”.html">英文版本的“弱者道之用”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是“守”.html">什么是“守”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从用户功能开始构架系统框架.html">从用户功能开始构架系统框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux发行版的库软件包组织.html">Linux发行版的库软件包组织</a></li>
+<li class="toctree-l2"><a class="reference internal" href="地址空间的故事.html">地址空间的故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="工作和读书有什么不同.html">工作和读书有什么不同</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样快速调试Linux内核.html">怎样快速调试Linux内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计中的“少了”和“多了”的问题.html">架构设计中的“少了”和“多了”的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux iommu和vfio概念空间解构.html">Linux iommu和vfio概念空间解构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做代码Review.html">怎样做代码Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做客户访谈.html">怎样做客户访谈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RancherOS架构分析.html">RancherOS架构分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈什么是软件架构.html">再谈什么是软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大道曰守，当时曰行.html">大道曰守，当时曰行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不为天下先.html">不为天下先</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于AI的胡说八道.html">关于AI的胡说八道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="学习本质？.html">学习本质？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“设计的流程”和“代码的流程”.html">“设计的流程”和“代码的流程”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="概要设计不是代码.html">概要设计不是代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“病病”.html">“病病”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于架构师的爱恨情仇——《黑客帝国》世界观解读.html">关于架构师的爱恨情仇——《黑客帝国》世界观解读</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vfio-mdev逻辑空间分析.html">vfio-mdev逻辑空间分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux Socket 0拷贝特性.html">Linux Socket 0拷贝特性</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">用户态DMA的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiprocess Support for Linux IOMMU driver.html">Multiprocess Support for Linux IOMMU driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux RAS特性分析.html">Linux RAS特性分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="写论文.html">写论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基于“语义”编程.html">基于“语义”编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从学习assert的用法开始理解如何写“专业的程序”.html">从学习assert的用法开始理解如何写“专业的程序”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构的存在性.html">架构的存在性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Makefile概念入门.html">Makefile概念入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM服务器进展小结.html">ARM服务器进展小结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做初步的需求分析.html">怎么做初步的需求分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于设计方案中的逻辑链问题.html">关于设计方案中的逻辑链问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从逻辑链问题讨论怎么做高层设计.html">从逻辑链问题讨论怎么做高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="工程逻辑链.html">工程逻辑链</a></li>
+<li class="toctree-l2"><a class="reference internal" href="为什么你会在你的数据中心中部署ARM服务器.html">为什么你会在你的数据中心中部署ARM服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何为libvirt设置虚拟主机.html">如何为libvirt设置虚拟主机</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给普通人解释Spectre和Meltdown安全漏洞.html">给普通人解释Spectre和Meltdown安全漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给程序员解释Spectre和Meltdown漏洞.html">给程序员解释Spectre和Meltdown漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Is retpoline really safe.html">Is retpoline really safe?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="逻辑链，道，学和架构工作的本质.html">逻辑链，道，学和架构工作的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Serverless是什么——谈如何捕获一个特性的架构本质.html">Serverless是什么——谈如何捕获一个特性的架构本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="道法自然.html">道法自然</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自然，守弱和Plan B.html">自然，守弱和Plan B</a></li>
+<li class="toctree-l2"><a class="reference internal" href="守弱的内涵和外延.html">守弱的内涵和外延</a></li>
+<li class="toctree-l2"><a class="reference internal" href="找到道法自然的“度”.html">找到道法自然的“度”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Specification的写法问题.html">Specification的写法问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="小姐和丫鬟的故事.html">小姐和丫鬟的故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="知不知.html">知不知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCIE总线的地址问题.html">PCIE总线的地址问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="气和深度学习.html">气和深度学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="单元测试的效果问题.html">单元测试的效果问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Requirement Analyzing vs. Voting.html">Requirement Analyzing vs. Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽离设计逻辑.html">抽离设计逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="盗夸.html">盗夸</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽象还是不抽象的问题.html">抽象还是不抽象的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tegra TX2一瞥.html">Tegra TX2一瞥</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Progress and confusion of the IOMMU name space.html">Progress and confusion of the IOMMU name space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一样还是不一样.html">一样还是不一样</a></li>
+<li class="toctree-l2"><a class="reference internal" href="运营还是交付.html">运营还是交付</a></li>
+<li class="toctree-l2"><a class="reference internal" href="科普一下GPL和开源软件.html">科普一下GPL和开源软件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么确定道.html">怎么确定道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="回调还是直调.html">回调还是直调</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口的封装层次问题.html">接口的封装层次问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git的基本架构欣赏.html">git的基本架构欣赏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="让设计自生.html">让设计自生</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构控制的从权问题.html">架构控制的从权问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计的需求问题.html">设计的需求问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="性能优化的目标问题.html">性能优化的目标问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="加速器和其他硬件的区别.html">加速器和其他硬件的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="君子与其练达不若朴鲁与其曲谨不若疏狂.html">君子与其练达不若朴鲁与其曲谨不若疏狂</a></li>
+<li class="toctree-l2"><a class="reference internal" href="有无之道——一个新的软件架构定义.html">有无之道——一个新的软件架构定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是管理.html">什么是管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从香农熵谈设计文档写作.html">从香农熵谈设计文档写作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YVR18资料关注点.html">YVR18资料关注点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解关联.html">理解关联</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何撰写技术交底书.html">如何撰写技术交底书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiniband概念空间分析.html">infiniband概念空间分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈什么是高层设计.html">再谈什么是高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈“法自然”的设计思路.html">再谈“法自然”的设计思路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计规范.html">设计规范</a></li>
+<li class="toctree-l2"><a class="reference internal" href="开源交付.html">开源交付</a></li>
+<li class="toctree-l2"><a class="reference internal" href="道纪.html">道纪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="X86上的ARM Linux调试环境.html">X86上的ARM Linux调试环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IOMMU的现状和发展.html">IOMMU的现状和发展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="单元测试的强与弱问题.html">单元测试的强与弱问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="做事，做名，绩效主义，以及架构战略.html">做事，做名，绩效主义，以及架构战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="没有规则的规则.html">没有规则的规则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大成若缺.html">大成若缺</a></li>
+<li class="toctree-l2"><a class="reference internal" href="非易失内存随想.html">非易失内存随想</a></li>
+<li class="toctree-l2"><a class="reference internal" href="参考平台.html">参考平台</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个例子：名的边界效应.html">一个例子：名的边界效应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽象问题的模型.html">抽象问题的模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="另一个例子：名的边界效应.html">另一个例子：名的边界效应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Zircon架构简单分析1: Overview.html">Zircon架构简单分析1: Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在qemu中模拟设备.html">在qemu中模拟设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="国产操作系统问题.html">国产操作系统问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件飞线.html">软件飞线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="状态机方法.html">状态机方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一些典型的架构设计错误.html">一些典型的架构设计错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从CPU和TPU的不同语言抽象看抽象原则.html">从CPU和TPU的不同语言抽象看抽象原则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="限制管理.html">限制管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WarpDrive as a General Heterogeneous Platform.html">WarpDrive as a General Heterogeneous Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiarch概念调查.html">Multiarch概念调查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM NUC.html">ARM NUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UML有没有用.html">UML有没有用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="推演一个Buffer分配的语法设计.html">推演一个Buffer分配的语法设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构师和项目经理的基本职责问题.html">架构师和项目经理的基本职责问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="锁使用设计.html">锁使用设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从内核终止用户态程序的IO访问.html">从内核终止用户态程序的IO访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epoll和select.html">epoll和select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="状态机退出方法.html">状态机退出方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不为天下先2.html">不为天下先2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计逻辑和代码逻辑.html">设计逻辑和代码逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="流水线深度.html">流水线深度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="谁是主线？.html">谁是主线？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解指令集.html">理解指令集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给使用设备的进程发信号.html">给使用设备的进程发信号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux设备异常复位逻辑分析.html">Linux设备异常复位逻辑分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="投资开源社区的基本逻辑.html">投资开源社区的基本逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个Linux死锁信息分析.html">一个Linux死锁信息分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何说谎.html">如何说谎</a></li>
+<li class="toctree-l2"><a class="reference internal" href="代码生成器.html">代码生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弟子规：美国军方禁止在C语言程序中使用malloc.html">弟子规：美国军方禁止在C语言程序中使用malloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自下而上和自上而下的设计.html">自下而上和自上而下的设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="正面竞争.html">正面竞争</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不知为美.html">不知为美</a></li>
+<li class="toctree-l2"><a class="reference internal" href="高层封装的设计战略.html">高层封装的设计战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="产业生态的原理和作用.html">产业生态的原理和作用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弯道问题.html">弯道问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="无名概念的深入探讨.html">无名概念的深入探讨</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解释On-Chip Debug和Off-Chip Debug.html">解释On-Chip Debug和Off-Chip Debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口和名称空间辨识.html">接口和名称空间辨识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RISCV WMO和TSO具体解决什么问题.html">RISCV WMO和TSO具体解决什么问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="利益链.html">利益链</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从C的for和Python的for聊起.html">从C的for和Python的for聊起</a></li>
+<li class="toctree-l2"><a class="reference internal" href="安全建模问题讨论.html">安全建模问题讨论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Accelerator vs. Co-processor.html">Accelerator vs. Co-processor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个逻辑空间控制的例子：uacce生命周期管理.html">一个逻辑空间控制的例子：uacce生命周期管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件构架设计的入题角度问题.html">软件构架设计的入题角度问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口分层的问题.html">接口分层的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="对Cache Coherence的重理解.html">对Cache Coherence的重理解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口定义的工作模型.html">接口定义的工作模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux_net和net-next分支的维护策略.html">Linux net和net-next分支的维护策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WarpDrive用户态方案重构建议.html">WarpDrive用户态方案重构建议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="主线逻辑.html">主线逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的粗与细问题.html">架构设计的粗与细问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="狂人日记读后感——名称空间囚笼.html">狂人日记读后感——名称空间囚笼</a></li>
+<li class="toctree-l2"><a class="reference internal" href="写程序和写小说的区别.html">写程序和写小说的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈《弟子规》问题.html">再谈《弟子规》问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解弱内存顺序模型.html">理解弱内存顺序模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="思维上的洞2.html">思维上的洞2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="后软件时代和技术沙盘陷阱.html">后软件时代和技术沙盘陷阱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做项目管理2.html">怎么做项目管理2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="语言的控制力问题.html">语言的控制力问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分享我的Linux内核开发环境.html">分享我的Linux内核开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="开发视图.html">开发视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="概念视图.html">概念视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="处理视图.html">处理视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="语言控制力问题.html">语言控制力问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="新手设计文档典型错误.html">新手设计文档典型错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="讨论：OpenCL2.0SVM有什么好？.html">讨论：OpenCL2.0SVM有什么好？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计逻辑的细致和严密问题.html">设计逻辑的细致和严密问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="逻辑的平面和立体问题.html">逻辑的平面和立体问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自由和约束.html">自由和约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给非专业人士介绍架构设计工作.html">给非专业人士介绍架构设计工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AML工作原理快速调研.html">AML工作原理快速调研</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu_PCIe总线结构.html">qemu PCIe总线结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM64_Linux_Kernel_5.7无法GDB调试问题.html">ARM64 Linux Kernel 5.7无法GDB调试问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分层抽象.html">分层抽象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="见素抱朴：一个关于交付的例子.html">见素抱朴：一个关于交付的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="三个锦囊.html">三个锦囊</a></li>
+<li class="toctree-l2"><a class="reference internal" href="多核MMU和ASID管理逻辑.html">多核MMU和ASID管理逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PMA和PA方案对比.html">PMA和PA方案对比</a></li>
+<li class="toctree-l2"><a class="reference internal" href="真假架构设计.html">真假架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样写标准提案.html">怎样写标准提案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="安全问题的本质.html">安全问题的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="名称内涵的发展.html">名称内涵的发展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="标准和设计的区别.html">标准和设计的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cond_mutex模型.html">cond/mutex模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个例子：架构的重要性和从权.html">一个例子：架构的重要性和从权</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nvdimm_AD模式的内核应用模型.html">nvdimm AD模式的内核应用模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="早期架构设计问题.html">早期架构设计问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="所谓内部设计.html">所谓内部设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“知不知”如何影响决策的？.html">“知不知”如何影响决策的？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“优秀架构设计”.html">“优秀架构设计”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux_Kernel架构赏析.html">Linux Kernel架构赏析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="说说对协程的看法.html">说说对协程的看法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计和实施的对齐和同步问题.html">架构设计和实施的对齐和同步问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个关于4+1视图的案例：从概念视图开始.html">一个关于4+1视图的案例：从概念视图开始</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“硬件状态机”.html">“硬件状态机”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计的减熵原理.html">设计的减熵原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binfmt概念空间建模.html">binfmt概念空间建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计入门知识.html">架构设计入门知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的大忌：我没错.html">架构设计的大忌：我没错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“解决方案”.html">“解决方案”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="管理上的判断和技术上的判断.html">管理上的判断和技术上的判断</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基于逻辑链建立约束.html">基于逻辑链建立约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="高级需求分析.html">高级需求分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="False_Sharing.html">假共享内存(False Sharing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="芯片验证软件的4+1方法.html">芯片验证软件的4+1方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件之硬.html">软件之硬</a></li>
+<li class="toctree-l2"><a class="reference internal" href="诚其意.html">诚其意</a></li>
+<li class="toctree-l2"><a class="reference internal" href="把什么放入架构设计.html">把什么放入架构设计</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">软件架构设计</a> &raquo;</li>
+        
+      <li>用户态DMA的问题</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/软件构架设计/用户态DMA的问题.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dma">
+<h1>用户态DMA的问题<a class="headerlink" href="#dma" title="永久链接至标题">¶</a></h1>
+<p>Linux的安全模型分两层，用户和内核，用户是不可信任的，内核是可信任的。像这样：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/OS隔间1.png" src="../_images/OS隔间1.png" />
+</div>
+</div></blockquote>
+<p>这种分层模型其实已经比较落后了（但也比较实用），现在更推崇的模式是分隔（而不是
+分层），一个身份访问一个隔间，这样不会导致“只要你获得root权限，就可以对系统为所
+欲为”。</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/OS隔间2.png" src="../_images/OS隔间2.png" />
+</div>
+</div></blockquote>
+<p>但分隔技术灵活性太高，不容易有共识，所以到现在为止，这种方法也不成熟。只是作为
+分层技术的补充。</p>
+<p>隔间的一大技术是微内核化。这里“微内核”的含义和它的最初定义不完全一致。更多的是
+指把内核的功能移到用户态，让每个用户态的程序使用独立的权限。这样，虽然内核仍具
+有最高的权限。但因为大部分操作不需要在内核中进行，我们就可以把权限控制聚集在一
+个或者一组进程的内部了。</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/OS隔间3.png" src="../_images/OS隔间3.png" />
+</div>
+</div></blockquote>
+<p>用户态驱动因此成为其中一个需求了。通过用户态驱动，我们可以把一个设备（或者这个
+设备的其中一部分）分配给一个进程，这样，对这个设备的控制就可以完全限制在这个进
+程的内部了。</p>
+<p>用户态进程也可以在一定程度上提高设备访问的效率。想象一下，原来你需要把用户空间
+的内存拷贝到内核，然后再从内核拷贝到设备上，现在让你直接从用户空间拷贝的设备上
+，这个效率岂不是可以大大提高？：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/OS隔间4.png" src="../_images/OS隔间4.png" />
+</div>
+</div></blockquote>
+<p>本文要讨论的问题是：怎么才能从用户一侧对设备发起DMA？</p>
+<p>所谓DMA，本质上就是设备访问内存。让设备访问内存，我们有如下要求：</p>
+<ol class="arabic simple">
+<li>提供设备可以认知的内存地址。可以是物理地址（这个物理地址必须在设备可以访问的
+范围内，如果设备地址比CPU地址短，CPU就必须把地址拷贝到设备可以认知的地址内，
+这是Linux DMA_ZONE和Bouncing Buffer解决的问题），也可以是虚拟地址（后者需要
+设备有IOMMU支持，即设备可以做虚拟地址翻译）</li>
+<li>物理内存必须在位（考虑到虚拟内存可能被交换到磁盘上的情况）</li>
+<li>CPU对内存的更新必须对设备可见（考虑到CPU的Cache系统和设备的Cache不一定互相认
+知）</li>
+</ol>
+<p>无论我们在内核态做DMA还是在用户态做DMA，这三个要求都是必须的。但内核做起来比较
+容易，因为Linux内核可以分配“必然在位”的内存，也可以任意进行cache操作，保证CPU的
+更新必然对设备可见。但用户态就不一定了。</p>
+<p>Cache问题是个死问题，要让CPU对内存的更改对设备可见，我们要不做一次系统调用（这
+个有软件性能成本），强刷过去。要不就让设备和CPU间实现Cache-Coherent（这个有硬件
+性能成本）。所以，这个没有什么可说的。</p>
+<p>地址范围这个问题也是一样的。所以，这两个问题我更看好的思路是让硬件直接支持IOMMU
+和CC总线，这样这两个问题就不存在了。</p>
+<p>现在比较麻烦是虚拟内存的问题。如果内存不在位，设备访问的时候就会缺页，设备又不
+知道这个缺掉的页应该怎么补（这是Linux内核handle_mm_fault负责管理的），现在的解
+决思路是SVM（Shared Virtual Memory）：让设备产生一个缺页中断给CPU，CPU通过
+handle_mm_fault来补上这个页，在这期间设备就只能等着。很容易想象，这样的设计在不
+同的场景上有利有弊——但这恰恰反映了它是值得做的（因为特定的场景有利）。</p>
+<p>SVM的问题是现在Linux的主线只有Intel平台支持，而且——没有用户！也就是说，Intel自
+己都不一定用，所以这个方法到底是有益还是无益，其实这得看发展。</p>
+<p>更成熟的方法是直接在内核中分配物理内存，然后让用户态驱动直接填到这个内存中。很
+多GPU驱动都是用这种方法，但这些方法大部分都上不了Linux主线。因为这样基本上是把
+Linux做成一个专用系统了。按Linux的设计理念，专用系统你在家里用就好了，没有必要
+上传上来。</p>
+<p>现在在Linux主线更被认可的方法是人工把虚拟地址的物理内存pin在位置上。这样，无论
+你用的是什么地址，只要完成了pin的操作，这个地址就可以用于DMA。pin内存对比SVM来
+说，可能导致pin了多余的内存部分，但如果是IO密集的场景，这种情况很可能也不存在。</p>
+<p>但pin物理内存在Linux的实现上有很多具体的问题要解决。Linux内核提供的pin机制是gup
+（参考mm/gup.c），这是get_user_pages系列函数的缩写。它的作用是把某个进程的虚拟
+地址进行预缺页，把物理页表分配出来，然后做get_page()，增加这个page的使用计数，
+这样这个page就不会被释放，设备就可以一直访问这个物理页了。</p>
+<p>但gup是有严格限制的，在gup.c中，你可以看到这个表述：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/*</span>
+ <span class="o">*...</span>
+ <span class="o">*</span> <span class="n">Must</span> <span class="n">be</span> <span class="n">called</span> <span class="k">with</span> <span class="n">mmap_sem</span> <span class="n">held</span> <span class="k">for</span> <span class="n">read</span> <span class="ow">or</span> <span class="n">write</span><span class="o">.</span>
+ <span class="o">*</span>
+ <span class="o">*</span> <span class="n">get_user_pages</span> <span class="n">walks</span> <span class="n">a</span> <span class="n">process</span><span class="s1">&#39;s page tables and takes a reference to</span>
+ <span class="o">*</span> <span class="n">each</span> <span class="n">struct</span> <span class="n">page</span> <span class="n">that</span> <span class="n">each</span> <span class="n">user</span> <span class="n">address</span> <span class="n">corresponds</span> <span class="n">to</span> <span class="n">at</span> <span class="n">a</span> <span class="n">given</span>
+ <span class="o">*</span> <span class="n">instant</span><span class="o">.</span> <span class="n">That</span> <span class="ow">is</span><span class="p">,</span> <span class="n">it</span> <span class="n">takes</span> <span class="n">the</span> <span class="n">page</span> <span class="n">that</span> <span class="n">would</span> <span class="n">be</span> <span class="n">accessed</span> <span class="k">if</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="o">*</span> <span class="n">thread</span> <span class="n">accesses</span> <span class="n">the</span> <span class="n">given</span> <span class="n">user</span> <span class="n">virtual</span> <span class="n">address</span> <span class="n">at</span> <span class="n">that</span> <span class="n">instant</span><span class="o">.</span>
+ <span class="o">*</span>
+ <span class="o">*</span> <span class="n">This</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">guarantee</span> <span class="n">that</span> <span class="n">the</span> <span class="n">page</span> <span class="n">exists</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">user</span> <span class="n">mappings</span> <span class="n">when</span>
+ <span class="o">*</span> <span class="n">get_user_pages</span> <span class="n">returns</span><span class="p">,</span> <span class="ow">and</span> <span class="n">there</span> <span class="n">may</span> <span class="n">even</span> <span class="n">be</span> <span class="n">a</span> <span class="n">completely</span> <span class="n">different</span>
+ <span class="o">*</span> <span class="n">page</span> <span class="n">there</span> <span class="ow">in</span> <span class="n">some</span> <span class="n">cases</span> <span class="p">(</span><span class="n">eg</span><span class="o">.</span> <span class="k">if</span> <span class="n">mmapped</span> <span class="n">pagecache</span> <span class="n">has</span> <span class="n">been</span> <span class="n">invalidated</span>
+ <span class="o">*</span> <span class="ow">and</span> <span class="n">subsequently</span> <span class="n">re</span> <span class="n">faulted</span><span class="p">)</span><span class="o">.</span> <span class="n">However</span> <span class="n">it</span> <span class="n">does</span> <span class="n">guarantee</span> <span class="n">that</span> <span class="n">the</span> <span class="n">page</span>
+ <span class="o">*</span> <span class="n">won</span><span class="s1">&#39;t be freed completely. And mostly callers simply care that the page</span>
+ <span class="o">*</span> <span class="n">contains</span> <span class="n">data</span> <span class="n">that</span> <span class="n">was</span> <span class="n">valid</span> <span class="o">*</span><span class="n">at</span> <span class="n">some</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">time</span><span class="o">*.</span> <span class="n">Typically</span><span class="p">,</span> <span class="n">an</span> <span class="n">IO</span>
+ <span class="o">*</span> <span class="ow">or</span> <span class="n">similar</span> <span class="n">operation</span> <span class="n">cannot</span> <span class="n">guarantee</span> <span class="n">anything</span> <span class="n">stronger</span> <span class="n">anyway</span> <span class="n">because</span>
+ <span class="o">*</span> <span class="n">locks</span> <span class="n">can</span><span class="s1">&#39;t be held over the syscall boundary.</span>
+ <span class="o">*...</span>
+<span class="o">*/</span>
+</pre></div>
+</div>
+<p>请注意这个函数的使用要求，他必须在mmap_sem锁住的范围内使用，换句话说，你必须做
+一个系统调用，然后在这个系统锁住mmap_sem，然后才调用gup，接着做你的DMA，并且，
+必须等待这个DMA完成，然后你通过put_page()释放gup，并对mmap_sem解锁，然后才能从
+系统调用中返回——我能做这么复杂的动作，我还pin毛啊？</p>
+<p>gup限制这么大，核心原因在于，gup只是把page pin住了，可没有把vma pin住。参考下面
+这幅图：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/OS隔间5.png" src="../_images/OS隔间5.png" />
+</div>
+</div></blockquote>
+<p>gup做了两个动作，第一是分配了一个page（如果没有的话）给进程，让进程的vma指向这
+个page（这会导致这个页的索引加1）。第二是gup自己也给这个page的索引加1。这样，这
+个page一般情况下就释放不了了，设备可以很安全地对这个内存进行读写。</p>
+<p>问题是，这个动作并没有保证进程的vma必须一直指向这个page啊，假设系统觉得内存效率
+不够，需要清理一下内存。它可以把这个vma的页放弃，这样这个物理页的索引会减1（不
+会引起释放，因为还是gup本身的索引），同时vma的指针没了。等你设备完成操作了，通
+知进程可以使用物理页中的数据，进程再访问这个虚拟地址（会使用这个vma），这时发生
+缺页，系统会重新分配一个页给这进程，你就根本拿不到设备返回的数据了：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/OS隔间6.png" src="../_images/OS隔间6.png" />
+</div>
+</div></blockquote>
+<p>所以，正如我在前面一个文档（Linux Socket 0拷贝特性）中说的，如果你只是发送，这
+是没有问题的，因为你的用户进程根本不需要访问原来的页，但如果你还要收，这就有问
+题了。</p>
+<p>我做了一个例子程序（等我有空把Patch发出来），让一个进程通过系统调用gup一片内存
+，然后对这片内存做madvise(MADV_DONTNEED)，通知系统我暂时不需要这片内存了，然后
+我再通知内核在gup的页里填东西，之后我访问这片内存，就拿不到内核提供的数据了。</p>
+<p>这个实验证明了，gup在离开系统调用后，确实是不安全的。RDMA的人在2014年尝试推一个
+特性叫VM_PINNED，但出了一个RFC就没有弄了。我向该作者了解了一下背景，他说主要是
+没有时间做。但我看是没有那么简单，这个问题对RDMA是致命的。因为RDMA恰恰需要通过
+在用户态提供一个接收内存，等待对端填充它，如果不能把page和vma同时pin住，RDMA驱
+动就只能做一次拷贝，性能就很难提上去了。这种情况都不优先搞这个特性，背后有故事
+。</p>
+<p>这期间其实更值得关注的问题是，Redhat的VFIO接口的DMA操作也是用gup来做pin操作的，
+也就是他们也有一样的问题。但VFIO的接口被Linux主线接受了。我问了对应作者怎么看
+VM_PINNED的问题，他的答复是：“我经过大量测试，没有遇到这个问题”。哈，所以，我觉
+得现在大家是想睁只眼闭只眼，看能不能混过去，一旦混过去了，用户多了，就可以反过
+来绑架Linux接受VM_PINNED了。当初VM_PINNED被拦着很大一部分问题在memory
+accounting上，说起来其实是不怎么接地气的，但大家都没有空空谈这种东西，而
+VM_PINNED这个特性叫得也不够狠，痛的人少，在这种讨论下是很难有结果的。</p>
+<p>而我更关注的是，Redhat的观点到底有多大的可靠度。Page的状态，简直就是一堆麻，你
+很难那猜到，如果你不主动做madvise()或者numa_move，Linux的页表管理系统到底有没有
+可能主动把这个vma的链接断掉。本文最后对这个问题（基于4.11-r1）进行一个分析。</p>
+<p>我的分析逻辑是这样的：要断掉vma和page的关联，归根结底必须必须直接操作页表，所以
+分析入口肯定在pte最后的invalide上面，这样pte_clear这个操作是少不了的，用这个作
+为搜索应该可靠性是比较高的，首先找到的是unmap_page_range()。这个函数的用户有两
+个，一个是unmap_vmas()，我们cs find s unmap_vmas：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>   <span class="mi">2464</span>  <span class="n">mm</span><span class="o">/</span><span class="n">mmap</span><span class="o">.</span><span class="n">c</span> <span class="o">&lt;&lt;</span><span class="n">unmap_region</span><span class="o">&gt;&gt;</span>
+          <span class="n">unmap_vmas</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tlb</span><span class="p">,</span> <span class="n">vma</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">);</span>
+<span class="mi">4</span>   <span class="mi">2963</span>  <span class="n">mm</span><span class="o">/</span><span class="n">mmap</span><span class="o">.</span><span class="n">c</span> <span class="o">&lt;&lt;</span><span class="n">exit_mmap</span><span class="o">&gt;&gt;</span>
+          <span class="n">unmap_vmas</span><span class="p">(</span><span class="o">&amp;</span><span class="n">tlb</span><span class="p">,</span> <span class="n">vma</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>两个都是主动操作。</p>
+<p>另一个用户是omm_killer，这个连进程都死了，也不是我们需要担心的。而且，这个
+Killer不能处理VM_SHARED页，所以如果用VM_SHARED，这样我们就会更安全了。但要注意
+的是VM_SHARED的mapping需要文件系统支持，可不是每个虚拟机都支持哦。比如无名页就
+不支持，virtio也不支持。</p>
+<p>pte_clear的下一个用户是madvise_free_pte_range，这是madvice系统调用主动发起的操
+作（我前面的实验就依赖这个），也是不作死就不会死的情形。</p>
+<p>下面是其他的单点使用点（明显没有意义的忽略，比如在初始化，虚拟化，内核页表中用
+的）：</p>
+<ol class="arabic simple">
+<li>khugepaged内核线程定期扫描有没有可以合并的大页(__collapse_huge_page_copy)，
+如果是VMA需要重新指到合并的大页上。这是个风险点，不过得花点时间才能构造这种
+场景：一页一页分配内存，最后这些内存能被合并成一个大页。todo</li>
+<li>ptep_get_and_clear/huge_pte_clear</li>
+</ol>
+<p>2.1 mremap系统调用中。这个也是主动的</p>
+<p>2.2 vm_unmap_ram，这个是内核内部的</p>
+<p>这样看完后，还是觉得不对劲：怎么会没有迁移的相关流程的，跟了一下迁移的流程，发
+现迁移是不clear_pte的，而是直接set_pte，把原来的页指针盖掉。这个就只好独立去看
+了：</p>
+<p>3.1 move_pages系统调用，这个是主动的</p>
+<p>3.2 handle_pte_fault-&gt;do_numa_pte()，这个是缺页的时候发现是添加了标记引起的，如
+果发现是需要迁移，就主动发起迁移。这个是有风险的。</p>
+<p>综合起来，风险最大的可能是hugepage的合并流程和迁移流程，有时间可能需要构造一下
+这个可能性上的用例。但无论如何吧，做破坏规矩的特性真心心累，就算现在能排除了所
+有可能性，但谁知道下个版本会怎么样呢？</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Multiprocess Support for Linux IOMMU driver.html" class="btn btn-neutral float-right" title="Multiprocess Support for Linux IOMMU driver" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="Linux Socket 0拷贝特性.html" class="btn btn-neutral float-left" title="Linux Socket 0拷贝特性" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

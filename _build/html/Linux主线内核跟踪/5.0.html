@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.0 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="5.1" href="5.1.html" />
+    <link rel="prev" title="Linux主线内核跟踪" href="README.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../软件构架设计/README.html">软件架构设计</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">Linux主线内核跟踪</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#energy-aware-scheduling-for-arm-big-little">Energy-aware Scheduling for ARM big.Little</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adiantum-fs">Adiantum FS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cgroup-v2">介绍一下cgroup v2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5.1.html">5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2.html">5.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.3.html">5.3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.4.html">5.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.5.html">5.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.6.html">5.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7.html">5.7</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">Linux主线内核跟踪</a> &raquo;</li>
+        
+      <li>5.0</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Linux主线内核跟踪/5.0.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5.0<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="energy-aware-scheduling-for-arm-big-little">
+<h2>Energy-aware Scheduling for ARM big.Little<a class="headerlink" href="#energy-aware-scheduling-for-arm-big-little" title="永久链接至标题">¶</a></h2>
+<p>终于上主线了。但删除了很多原来的功能，才能保证它能上线。
+Dietmar Eggemann上传的。
+使用了能力-能耗模型来调度：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">capacity_state</span> <span class="p">{</span>
+  <span class="n">unisgned</span> <span class="n">long</span> <span class="n">cap</span><span class="p">;</span> <span class="o">//</span><span class="n">计算能力</span>
+  <span class="n">unisgned</span> <span class="n">long</span> <span class="n">power</span><span class="p">;</span> <span class="o">//</span><span class="n">需要能耗</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>底层驱动报告相关信息到Energy Model Framework（em），Thermal(IPA)，Scheduler（EAS）使用相关信息。
+perf_domain管理一组cpu。
+增加两个SD：sd_asym_packing/cpucapacity</p>
+<p>成本主要在唤醒上，如果核多，要全部查一次才能决定唤醒进程调度给谁。因为它要每个
+CPU都算一次compute_energy()来计算如果放一个进程进来，这个CPU的功耗增加多少。这
+个调度算法在SD_FAIR上完成。所以数据中心这种很多核的设备不使能。测试有用例表达可
+以降低2%的throughput的时候降低33%功耗。</p>
+<p>这个补丁被接受，但maintainer没有发表什么已经和参与。所以它是个进步，但不一定就
+表示就能成为主流。</p>
+<p>这个功能不需要配置，自动从dts中获得参数决定是否使能。</p>
+</div>
+<div class="section" id="adiantum-fs">
+<h2>Adiantum FS<a class="headerlink" href="#adiantum-fs" title="永久链接至标题">¶</a></h2>
+<p>非ecryptfs: 基于fuse，在用户态完成，~/.Private放加密数据，~/Private放解密数据。
+靠PAM在登录的时候帮你搞定（modprobe ecryptfs,
+ecryptfs-utils/ecryptfs-setup/mount/umount-private)是fscrypt: 用法类似，fscrypt
+setup/encrypt/decrypt &lt;dir&gt;</p>
+<p>注册给crypto，用于低端Android设备，比如用A7的，速度可以快很多。</p>
+<p>cgroup v2增加cpuset控制</p>
+<div class="section" id="cgroup-v2">
+<h3>介绍一下cgroup v2<a class="headerlink" href="#cgroup-v2" title="永久链接至标题">¶</a></h3>
+<p>可以和v1共存，独立控制：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">-</span><span class="n">t</span> <span class="n">cgroup2</span> <span class="n">none</span> <span class="o">/</span><span class="n">my_cgroup_v2</span>
+</pre></div>
+</div>
+<p>/proc/&lt;pid&gt;/cgroup有两个版本的信息，表示进程在哪个控制器的控制下（可多个），格式：
+controller_id:name:/path
+其中v2的格式没有中间的name，这样：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conroller_id</span><span class="p">::</span><span class="o">/</span><span class="n">path</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>其他<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>Android binder现在变成一个文件系统了。这样通过多文件系统，就可以支持多个Android
+实例。ARM8.3 PAUTH Kristina Martsenko（但ARM的kernel组好像都参与开发了）每个进
+程有一个随机的Key，给这个进程的指针带这个key，通过ptrace可以改，看来这是一个基
+本修改</p>
+<p>这个版本提到Hisi的只有陈祥的sas的一个小补丁。</p>
+</div>
+<div class="section" id="id3">
+<h2>参考<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="https://kernelnewbies.org/LinuxChanges">https://kernelnewbies.org/LinuxChanges</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="5.1.html" class="btn btn-neutral float-right" title="5.1" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="README.html" class="btn btn-neutral float-left" title="Linux主线内核跟踪" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

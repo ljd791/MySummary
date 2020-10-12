@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>对称性——讨论平面几何辅助线的添加技巧 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="倒霉的理发师" href="倒霉的理发师.html" />
+    <link rel="prev" title="虚拟语气" href="虚拟语气.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">花朵的温室</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="谈谈子女教育问题.html">谈谈子女教育问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读1：背景.html">初中《西游记》导读1：背景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读2：主线故事.html">初中《西游记》导读2：主线故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读3：宗教背景.html">初中《西游记》导读3：宗教背景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读4-五庄观的故事.html">初中《西游记》导读4-五庄观的故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读5-谈一下文笔问题.html">初中《西游记》导读5-谈一下文笔问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读6-聊聊孙悟空这个角色.html">初中《西游记》导读6-聊聊孙悟空这个角色</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读7-唐僧师徒的关系.html">初中《西游记》导读7-唐僧师徒的关系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读8-争胜车迟国.html">初中《西游记》导读8-争胜车迟国</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读9-习题1.html">初中《西游记》导读9-习题1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个思想工作报告.html">一个思想工作报告</a></li>
+<li class="toctree-l2"><a class="reference internal" href="将军双饮马.html">将军双饮马</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从虚数谈起.html">从虚数谈起</a></li>
+<li class="toctree-l2"><a class="reference internal" href="《出师表》欣赏.html">《出师表》欣赏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么背思想政治.html">怎么背思想政治</a></li>
+<li class="toctree-l2"><a class="reference internal" href="虚拟语气.html">虚拟语气</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">对称性——讨论平面几何辅助线的添加技巧</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">补充1：再补充一个初三的题目</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="倒霉的理发师.html">倒霉的理发师</a></li>
+<li class="toctree-l2"><a class="reference internal" href="教中学生学编程1：介绍.html">教中学生学编程1：介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="教中学生学编程2：解方程.html">教中学生学编程2：解方程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="教中学生学编程3：函数图像.html">教中学生学编程3：函数图像</a></li>
+<li class="toctree-l2"><a class="reference internal" href="教中学生学编程4：循环，判断和自己的名称空间.html">教中学生学编程4：循环，判断和自己的名称空间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="上不上补习班.html">上不上补习班</a></li>
+<li class="toctree-l2"><a class="reference internal" href="内能的逻辑链整理.html">内能的逻辑链整理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="严格按定义进行逻辑推演.html">严格按定义进行逻辑推演</a></li>
+<li class="toctree-l2"><a class="reference internal" href="严格按定义进行逻辑推演.html#id3">严格按定义进行逻辑推演2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="对称性.html">对称性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="言为心声.html">言为心声</a></li>
+<li class="toctree-l2"><a class="reference internal" href="曹刿论战.html">曹刿论战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="惯性系.html">惯性系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="快速学习.html">快速学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Will_and_Won_t.html">Will and Won't</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../软件构架设计/README.html">软件架构设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">花朵的温室</a> &raquo;</li>
+        
+      <li>对称性——讨论平面几何辅助线的添加技巧</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/花朵的温室/对称性——讨论平面几何辅助线的添加技巧.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>对称性——讨论平面几何辅助线的添加技巧<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>最近几天和两位小同学讨论了几道题的辅助线的添加技巧问题，这里总结一下：</p>
+<p>先看如下问题：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="花朵的温室/对称辅助线1.png" src="花朵的温室/对称辅助线1.png" />
+</div>
+</div></blockquote>
+<p>如图，在等腰直角三角形ABC中， [公式] =90度，D为AC边上的中点，过D点作DE垂直于DF
+，交AB于E，交BC于F，若AE=4，FC=3，求EF的长度。</p>
+<p>这道题不算难，但也是颇多转折，学生会在怎么想出辅助线这个问题上纠缠很久。但如果
+我们对对称的敏感性高一点，在想这种问题的时候，就会简单很多。</p>
+<p>首先，我们看到一个等腰直角三角形的时候，第一反应，可能是，这是“半个正方形”。正
+方形是圆之外，最“对称”的图形了（喜欢掰的人可能要举其他正多边形的例子了，但我们
+这里不关心这个，我们更关心我们平时一般会在解题中遇到的“简单”图形）。这是引起我
+们思路的关键点。</p>
+<p>如果我们把上面这个正方形补全，你的脑子里就会有这样一个印象：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="花朵的温室/对称辅助线2.png" src="花朵的温室/对称辅助线2.png" />
+</div>
+</div></blockquote>
+<p>AC和BD斜着分割了这个正方形：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="花朵的温室/对称辅助线3.png" src="花朵的温室/对称辅助线3.png" />
+</div>
+</div></blockquote>
+<p>如果这样看待这个图形，那么原图的EDF看作是一个刚体，本质上是这里的切割线旋转一个
+角度：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="花朵的温室/对称辅助线4.png" src="花朵的温室/对称辅助线4.png" />
+</div>
+</div></blockquote>
+<p>由于正方形是四面对称的，这很明显看到，这个图形，在ADB上的变化，和BDC，CDG，GDA
+上的变化，是完全一样的：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="花朵的温室/对称辅助线5.jpg" src="花朵的温室/对称辅助线5.jpg" />
+</div>
+</div></blockquote>
+<p>这样，如果不需要证明，我们很容易就猜到，如果AE是4,FC是3，那么，BF就应该是4，BE
+是3，从而我们立即就可以知道EF是5。</p>
+<p>这种时候，辅助线怎么做，就怎么都不成为问题了。因为这个图形里面有无数个，随便怎
+么搞都可以全等的三角形。比如我们可以证明AED和BDF两个三角形是全等的（角角边），
+然后我们就有AE=BF，剩下的问题就都不是问题了。</p>
+<p>正方形是四面对称，解决起来特别容易，而长方形呢，只有两面对称，实际上也是可以一
+样解决问题的。比如这道题：</p>
+<p>如图，在四边形ABCF中，角ACB=90度，点E是AB边的中点，点F恰是点E关于AC所在直线的对
+称点，</p>
+<p>(1)求证：四边形CFAE为菱形</p>
+<p>(2)连接EF叫AC于O，若BC=10，求线段OF的长</p>
+<blockquote>
+<div><div class="figure">
+<img alt="花朵的温室/对称辅助线6.png" src="花朵的温室/对称辅助线6.png" />
+</div>
+</div></blockquote>
+<p>我们先看这个图，什么地方是稳的，如果绘制这幅图，首先肯定是把AC和BC画出来，这是
+个直角结构，但AC和BC的长度是无限定的，我们随便找个长度，把AB画出来，然后找中点
+得到E，然后靠对称得到F，这个图就成型了。</p>
+<p>经过这么一个绘制过程，我们的脑子里就可以形成这样一个对称结构了：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="花朵的温室/对称辅助线7.png" src="花朵的温室/对称辅助线7.png" />
+</div>
+</div></blockquote>
+<p>那么AECF是个菱形这个问题就变成一眼可见的问题的。剩下的问题就只剩下怎么把定理组
+织上去的问题。</p>
+<p>所以这还是一个问题，一旦我们有了对称，全等三角形就是一抓一大把的了，比如这里的
+AEO和AFO，ABC和AB'C，AEO和CEO，AFO和FCO，这样这个问题就不言自明了。</p>
+<p>由于我们已经确认这是个左右对称的图形了，那么再往上脑补完整个长方形，第二问的那
+个长度计算就完全不是个事了：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="花朵的温室/对称辅助线8.png" src="花朵的温室/对称辅助线8.png" />
+</div>
+</div></blockquote>
+<p>从这里可以看到，很多我们看起来觉得“怎么会想到在这里做辅助线”的问题，大部分时候
+，都是通过对称来给你制造思维障碍的。因为你看不到对称的整个形象，你就会觉得怎么
+异军突起，“在这个地方想到一条辅助线呢？”</p>
+<p>但当你补足了整个对称的样子，这些辅助线就无所遁形了。</p>
+<p>而要培养这个敏感，应该常备：</p>
+<p>圆规，直尺和量角器，只要不是赶时间，多基于条件，通过图严格复原原题条件，这样能
+让你对图中那部分是“刚体”，那部分是可变的形成概念，这样考试的时候就可以快速进行
+脑补，迅速确定在什么地方增加辅助线了。</p>
+<div class="section" id="id2">
+<h2>补充1：再补充一个初三的题目<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>如下图：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="花朵的温室/对称辅助线9.jpg" src="花朵的温室/对称辅助线9.jpg" />
+</div>
+</div></blockquote>
+<p>长方形ABCD，AB=6， BC=8，在BC和CD上取点E和F，使BE等于FC等于t，问当EAF等于45度时
+，t的取值是多少？</p>
+<p>这个问题辅助线看起来非常困难，但我们注意到两个相等的t，恰恰是各一个旋转体的一部
+分，这样我们很容易把这个正方形补出来：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="花朵的温室/对称辅助线10.jpg" src="花朵的温室/对称辅助线10.jpg" />
+</div>
+</div></blockquote>
+<p>一旦这个正方形补充出来，这个问题就变得很简单了。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="倒霉的理发师.html" class="btn btn-neutral float-right" title="倒霉的理发师" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="虚拟语气.html" class="btn btn-neutral float-left" title="虚拟语气" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

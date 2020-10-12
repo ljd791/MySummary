@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>指令寻址模式 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
+<li class="toctree-l1"><a class="reference internal" href="README.html">软件架构设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+      <li>指令寻址模式</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/软件构架设计/指令寻址模式.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>指令寻址模式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>昨天有人私信问我，怎么区分不同汇编指令的寻址模式。我自己读书的时候学汇编，被这
+个烂概念影响了很久，所以简单描述一下，让初学者不要陷入我当初一样的陷阱。</p>
+<p>其实寻址模式根本就不是汇编写作人员的问题，而是指令实现者的问题，教汇编的人把这
+种问题引进来，完全不着边际。属于以己昏昏而欲使人昭昭，把问题搞乱。</p>
+<p>指令设计需要规整，否则相应的电路就会复杂，所以RISC的基本设计是最有效的，即使作
+为CISC的代表的x86构架，现在在微码设计上也是类RISC的。RISC常常让每条指令都定长，
+也是类似的目的。比如ARMv/7/v8的指令，都是32位的（我们先忽略Thumb一类的优化）。</p>
+<p>好了，现在比如你要做一个计算，add r1, r2, 100，这表示r1=r2+100。你要表示这个指
+令需要占用其中几位，比如我用8位，这可以表示256条指令，不多，对付着用吧。</p>
+<p>然后你要表示两个寄存器，假设我们有32个寄存器，这样就要占5位，指令中有两个寄存器
+，就要10位了。剩下的，我们全部给那个100来用，就剩下14位了，所以这个加法指令最多
+就能加一个不大于16K的数字，如果这个数字还需要有符号，就只有8K了。</p>
+<p>更大的数根本就放不进去。</p>
+<p>如果你非要放这么大的数，那只能把这个东西放到寄存器里面，比如我们可以支持这样来
+写这条指令：add r1, r2, r3，这样3个寄存器只需要15位，还多出一些位来用的。但这样
+你想加一个普通的数字，就要这样写：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ldh</span> <span class="n">r3</span><span class="p">,</span> <span class="mh">0x1234</span> <span class="p">;</span><span class="n">加载上半段</span>
+
+<span class="n">ldl</span> <span class="n">r3</span><span class="p">,</span> <span class="mh">0x4567</span> <span class="p">;</span><span class="n">加载下半段</span>
+
+<span class="n">add</span> <span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="n">r3</span>
+</pre></div>
+</div>
+<p>就是因为指令设计上的这种限制，所以才引入了所谓的：</p>
+<p>立即数寻址：直接在指令中指定数据</p>
+<p>寄存器寻址：指令中指定寄存器</p>
+<p>寄存器基址寻址：指令中指定寄存器，用寄存器的内容作为内存的地址得到数据</p>
+<p>寄存器基变址寻址：指令中指定寄存器和立即数，用寄存器的内容加上立即数作为地址得
+到数据</p>
+<p>对学写汇编的人来说，引入这些概念毛用没有，直接说指令的语义就够了。</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

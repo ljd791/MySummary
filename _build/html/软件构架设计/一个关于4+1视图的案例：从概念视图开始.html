@@ -1,0 +1,724 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>一个关于4+1视图的案例：从概念视图开始 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="“硬件状态机”" href="“硬件状态机”.html" />
+    <link rel="prev" title="架构设计和实施的对齐和同步问题" href="架构设计和实施的对齐和同步问题.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">软件架构设计</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="从单元测试理解软件.html">从单元测试理解软件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="名可名.html">名可名</a></li>
+<li class="toctree-l2"><a class="reference internal" href="小国寡民.html">小国寡民</a></li>
+<li class="toctree-l2"><a class="reference internal" href="需求分析的中心思路.html">需求分析的中心思路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于自然语言编程的方向问题.html">关于自然语言编程的方向问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="反者道之动——欣赏架构设计的基本逻辑.html">反者道之动——欣赏架构设计的基本逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="让代码变立体.html">让代码变立体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="生成优秀的架构.html">生成优秀的架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分支设计要领.html">分支设计要领</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做项目管理.html">怎样做项目管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="谈谈子女教育问题.html">谈谈子女教育问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="两种基本的构架表述方法.html">两种基本的构架表述方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弱者道之用——谈技术工作中的守弱问题.html">弱者道之用——谈技术工作中的守弱问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在Linux下做性能分析.html">在Linux下做性能分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的0层逻辑.html">架构设计的0层逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解耦设计.html">解耦设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做高层设计.html">怎么做高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解架构版本.html">理解架构版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCIE总线的保序模型.html">PCIE总线的保序模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="做与不做都是战略.html">做与不做都是战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="海洋战术式的软件设计方法.html">海洋战术式的软件设计方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解耦和不解耦.html">解耦和不解耦</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈“守弱”.html">再谈“守弱”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="互斥算法设计.html">互斥算法设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="英文版本的“弱者道之用”.html">英文版本的“弱者道之用”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是“守”.html">什么是“守”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从用户功能开始构架系统框架.html">从用户功能开始构架系统框架</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux发行版的库软件包组织.html">Linux发行版的库软件包组织</a></li>
+<li class="toctree-l2"><a class="reference internal" href="地址空间的故事.html">地址空间的故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="工作和读书有什么不同.html">工作和读书有什么不同</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样快速调试Linux内核.html">怎样快速调试Linux内核</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计中的“少了”和“多了”的问题.html">架构设计中的“少了”和“多了”的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux iommu和vfio概念空间解构.html">Linux iommu和vfio概念空间解构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做代码Review.html">怎样做代码Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样做客户访谈.html">怎样做客户访谈</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RancherOS架构分析.html">RancherOS架构分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈什么是软件架构.html">再谈什么是软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大道曰守，当时曰行.html">大道曰守，当时曰行</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不为天下先.html">不为天下先</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于AI的胡说八道.html">关于AI的胡说八道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="学习本质？.html">学习本质？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“设计的流程”和“代码的流程”.html">“设计的流程”和“代码的流程”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="概要设计不是代码.html">概要设计不是代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“病病”.html">“病病”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于架构师的爱恨情仇——《黑客帝国》世界观解读.html">关于架构师的爱恨情仇——《黑客帝国》世界观解读</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vfio-mdev逻辑空间分析.html">vfio-mdev逻辑空间分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux Socket 0拷贝特性.html">Linux Socket 0拷贝特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="用户态DMA的问题.html">用户态DMA的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiprocess Support for Linux IOMMU driver.html">Multiprocess Support for Linux IOMMU driver</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux RAS特性分析.html">Linux RAS特性分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="写论文.html">写论文</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基于“语义”编程.html">基于“语义”编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从学习assert的用法开始理解如何写“专业的程序”.html">从学习assert的用法开始理解如何写“专业的程序”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构的存在性.html">架构的存在性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Makefile概念入门.html">Makefile概念入门</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM服务器进展小结.html">ARM服务器进展小结</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做初步的需求分析.html">怎么做初步的需求分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="关于设计方案中的逻辑链问题.html">关于设计方案中的逻辑链问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从逻辑链问题讨论怎么做高层设计.html">从逻辑链问题讨论怎么做高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="工程逻辑链.html">工程逻辑链</a></li>
+<li class="toctree-l2"><a class="reference internal" href="为什么你会在你的数据中心中部署ARM服务器.html">为什么你会在你的数据中心中部署ARM服务器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何为libvirt设置虚拟主机.html">如何为libvirt设置虚拟主机</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给普通人解释Spectre和Meltdown安全漏洞.html">给普通人解释Spectre和Meltdown安全漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给程序员解释Spectre和Meltdown漏洞.html">给程序员解释Spectre和Meltdown漏洞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Is retpoline really safe.html">Is retpoline really safe?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="逻辑链，道，学和架构工作的本质.html">逻辑链，道，学和架构工作的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Serverless是什么——谈如何捕获一个特性的架构本质.html">Serverless是什么——谈如何捕获一个特性的架构本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="道法自然.html">道法自然</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自然，守弱和Plan B.html">自然，守弱和Plan B</a></li>
+<li class="toctree-l2"><a class="reference internal" href="守弱的内涵和外延.html">守弱的内涵和外延</a></li>
+<li class="toctree-l2"><a class="reference internal" href="找到道法自然的“度”.html">找到道法自然的“度”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Specification的写法问题.html">Specification的写法问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="小姐和丫鬟的故事.html">小姐和丫鬟的故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="知不知.html">知不知</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PCIE总线的地址问题.html">PCIE总线的地址问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="气和深度学习.html">气和深度学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="单元测试的效果问题.html">单元测试的效果问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Requirement Analyzing vs. Voting.html">Requirement Analyzing vs. Voting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽离设计逻辑.html">抽离设计逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="盗夸.html">盗夸</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽象还是不抽象的问题.html">抽象还是不抽象的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tegra TX2一瞥.html">Tegra TX2一瞥</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Progress and confusion of the IOMMU name space.html">Progress and confusion of the IOMMU name space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一样还是不一样.html">一样还是不一样</a></li>
+<li class="toctree-l2"><a class="reference internal" href="运营还是交付.html">运营还是交付</a></li>
+<li class="toctree-l2"><a class="reference internal" href="科普一下GPL和开源软件.html">科普一下GPL和开源软件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么确定道.html">怎么确定道</a></li>
+<li class="toctree-l2"><a class="reference internal" href="回调还是直调.html">回调还是直调</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口的封装层次问题.html">接口的封装层次问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git的基本架构欣赏.html">git的基本架构欣赏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="让设计自生.html">让设计自生</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构控制的从权问题.html">架构控制的从权问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计的需求问题.html">设计的需求问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="性能优化的目标问题.html">性能优化的目标问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="加速器和其他硬件的区别.html">加速器和其他硬件的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="君子与其练达不若朴鲁与其曲谨不若疏狂.html">君子与其练达不若朴鲁与其曲谨不若疏狂</a></li>
+<li class="toctree-l2"><a class="reference internal" href="有无之道——一个新的软件架构定义.html">有无之道——一个新的软件架构定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是管理.html">什么是管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从香农熵谈设计文档写作.html">从香农熵谈设计文档写作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="YVR18资料关注点.html">YVR18资料关注点</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解关联.html">理解关联</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何撰写技术交底书.html">如何撰写技术交底书</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiniband概念空间分析.html">infiniband概念空间分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈什么是高层设计.html">再谈什么是高层设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈“法自然”的设计思路.html">再谈“法自然”的设计思路</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计规范.html">设计规范</a></li>
+<li class="toctree-l2"><a class="reference internal" href="开源交付.html">开源交付</a></li>
+<li class="toctree-l2"><a class="reference internal" href="道纪.html">道纪</a></li>
+<li class="toctree-l2"><a class="reference internal" href="X86上的ARM Linux调试环境.html">X86上的ARM Linux调试环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="IOMMU的现状和发展.html">IOMMU的现状和发展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="单元测试的强与弱问题.html">单元测试的强与弱问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="做事，做名，绩效主义，以及架构战略.html">做事，做名，绩效主义，以及架构战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="没有规则的规则.html">没有规则的规则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大成若缺.html">大成若缺</a></li>
+<li class="toctree-l2"><a class="reference internal" href="非易失内存随想.html">非易失内存随想</a></li>
+<li class="toctree-l2"><a class="reference internal" href="参考平台.html">参考平台</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个例子：名的边界效应.html">一个例子：名的边界效应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="抽象问题的模型.html">抽象问题的模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="另一个例子：名的边界效应.html">另一个例子：名的边界效应</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Zircon架构简单分析1: Overview.html">Zircon架构简单分析1: Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在qemu中模拟设备.html">在qemu中模拟设备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="国产操作系统问题.html">国产操作系统问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件飞线.html">软件飞线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="状态机方法.html">状态机方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一些典型的架构设计错误.html">一些典型的架构设计错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从CPU和TPU的不同语言抽象看抽象原则.html">从CPU和TPU的不同语言抽象看抽象原则</a></li>
+<li class="toctree-l2"><a class="reference internal" href="限制管理.html">限制管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WarpDrive as a General Heterogeneous Platform.html">WarpDrive as a General Heterogeneous Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Multiarch概念调查.html">Multiarch概念调查</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM NUC.html">ARM NUC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UML有没有用.html">UML有没有用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="推演一个Buffer分配的语法设计.html">推演一个Buffer分配的语法设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构师和项目经理的基本职责问题.html">架构师和项目经理的基本职责问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="锁使用设计.html">锁使用设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从内核终止用户态程序的IO访问.html">从内核终止用户态程序的IO访问</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epoll和select.html">epoll和select</a></li>
+<li class="toctree-l2"><a class="reference internal" href="状态机退出方法.html">状态机退出方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不为天下先2.html">不为天下先2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计逻辑和代码逻辑.html">设计逻辑和代码逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="流水线深度.html">流水线深度</a></li>
+<li class="toctree-l2"><a class="reference internal" href="谁是主线？.html">谁是主线？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解指令集.html">理解指令集</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给使用设备的进程发信号.html">给使用设备的进程发信号</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux设备异常复位逻辑分析.html">Linux设备异常复位逻辑分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="投资开源社区的基本逻辑.html">投资开源社区的基本逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个Linux死锁信息分析.html">一个Linux死锁信息分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何说谎.html">如何说谎</a></li>
+<li class="toctree-l2"><a class="reference internal" href="代码生成器.html">代码生成器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弟子规：美国军方禁止在C语言程序中使用malloc.html">弟子规：美国军方禁止在C语言程序中使用malloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自下而上和自上而下的设计.html">自下而上和自上而下的设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="正面竞争.html">正面竞争</a></li>
+<li class="toctree-l2"><a class="reference internal" href="不知为美.html">不知为美</a></li>
+<li class="toctree-l2"><a class="reference internal" href="高层封装的设计战略.html">高层封装的设计战略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="产业生态的原理和作用.html">产业生态的原理和作用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="弯道问题.html">弯道问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="无名概念的深入探讨.html">无名概念的深入探讨</a></li>
+<li class="toctree-l2"><a class="reference internal" href="解释On-Chip Debug和Off-Chip Debug.html">解释On-Chip Debug和Off-Chip Debug</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口和名称空间辨识.html">接口和名称空间辨识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RISCV WMO和TSO具体解决什么问题.html">RISCV WMO和TSO具体解决什么问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="利益链.html">利益链</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从C的for和Python的for聊起.html">从C的for和Python的for聊起</a></li>
+<li class="toctree-l2"><a class="reference internal" href="安全建模问题讨论.html">安全建模问题讨论</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Accelerator vs. Co-processor.html">Accelerator vs. Co-processor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个逻辑空间控制的例子：uacce生命周期管理.html">一个逻辑空间控制的例子：uacce生命周期管理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件构架设计的入题角度问题.html">软件构架设计的入题角度问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口分层的问题.html">接口分层的问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="对Cache Coherence的重理解.html">对Cache Coherence的重理解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="接口定义的工作模型.html">接口定义的工作模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux_net和net-next分支的维护策略.html">Linux net和net-next分支的维护策略</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WarpDrive用户态方案重构建议.html">WarpDrive用户态方案重构建议</a></li>
+<li class="toctree-l2"><a class="reference internal" href="主线逻辑.html">主线逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的粗与细问题.html">架构设计的粗与细问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="狂人日记读后感——名称空间囚笼.html">狂人日记读后感——名称空间囚笼</a></li>
+<li class="toctree-l2"><a class="reference internal" href="写程序和写小说的区别.html">写程序和写小说的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="再谈《弟子规》问题.html">再谈《弟子规》问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="理解弱内存顺序模型.html">理解弱内存顺序模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="思维上的洞2.html">思维上的洞2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="后软件时代和技术沙盘陷阱.html">后软件时代和技术沙盘陷阱</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么做项目管理2.html">怎么做项目管理2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="语言的控制力问题.html">语言的控制力问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分享我的Linux内核开发环境.html">分享我的Linux内核开发环境</a></li>
+<li class="toctree-l2"><a class="reference internal" href="开发视图.html">开发视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="概念视图.html">概念视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="处理视图.html">处理视图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="语言控制力问题.html">语言控制力问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="新手设计文档典型错误.html">新手设计文档典型错误</a></li>
+<li class="toctree-l2"><a class="reference internal" href="讨论：OpenCL2.0SVM有什么好？.html">讨论：OpenCL2.0SVM有什么好？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计逻辑的细致和严密问题.html">设计逻辑的细致和严密问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="逻辑的平面和立体问题.html">逻辑的平面和立体问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="自由和约束.html">自由和约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="给非专业人士介绍架构设计工作.html">给非专业人士介绍架构设计工作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AML工作原理快速调研.html">AML工作原理快速调研</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu_PCIe总线结构.html">qemu PCIe总线结构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARM64_Linux_Kernel_5.7无法GDB调试问题.html">ARM64 Linux Kernel 5.7无法GDB调试问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="分层抽象.html">分层抽象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="见素抱朴：一个关于交付的例子.html">见素抱朴：一个关于交付的例子</a></li>
+<li class="toctree-l2"><a class="reference internal" href="三个锦囊.html">三个锦囊</a></li>
+<li class="toctree-l2"><a class="reference internal" href="多核MMU和ASID管理逻辑.html">多核MMU和ASID管理逻辑</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PMA和PA方案对比.html">PMA和PA方案对比</a></li>
+<li class="toctree-l2"><a class="reference internal" href="真假架构设计.html">真假架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎样写标准提案.html">怎样写标准提案</a></li>
+<li class="toctree-l2"><a class="reference internal" href="安全问题的本质.html">安全问题的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="名称内涵的发展.html">名称内涵的发展</a></li>
+<li class="toctree-l2"><a class="reference internal" href="标准和设计的区别.html">标准和设计的区别</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cond_mutex模型.html">cond/mutex模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个例子：架构的重要性和从权.html">一个例子：架构的重要性和从权</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nvdimm_AD模式的内核应用模型.html">nvdimm AD模式的内核应用模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="早期架构设计问题.html">早期架构设计问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="所谓内部设计.html">所谓内部设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“知不知”如何影响决策的？.html">“知不知”如何影响决策的？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“优秀架构设计”.html">“优秀架构设计”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Linux_Kernel架构赏析.html">Linux Kernel架构赏析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="说说对协程的看法.html">说说对协程的看法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计和实施的对齐和同步问题.html">架构设计和实施的对齐和同步问题</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">一个关于4+1视图的案例：从概念视图开始</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“硬件状态机”.html">“硬件状态机”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="设计的减熵原理.html">设计的减熵原理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binfmt概念空间建模.html">binfmt概念空间建模</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计入门知识.html">架构设计入门知识</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构设计的大忌：我没错.html">架构设计的大忌：我没错</a></li>
+<li class="toctree-l2"><a class="reference internal" href="“解决方案”.html">“解决方案”</a></li>
+<li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
+<li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
+<li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="管理上的判断和技术上的判断.html">管理上的判断和技术上的判断</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基于逻辑链建立约束.html">基于逻辑链建立约束</a></li>
+<li class="toctree-l2"><a class="reference internal" href="高级需求分析.html">高级需求分析</a></li>
+<li class="toctree-l2"><a class="reference internal" href="False_Sharing.html">假共享内存(False Sharing)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="芯片验证软件的4+1方法.html">芯片验证软件的4+1方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="软件之硬.html">软件之硬</a></li>
+<li class="toctree-l2"><a class="reference internal" href="诚其意.html">诚其意</a></li>
+<li class="toctree-l2"><a class="reference internal" href="把什么放入架构设计.html">把什么放入架构设计</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">软件架构设计</a> &raquo;</li>
+        
+      <li>一个关于4+1视图的案例：从概念视图开始</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/软件构架设计/一个关于4+1视图的案例：从概念视图开始.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>一个关于4+1视图的案例：从概念视图开始<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>本文和别人讨论一个线程调度模型的接口设计。顺便手把手展示一次怎么做基本的低层架
+构设计。</p>
+<p>我们抽象一下问题：我有一个IO接口，有多个IO设备，也不管它有没有内核用户态分层，
+通讯到了设备上有没有对端（例如通过网卡和一台服务器通讯），反正就是我有一个“应用
+”，和它进行通讯，通讯过程有状态，我们讨论这个接口设计怎么考量。</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/IO设备概念视图1.jpg" src="../_images/IO设备概念视图1.jpg" />
+</div>
+</div></blockquote>
+<p>这个图啥意思，估计都能猜到一点，但表义是不是清楚呢？其实不一定，应用怎么和“背后
+那个实体”通讯，这个概念怎么表达？其实不那么容易，但如果用IO设备提供的接口代码来
+给你表达，可能就容易理解一些了：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dev</span> <span class="o">=</span> <span class="n">io_pick_dev</span><span class="p">(</span><span class="n">dev_requirement</span><span class="p">)</span>  <span class="c1"># 找到设备</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">io_create_ctx</span><span class="p">()</span>           <span class="c1"># 从设备获得通讯上下文，表示“我”这个应用</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">do_request</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">handle_result</span><span class="p">()</span>              <span class="c1">#这不是API的一部分，指代用户的处理过程</span>
+<span class="n">free</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+<span class="n">free</span><span class="p">(</span><span class="n">dev</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>但直接把接口给出来，又涉及了太多的细节。其实这里用类Python的伪码表述，抛弃具体
+的语言约束，已经比较强调其中“抽象”的部分了。但它仍不是最核心的约束，比如我们迫
+不得已用do_request()来表示一种和ctx关联的行为，但这种关联可能不止这一个函数，不
+少有经验的人能猜到有不止一个这样的函数，但至少表达上这个关系并不清晰。</p>
+<p>所以，我们最基础的一层建模会建得更抽象（飘渺），我们只关注这个接口上呈现出来的“
+概念”。</p>
+<p>从概念空间说，这里定义了几个概念：dev, ctx, request, 基本和上面那个图表达的意思
+差不多，但如果我们标准一点用UML语法，由于有表达共识的存在，我们谈这个概念会容易
+得多。比如这样：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/IO设备概念视图2.jpg" src="../_images/IO设备概念视图2.jpg" />
+</div>
+<p>特别提醒一句，这里的“线程上下文”的概念只是表示一个连续的会话过程，表示
+一个应用程序中，和ctx进行有先后要求的一组对话，它不需要是一个线程。这种
+类型的“共识”定义，也是概念空间建模的一部分，概念空间建模并非是一幅或者
+几幅图。</p>
+</div></blockquote>
+<p>这就叫概念建模，这才是“形而上”的设计，它不受API怎么写控制，也不在乎多一个
+do_request1()还是少一个do_request2()。这里的“应用”也是最原始的“用我们的功能的那
+个抽象的东西”，并不表示就是一个进程了，一个进程也可能申请两个ctx，在两个“应用场
+合”（或者这里说的“线程上下文”）里面分别访问它。这种概念上谁和谁是什么关系，直接
+影响你怎么分解模块，谁和谁的线程可以分离，哪个“概念”（包括那个概念的属性）不能
+被哪个模块“看见”，从而实现“抽象”。我们谈架构设计，是谈这种脱离了现实，直接讨论“
+关系”的设计，不能从这种形而上的角度上思考问题，你是看不懂架构设计的。</p>
+<p>建立这样的抽象，是提升我们选择的自由度，因为这个概念空间不关心具体你用什么语言
+，用什么线程，用不用协程，靠调用来通讯还是靠消息来通讯……这些都是自由度。如果我
+一开始建模就是具体的东西，我的选择就被自己的“描述能力”给阻塞了，我的自由度就不
+高了，我就不好找一个最优解了。</p>
+<p>但另一方面，越是形而上，就越是“缺乏设计”。我们得继续寻找不得不引入的约束，尽快
+把更多的约束加进来，这样，到我们做细节设计的时候，所有这些约束就成为条件了，我
+们建立逻辑链就顺理成章变得很容易了。</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">这就是为什么说架构师都是Masochism。</div>
+<div class="line">因为整个设计过程就是一个把自己（和团队）束缚起来的过程：</div>
+<div class="line">“小明从A地去B地，需要多长时间？”，不知道。</div>
+<div class="line">加一个约束“A地到B地距离10公里”，这可以得到一定的范围，</div>
+<div class="line">再加一个约束“小明平均速度5公里每小时”，这个结果就唯一了。</div>
+<div class="line">整个设计过程，要不你自己加入约束，要不发现约束。</div>
+<div class="line">架构师的工作是用收益构造约束，从而让约束完整的时候，</div>
+<div class="line">得到最大的收益。而失败的架构师是不知不觉中引入了无数的约束，</div>
+<div class="line">外面的利益还没有来呢，就动不了了。比如前面这个例子，</div>
+<div class="line">一开始引入一个约束：“小明坐飞机过去”，</div>
+<div class="line">这个“设计”本身有一个约束“起飞（到正常巡航）距离200公里”，</div>
+<div class="line">然后这个问题就不用解决了。</div>
+<div class="line">这一段说明，是希望读者可以理解我们煞费苦心从一个最小约束</div>
+<div class="line">来分析问题到底要干什么。</div>
+</div>
+</div></blockquote>
+<p>所以，概念视图是我们（约束）的根，但我们不能只有根。现在我们开始用“不为天下先”
+的策略开始给这个框架加约束，让这个形而上落下去，去接近形而下。</p>
+<p>应用找到一个Dev，和设备通过Ctx建立一个关联，然后给Ctx发送请求，从而获得结果。这
+个概念看起来不错，总能写出API来。一旦考量这个API，我们马上就会面对运行模型的问
+题：同一个ctx，能否被多个线程上下文访问？</p>
+<p>这说起来是我们自己的一种选择，但正如我们前面说的，我们不“选择”，我们不敢为主而
+为客。我们自己不制造约束，我们是大自然约束的搬运工。是有（注意这个“有”，我们需
+要确定这是否是事实）客户在多个线程的上下文中调用同一个ctx，所以他问了这个问题，
+如果他没有这个问题，这个就不是问题。我们不提前解决问题的。</p>
+<p>那我们开始“食母”，我们来讨论一下：为什么用户需要在多个线程中使用同一个ctx？可能
+这个IO通讯是多个并行业务流中的一步，多个业务流访问同一个资源，这个资源需要保护
+。</p>
+<p>但谁来保护？一个业务使用一个公共的资源，伴随这个公共资源的一般会有其他的数据，
+那些数据也会需要保护对吗？从整体来说，这两个资源应该一同保护，这种情况下，如果
+我提供了一个保护，就会产生两把锁。</p>
+<p>“两把锁”，这能让你想到什么？我只想到死锁。</p>
+<p>所以很简单，在我最基本一层抽象中，我是不可能引入锁给你做保护的。引入锁引入了两
+个约束：</p>
+<p>用户整个程序的锁控制被你限制了一部分，因为他要考虑你的锁关系避免和他自己的锁互
+相死锁用户可以选择的线程库被你限制了，因为一个系统很难让两个线程库共存，继而其
+他依赖不同线程库的其他库的选择也被你限制了，比如有人使用协程库，就会对线程库有
+要求。</p>
+<p>所以我们说，做选择，我们其实一直是在收益和约束之间做平衡，多接受一个约束，我们
+的设计就越好做，但相应我们也失去了其他的选择。但我们希望在这种选择中“救”下更多
+的代码。所以我们会有这样的开发视图设计：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/IO设备概念视图3.jpg" src="../_images/IO设备概念视图3.jpg" />
+</div>
+</div></blockquote>
+<p>这个模型中我们挽救了iolib_base这个模块，让iolib对pthread的依赖聚集在iolib之内，
+而且我们不拒绝应用把依赖直接建立在iolib_base上。</p>
+<p>好了，现在假设我们决定吃下pthread依赖这个坑，我们开始挖掘iolib的问题。</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">“吃下”这个概念很有意思。我们设计高内聚，低扇出的模块。</div>
+<div class="line">目的就是可以单独升级和替换。比如上面的iolib，</div>
+<div class="line">我们依赖了pthread，把和pthread有关的东西都包在iolib内了，</div>
+<div class="line">这样如果我们替换pthread，只要换掉iolib就可以了，</div>
+<div class="line">不会影响到iolib_base。一旦iolib吃下pthread，</div>
+<div class="line">我们就不会忌讳充分利用所有有可能的pthread能力，</div>
+<div class="line">因为我们希望用尽这个依赖给我们产生的逻辑优势。</div>
+<div class="line">这个过程就好像鱼吞吃东西：张开大口把一个依赖吃进肚子，</div>
+<div class="line">肚子大了，但鱼嘴还是很小。形成一个高内聚，低扇出的模块。</div>
+<div class="line">这就是在基层的构架设计中主要解决的问题。</div>
+<div class="line">我们就是在不断权衡这些依赖关系，</div>
+<div class="line">看让哪个模块把哪个依赖吃进去，让系统的关系变得有条理，</div>
+<div class="line">免得很快变成混沌系统，加入任何一个逻辑都影响所有模块</div>
+<div class="line">或者不同的概念空间，一旦进入这种状态，</div>
+<div class="line">后面加入需求的难度就变得非常高，甚至不可能了。</div>
+</div>
+</div></blockquote>
+<p>用户用多个线程来访问ctx，可以有三种设计思路：</p>
+<p>第一种，每次请求上个锁就可以了。一个线程弄完，下个再来。这个方法简单粗暴，最大
+的问题在于，它会破坏流水线。设想一下，IO设备有多个执行部件（无论是并行的还是串
+行的），每个都需要时间才能完成一个请求，那么第一个线程的请求下下去，没有完成前
+，其实第二个线程的请求也可以下去了，但用现在这种方法，第二个线程只能等着，这个
+效率发挥不出来。</p>
+<p>如果我们承认这是个问题，我们就需要让把数据放下去和收回来这两个过程断开。所以第
+二种方法可以是这样的：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/IO设备概念视图4.jpg" src="../_images/IO设备概念视图4.jpg" />
+</div>
+<p>注意：主业务时间线不止一个实例（线程），但一般来说，由于ctx的限制，IO处
+理线程通常只能容纳一个或者两个（把收分离出来）实例。</p>
+</div></blockquote>
+<p>这个引入了另一个约束：iolib里面自己创建了一个线程。我们说过了，引入约束写程序容
+易，但这个约束会叠加给使用者，比如你多了个线程主程序处理signal的时候要不要考虑
+这个signal是从你这个线程发过来的？调优整个程序的时候，你这个线程要不要绑定到特
+定的核上？这会多了很多其他约束给使用这个库的应用。</p>
+<p>无论如何，如果我们决定“吃下”这个约束。我们就要正经做下一层的设计，比如：</p>
+<ol class="arabic simple">
+<li>如果考虑全系统的平衡，你这个IO队列具体应该用几个线程？（这个问题我们后面还会
+讨论）全系统所有ctx用一个统一线程？还是每个ctx用一个线程？这也需要作出决定。</li>
+<li>维持IO设备压力的算法，比如下去多少个再收回一个？这个问题在这个上下文中不好处
+理的，因为你用了独立的线程，而这个线程又和业务线程一起调度，这有很多细节问题
+要解决的，但无论如何吧，从高层设计来看，还是可以一赌的。</li>
+<li>其实这种“主动调度”的行为，挺适合使用“协程”的，但引入协程，就开始引入新的约束
+，这个讨论起来就更复杂了。本文不考虑这个方向。</li>
+</ol>
+<p>很多人还会选择第三种方案——用回调：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/IO设备概念视图5.jpg" src="../_images/IO设备概念视图5.jpg" />
+</div>
+<p>绿色部分的内存实现在同一个模块中，但属于不同的线程</p>
+</div></blockquote>
+<p>当主业务把请求送到IO线程中，注册一个回调函数给它，这样收到响应的时候，后面的处
+理就可以用IO队列的线程的时间来完成处理了。</p>
+<p>人们容易从API上觉得这种所谓“异步”调用很方便，但一旦你考虑到线程的压力，就会发现
+，这只适合最后处理IO响应的压力不大的情形（通常是发完不管的场景，因为这种情况下
+，你收到响应唯一要做的事情是释放资源）。基本上我们认为“处理IO响应”这个CPU占比不
+多才可以用，否则这个回调线程自己就会成为瓶颈。而且同一个流程的两个处理在不同的
+线程上，你说不定又有锁的问题，锁问题一上来，死锁和互锁等待的问题也出来了。其实
+这条路并不好走。</p>
+<p>说起来，每条路都是有好处也有坏处的，不分析你的目标市场，你根本就不知道那条路是
+对的。所以，这部分的接口设计，你需要的是确定你的目标市场到底是那种情形。如果确
+定不了，就尽量把逻辑分隔开。</p>
+<p>上面这样的分析方法主要还是站在IO设备是被动一方，主业务流都在CPU的计算上的情形。
+如果IO设备的的性能才是整个性能的关键就不能这样看这个问题了。最极端一点的，我们
+做IO设备的专用功能服务器（比如一个AI训练服务），或者干脆我们就做一个benchmark程
+序，我们又应该是什么接口？</p>
+<p>要让IO设备占满，整个核心就是一看它闲下来就要调度CPU来喂数据。</p>
+<p>我们还是分两种情况，一种是CPU不是喂数据的瓶颈，我们没有必要依赖线程。我们先推演
+直接基于iolib_base可以怎么做：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dev</span> <span class="o">=</span> <span class="n">io_pick_dev</span><span class="p">(</span><span class="n">dev_requirement</span><span class="p">)</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">dev</span><span class="o">.</span><span class="n">io_create_ctx</span><span class="p">()</span>
+<span class="n">req_pool</span> <span class="o">=</span> <span class="n">create_req_pool</span><span class="p">()</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1.</span><span class="o">.</span><span class="n">bunch_in_a_cpu_deal</span><span class="p">]:</span>   <span class="c1">#发出多个请求</span>
+      <span class="n">param</span> <span class="o">=</span> <span class="n">create_new_request</span><span class="p">()</span>
+          <span class="n">req_pool</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+              <span class="n">ctx</span><span class="o">.</span><span class="n">request_async</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>     <span class="c1">#异步发出请求</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1.</span><span class="o">.</span><span class="n">bunch_in_a_io_deal</span><span class="p">]:</span>    <span class="c1">#回收一组相应</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">pull_result</span><span class="p">()</span>   <span class="c1">#等待结果</span>
+                        <span class="n">param</span> <span class="o">=</span> <span class="n">req_pool</span><span class="o">.</span><span class="n">match_param</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1">#从结果找回当初发出的那一个请求的上下文</span>
+                            <span class="n">param</span><span class="o">.</span><span class="n">handle_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>  <span class="c1">#继续这个响应</span>
+                                <span class="n">free</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+                                <span class="n">free</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+                                <span class="n">free</span><span class="p">(</span><span class="n">dev</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这里的核心是在维护设备的压力，保证对它的请求是充足的，剩下的时间才用于处理结果
+。但这样还会导致另一个结果，就是这里的req_pool深度如果不控制，一旦送入和消耗不
+平衡，送入多于消耗，param可以无限增长。我们只要控制它就可以了。</p>
+<p>这样这个地方整体上就有了一个可以抽象的概念空间了：我们不关心什么时候发，什么时
+候收，我们有数据，你告诉我怎么发，怎么收。这个API可以变成这样：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+  <span class="n">ctx</span><span class="o">.</span><span class="n">request_async</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+    <span class="n">param</span><span class="o">.</span><span class="n">handle_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">sched</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">sched</span><span class="o">.</span><span class="n">private</span><span class="o">.</span><span class="n">param_pool</span><span class="o">.</span><span class="n">match_param</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+      <span class="n">sched</span> <span class="o">=</span> <span class="n">io_create_scheduler</span><span class="p">(</span><span class="n">dev_requirement</span><span class="p">,</span>
+        <span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">match</span><span class="p">,</span> <span class="n">max_param</span><span class="p">)</span> <span class="c1">#提供的调度需要的回调函数</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+          <span class="n">sched</span><span class="o">.</span><span class="n">run_a_step</span><span class="p">()</span>
+          <span class="n">free</span><span class="p">(</span><span class="n">sched</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这就把整个调度的驱动力全部交给了设备这边的逻辑，提供数据一方变成被动回调的。调
+度器每一步交给应用程序，调度器根据ctx的水线决定下一步应该做数据准备（input）还
+是响应处理（output）。</p>
+<p>这个概念空间是这样的：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/IO设备概念视图6.jpg" src="../_images/IO设备概念视图6.jpg" />
+</div>
+</div></blockquote>
+<p>我们用Sched封装掉了Ctx和Dev的概念了，虽然其实Sched上是暴露这两个数据结构的，但
+我们都认为那是Sched自己的概念细节了，是应用Sched进行通讯的参数问题。应用现在面
+对的问题仅仅就是：用自己的线程调度Sched，然后靠Sched决定自己什么时候发，什么时
+候收。至于收发的收，就用ctx的函数进行实际地收发自己的数据就是了。这里仍暴露了
+ctx，但解开了从哪里拿到ctx这个问题，也把水线控制这个问题丢出去了。如果sched中
+ctx直接有水线控制这个逻辑，应用就是看不见这个逻辑的。这种关系相当微妙，但看惯了
+也很容易理解。</p>
+<p>用前面一样的考量方法，这个实现升级为多线程的行为也没有什么困难的，无非是多个线
+程的时候如何分别调度这些input和output的问题而已，完整的概念空间可能是这样的：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/IO设备概念视图7.jpg" src="../_images/IO设备概念视图7.jpg" />
+</div>
+</div></blockquote>
+<p>用户接口可能是这样的：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">input</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+  <span class="n">ctx</span><span class="o">.</span><span class="n">request_async</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+  <span class="k">def</span> <span class="nf">output</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+    <span class="n">param</span><span class="o">.</span><span class="n">handle_result</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">sched</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+      <span class="k">return</span> <span class="n">sched</span><span class="o">.</span><span class="n">private</span><span class="o">.</span><span class="n">param_pool</span><span class="o">.</span><span class="n">match_param</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+      <span class="n">sched</span> <span class="o">=</span> <span class="n">io_create_mt_scheduler</span><span class="p">(</span><span class="n">dev_requirement</span><span class="p">,</span>
+        <span class="nb">input</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">match</span><span class="p">,</span> <span class="n">max_param</span><span class="p">,</span>
+          <span class="n">number_of_ctx</span><span class="p">,</span> <span class="n">number_of_dev</span><span class="p">)</span>
+          <span class="n">sched</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>    <span class="c1">#启动多个线程进行调度</span>
+          <span class="o">...</span>              <span class="c1">#干别的主线程的事情</span>
+          <span class="n">sched</span><span class="o">.</span><span class="n">join</span><span class="p">()</span>     <span class="c1">#等待调度结束</span>
+          <span class="n">free</span><span class="p">(</span><span class="n">sched</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>我说了这么多，不知道读者们有没有意识到：最后这个mt_sched的方案，恰好就是前面多
+线程访问ctx的调度方案的泛化模型。基本上你要做复杂的调度，都可以用这个调度器去决
+定加线程，加ctx，加dev，加深度，最终都是决定什么送数据到哪个ctx中。</p>
+<p>这样，我们综合所有这些模型，我们可以给出这样一个开发视图：</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/IO设备概念视图8.jpg" src="../_images/IO设备概念视图8.jpg" />
+</div>
+</div></blockquote>
+<p>我们的约束就分离到不同的层次上了。应用基于libsimple的接口，只是多线程调用的一种
+接口。它可以认知ctx，也可以完全不认知，仅在初始化的时候给定ctx的参数，后面的io
+请求可以看见它，也可以看不见它。而核心的线程调度封装在libsched_mt中，而libio则
+封装最基本的ctx接口。这样我们整个库的依赖就可以一层层向下剥离了。</p>
+<p>最后我们考虑一个独立的问题：这种类型的IO访问，很多人都会提到所谓的“块式IO”和“流
+式IO”的区别问题，所谓块式IO，是说如果应用有多个请求，这些请求没有什么顺序关系，
+可以一次都送下去。而所谓流IO则反过来，前一个请求没有结束前，下一个请求不能向下
+送。但其实这个问题整个和前面的模型都是没有关系的。因为这不是调度器如何下数据的
+问题，而是提交方怎么下数据的问题。你在libsimple里面多制造一个上下文参数，记住这
+一串顺序的上下文就是了，和我们前面的推演一点关系都没有。</p>
+<p>总结起来，4+1视图，本质就是用一个个的“需求”（Use Case）去给我们开发中最难用代码
+去表达的问题制造约束，让我们提早把概念控制在不同的范围内，为控制系统熵增提供基
+础。</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="“硬件状态机”.html" class="btn btn-neutral float-right" title="“硬件状态机”" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="架构设计和实施的对齐和同步问题.html" class="btn btn-neutral float-left" title="架构设计和实施的对齐和同步问题" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>教中学生学编程4：循环，判断和自己的名称空间 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="理解电流.html" />
+    <link rel="prev" title="教中学生学编程3：函数图像" href="教中学生学编程3：函数图像.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">花朵的温室</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="谈谈子女教育问题.html">谈谈子女教育问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读1：背景.html">初中《西游记》导读1：背景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读2：主线故事.html">初中《西游记》导读2：主线故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读3：宗教背景.html">初中《西游记》导读3：宗教背景</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读4-五庄观的故事.html">初中《西游记》导读4-五庄观的故事</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读5-谈一下文笔问题.html">初中《西游记》导读5-谈一下文笔问题</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读6-聊聊孙悟空这个角色.html">初中《西游记》导读6-聊聊孙悟空这个角色</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读7-唐僧师徒的关系.html">初中《西游记》导读7-唐僧师徒的关系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读8-争胜车迟国.html">初中《西游记》导读8-争胜车迟国</a></li>
+<li class="toctree-l2"><a class="reference internal" href="初中《西游记》导读9-习题1.html">初中《西游记》导读9-习题1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="一个思想工作报告.html">一个思想工作报告</a></li>
+<li class="toctree-l2"><a class="reference internal" href="将军双饮马.html">将军双饮马</a></li>
+<li class="toctree-l2"><a class="reference internal" href="从虚数谈起.html">从虚数谈起</a></li>
+<li class="toctree-l2"><a class="reference internal" href="《出师表》欣赏.html">《出师表》欣赏</a></li>
+<li class="toctree-l2"><a class="reference internal" href="怎么背思想政治.html">怎么背思想政治</a></li>
+<li class="toctree-l2"><a class="reference internal" href="虚拟语气.html">虚拟语气</a></li>
+<li class="toctree-l2"><a class="reference internal" href="对称性——讨论平面几何辅助线的添加技巧.html">对称性——讨论平面几何辅助线的添加技巧</a></li>
+<li class="toctree-l2"><a class="reference internal" href="倒霉的理发师.html">倒霉的理发师</a></li>
+<li class="toctree-l2"><a class="reference internal" href="教中学生学编程1：介绍.html">教中学生学编程1：介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="教中学生学编程2：解方程.html">教中学生学编程2：解方程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="教中学生学编程3：函数图像.html">教中学生学编程3：函数图像</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">教中学生学编程4：循环，判断和自己的名称空间</a></li>
+<li class="toctree-l2"><a class="reference internal" href="上不上补习班.html">上不上补习班</a></li>
+<li class="toctree-l2"><a class="reference internal" href="内能的逻辑链整理.html">内能的逻辑链整理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="严格按定义进行逻辑推演.html">严格按定义进行逻辑推演</a></li>
+<li class="toctree-l2"><a class="reference internal" href="严格按定义进行逻辑推演.html#id3">严格按定义进行逻辑推演2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="对称性.html">对称性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="言为心声.html">言为心声</a></li>
+<li class="toctree-l2"><a class="reference internal" href="曹刿论战.html">曹刿论战</a></li>
+<li class="toctree-l2"><a class="reference internal" href="惯性系.html">惯性系</a></li>
+<li class="toctree-l2"><a class="reference internal" href="快速学习.html">快速学习</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Will_and_Won_t.html">Will and Won't</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../软件构架设计/README.html">软件架构设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">花朵的温室</a> &raquo;</li>
+        
+      <li>教中学生学编程4：循环，判断和自己的名称空间</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/花朵的温室/教中学生学编程4：循环，判断和自己的名称空间.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>教中学生学编程4：循环，判断和自己的名称空间<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>上一个教程我们讲了一个比较复杂的定义，叫plotall，可以把几个不同指数大小的函数拿
+来做对比。我们把这个定义优化一下。</p>
+<p>首先是名字：plotall这个名字太土了，这次叫plotall，再plot另一个东西，叫什么呢？
+叫plotall2还是plotallnew呢？</p>
+<p>所以，我们还是用一个表示它本来意思的词语来命名这个定义，比如我们可以叫
+plot_power_functions，这样下次我们至少自己看到了，也知道自己写了个什么“定义”啊
+。这是我们程序员一个基本行规，这就叫“基于语义编程”，虽然你把这个东西叫阿猫阿狗
+也是可以的，但名字的意思和你理解的意思不一致，会给你带来无尽的烦恼。“画3个函数”
+变成“阿猫三个阿狗”，你还怎么去理解这个程序？</p>
+<p>有了一个好名字，我们有了一个好的开始，现在我们看看能不能把话说得短一点，这是我
+们程序员的第二个行规：一句话能说清楚的东西，不用两句话。我们看看前面这个程序，
+它是这样写的：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_power_functions</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="n">y</span><span class="o">=</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span>
+  <span class="n">z</span><span class="o">=</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span>
+  <span class="n">o</span><span class="o">=</span><span class="n">x</span><span class="o">**</span><span class="mi">4</span>
+  <span class="n">p</span><span class="o">=</span><span class="n">x</span><span class="o">**</span><span class="mi">5</span>
+  <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+  <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+  <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">o</span><span class="p">)</span>
+  <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+  <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>这些话其实基本上是一样的，我们能不能统一说？其实是可以的，这时我们用for这个句式
+：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_power_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]:</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>for的意思是“对于在[...]中的每个值，令这个值为t，我们执行：……”，你看，自然语言中
+说得忒复杂的一句话，计算机语言就说得特别简练，这就叫“行话”，行话都是特别简练的
+，因为用多了，每次都这么说，废话就可以少很多。</p>
+<p>所以这个定义的意思就很简单了：对于t等于2, 3, 4, 5，每个我们都计算一个y出来，然
+后对x,y打点。这种句式叫“循环”。</p>
+<p>既然可以循环，我们可以扩大这个定义的能力，我们要不这样：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_power_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">arange</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这样就表示我们这个定义中的第二第三个参数是可选的，你不给的话，它就用默认值，所
+以这个定义就可以这样用：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">plot_power_function</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>
+<span class="n">plot_power_function</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plot_power_function</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plot_power_function</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这些都是可以的。</p>
+<p>我们注意到，如果t是0，这个图像会退化为一条直线，假设我们不想看到这条直线，我们
+就要判断一下了，这时这个函数可以这样写：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_power_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">arange</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+      <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这表示t不等于0的时候，我们才打点，等于0的时候，就不要打了。我们还可以这样：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_power_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">arange</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+      <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+       <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;大哥, 0我就不打了, 您不介意吧&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这样，到了0那里，就打印一段文字就完了。</p>
+<p>这样，我们就学习了编程中两个最基本的语法结构了：循环和判断。</p>
+<p>关于循环，其实我们还有一个表达方法，叫while，前面这个程序（我们先忽略掉判断），
+我们用while改写一下：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_power_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+  <span class="n">t</span><span class="o">=</span><span class="n">begin</span>
+  <span class="k">while</span> <span class="n">t</span><span class="o">&lt;=</span><span class="n">end</span><span class="p">:</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>这实现一样的效果，其中while表示：“当t还小于或者等于end”，请一直做后面的动作”。</p>
+<p>while和if都需要使用“比较”，我们需要记住的一些比较符号。这包括：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span><span class="p">,</span> <span class="o">&lt;</span><span class="p">,</span> <span class="o">==</span><span class="p">,</span> <span class="o">!=</span><span class="p">,</span> <span class="o">&gt;=</span><span class="p">,</span> <span class="o">&lt;=</span>
+</pre></div>
+</div>
+<p>这是什么意思，猜都可以猜到了。</p>
+<p>比较的结果是True和False，这表示条件成立或者不成立，你可以把多个比较的结果组合，
+比如这样：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_power_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+  <span class="n">t</span><span class="o">=</span><span class="n">begin</span>
+  <span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+  <span class="k">while</span> <span class="p">(</span><span class="n">t</span><span class="o">&lt;=</span><span class="n">end</span> <span class="ow">and</span> <span class="n">i</span><span class="o">&lt;</span><span class="mi">10</span><span class="p">)</span> <span class="ow">or</span> <span class="n">begin</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">:</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>这里那个while的条件就变得很复杂了，它表示：“当如下条件其中一个成立就执行后面语
+句：t小于等于end而且i小于0， 或者begin小于0”</p>
+<p>当我们开始把我们的定义写得如此复杂的时候，我们慢慢就有了我们自己的“名称空间”了
+。我们可以把我们的“定义”写在一个文本文件中，后缀叫.py，这样我们就可以直接import
+我们自己写的这个名称空间。比如前面这个函数，我们可以这样写在一个文本文件中（暂
+时我建议不要写中文，那个需要一些其他处理）：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="k">import</span> <span class="o">*</span>
+
+<span class="k">def</span> <span class="nf">plot_power_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">begin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+  <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">arange</span><span class="p">(</span><span class="n">begin</span><span class="p">,</span> <span class="n">end</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">t</span><span class="o">!=</span><span class="mi">0</span><span class="p">:</span>
+      <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">x</span><span class="o">**</span><span class="n">t</span><span class="p">)</span>
+  <span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>然后我们保存在一个myplot.py文件中，放在“文档”目录下面，如果你不确定具体是哪个目
+录，可以用下面命令问Anaconda</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">curdir</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>这样之后，你就可以import myplot来使用它了：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy</span> <span class="k">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">myplot</span>
+<span class="n">myplot</span><span class="o">.</span><span class="n">plot_power_function</span><span class="p">(</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>请注意了，这里你提到了arange这个名字，这个名字是numpy名称空间里面定义的，虽然你
+的myplot中import了这个东西，但那只是那个名称空间里面的事，你这里要用这个名字，
+就要重新import numpy。但你这里不再提起matplotlib，所以你就不再需要import
+matplotlib了。</p>
+<p>到此为止，我们提供的信息已经足够一般中学生使用Anaconda了，我们的介绍在这里告一
+段落，等我们遇到新的问题的时候，我们接着来学新的知识。</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="理解电流.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="教中学生学编程3：函数图像.html" class="btn btn-neutral float-left" title="教中学生学编程3：函数图像" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

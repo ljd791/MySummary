@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5.3 &mdash; MySummary 1.0 文档</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="5.4" href="5.4.html" />
+    <link rel="prev" title="5.2" href="5.2.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../README.html" class="icon icon-home"> MySummary
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../软件构架设计/README.html">软件架构设计</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="README.html">Linux主线内核跟踪</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="5.0.html">5.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.1.html">5.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.2.html">5.2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pidfd">pidfd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#clamping-addon">Clamping调度算法（应该是个addon)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">用户态等待</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#iot-acrn-supervisor">IoT ACRN supervisor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">海思和华为</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">参考</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5.4.html">5.4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.5.html">5.5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.6.html">5.6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5.7.html">5.7</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../README.html">MySummary</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../README.html">Docs</a> &raquo;</li>
+        
+          <li><a href="README.html">Linux主线内核跟踪</a> &raquo;</li>
+        
+      <li>5.3</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Linux主线内核跟踪/5.3.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5.3<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>2019-9-15</p>
+<div class="section" id="pidfd">
+<h2>pidfd<a class="headerlink" href="#pidfd" title="永久链接至标题">¶</a></h2>
+<p>这是一个升级，过去已经做了，不是一个太好的方案。pidfd_open(pid, flags)为某个pid
+创建一个fd，然后你可以用pidfd_send_signal()发消息给特定的进程，而不用使用pid，pid
+可能被循环再用，导致发信号给错误的进程。</p>
+</div>
+<div class="section" id="clamping-addon">
+<h2>Clamping调度算法（应该是个addon)<a class="headerlink" href="#clamping-addon" title="永久链接至标题">¶</a></h2>
+<p>让进程有机会说明自己的能耗需求，调度大核还是小核来出来任务。</p>
+</div>
+<div class="section" id="id2">
+<h2>用户态等待<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>x86加了三条用户态忙等支持指令</p>
+<ul class="simple">
+<li>umonitor 确定一个用于忙等的地址范围</li>
+<li>umwait 地址范围等待</li>
+<li>tpause 无条件等待</li>
+</ul>
+<p>内核增加的接口是在sysfs中加一个配置最大等待时间的属性</p>
+</div>
+<div class="section" id="iot-acrn-supervisor">
+<h2>IoT ACRN supervisor<a class="headerlink" href="#iot-acrn-supervisor" title="永久链接至标题">¶</a></h2>
+<p>一个实时虚拟环境，针对IoT的应用，图上看来是type1的，分安全和非安全区，跑安全和
+非安全的OS，可以模拟各种guest，比如windowns和android，当然也可以跑实时Linux。</p>
+<p>现在只支持x86，</p>
+</div>
+<div class="section" id="id3">
+<h2>海思和华为<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>1620加了PMU事件</li>
+<li>Hi13x1网卡的mac</li>
+<li>hns/hns3升级</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h2>其他<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ul class="simple">
+<li>支持兆芯（主要是x86目录下加一个CPU文件，增加初始化和描述这个芯片的capa）
+maintainer是TonyWWang&#64;zhaoxin.com</li>
+<li>开放0.0.0.0/8 IPv4地址网段</li>
+<li>io_uring升级</li>
+<li>RV增加大页支持，和Image中用于bootloader的header。来自sifive的工作</li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h2>参考<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<table class="docutils footnote" frame="void" id="id6" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[1]</td><td><a class="reference external" href="https://kernelnewbies.org/LinuxChanges">https://kernelnewbies.org/LinuxChanges</a></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="5.4.html" class="btn btn-neutral float-right" title="5.4" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="5.2.html" class="btn btn-neutral float-left" title="5.2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Kenneth Lee
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
