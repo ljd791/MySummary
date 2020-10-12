@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>如何为libvirt设置虚拟主机 &mdash; MySummary 1.0 文档</title>
+  <title>什么是软件架构 &mdash; MySummary 1.0 文档</title>
   
 
   
@@ -35,8 +35,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="索引" href="../genindex.html" />
     <link rel="search" title="搜索" href="../search.html" />
-    <link rel="next" title="给普通人解释Spectre和Meltdown安全漏洞" href="给普通人解释Spectre和Meltdown安全漏洞.html" />
-    <link rel="prev" title="为什么你会在你的数据中心中部署ARM服务器" href="为什么你会在你的数据中心中部署ARM服务器.html" /> 
+    <link rel="next" title="大型软件架构设计" href="大型软件架构设计.html" />
+    <link rel="prev" title="软件架构设计" href="README.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="README.html">软件架构设计</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="什么是软件架构.html">什么是软件架构</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">什么是软件架构</a></li>
 <li class="toctree-l2"><a class="reference internal" href="大型软件架构设计.html">大型软件架构设计</a></li>
 <li class="toctree-l2"><a class="reference internal" href="架构师具体设计什么.html">架构师具体设计什么</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Use Case图有什么用？.html">Use Case图有什么用？</a></li>
@@ -155,7 +155,7 @@
 <li class="toctree-l2"><a class="reference internal" href="从逻辑链问题讨论怎么做高层设计.html">从逻辑链问题讨论怎么做高层设计</a></li>
 <li class="toctree-l2"><a class="reference internal" href="工程逻辑链.html">工程逻辑链</a></li>
 <li class="toctree-l2"><a class="reference internal" href="为什么你会在你的数据中心中部署ARM服务器.html">为什么你会在你的数据中心中部署ARM服务器</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">如何为libvirt设置虚拟主机</a></li>
+<li class="toctree-l2"><a class="reference internal" href="如何为libvirt设置虚拟主机.html">如何为libvirt设置虚拟主机</a></li>
 <li class="toctree-l2"><a class="reference internal" href="给普通人解释Spectre和Meltdown安全漏洞.html">给普通人解释Spectre和Meltdown安全漏洞</a></li>
 <li class="toctree-l2"><a class="reference internal" href="给程序员解释Spectre和Meltdown漏洞.html">给程序员解释Spectre和Meltdown漏洞</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Is retpoline really safe.html">Is retpoline really safe?</a></li>
@@ -379,13 +379,13 @@
         
           <li><a href="README.html">软件架构设计</a> &raquo;</li>
         
-      <li>如何为libvirt设置虚拟主机</li>
+      <li>什么是软件架构</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/软件构架设计/如何为libvirt设置虚拟主机.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/软件构架设计/什么是软件架构.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -398,50 +398,54 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="libvirt">
-<h1>如何为libvirt设置虚拟主机<a class="headerlink" href="#libvirt" title="永久链接至标题">¶</a></h1>
-<p>最近在ARM Server上分析虚拟机的数据压力，其中一种场景类似Docker，要把guest中的端
-口映射到host中，类似对Docker Image中做这样的动作：:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mi">8080</span><span class="p">:</span><span class="mi">80</span> <span class="n">my_web_server</span>
-</pre></div>
-</div>
-<p>但libvirt没有这样的配置，只在手册（Networking - Libvirt Wiki）中这样建议：:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iptables -I FORWARD -o virbr0 -d  $GUEST_IP \
-        -j ACCEPT iptables -t nat -I PREROUTING \
-        -p tcp --dport $HOST_PORT \
-        -j DNAT --to $GUEST_IP:$GUEST_PORT
-</pre></div>
-</div>
-<p>但实际上你这样做了，映射根本过不去。</p>
-<p>所以，我和Docker的规则对了一下，发现区别在这个地方：</p>
-<p>首先，DNAT不仅仅要对PREROUTING链来做，还要对OUTPUT链来做：:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iptables -t nat -A OUTPUT -p tcp --dport $HOST_PORT
-        -j DNAT --to-destination $GUEST_IP:$GUEST_IP
-</pre></div>
-</div>
-<p>第二，要给反向的包做SNAT：:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>iptables -t nat -A POSTROUTING -d $GUEST_IP \
-        -s $GUEST_IP -p tcp --dport $GUEST_PORT \
-        -j MASQUERADE
-</pre></div>
-</div>
-<p>这样就通了。</p>
-<p>深入分析一下，其实第二条是不需要的，因为如果你的机器使用默认的NAT网络，本来就有
-这个配置，而且，很多协议并不需要双向连接，没有SNAT并不会引起问题。</p>
-<p>而增加第一个配置的原因可以从这个图上看出来（来源：
-<a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg">https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg</a>）
-：</p>
-<blockquote>
-<div><div class="figure">
-<img alt="软件构架设计/iptable-qemu.jpg" src="软件构架设计/iptable-qemu.jpg" />
-</div>
-</div></blockquote>
-<p>veth是路由一层的协议，不经过nat链在链路层布下的PREROUTING钩子的，所以如果不在
-OUTPUT上做DNAT，就没有DNAT了。</p>
-<p>libvirt在这个问题上处理得好的话，应该把这种映射直接做在网络的XML配置中的，不过
-libvirt的应用场景和docker不一样，前者通常是用vxlan连接多个跨节点的虚拟机的，不
-需要通过本地的Host做防火墙，所以这个功能就没人弄了。但其实做单机测试和验证这个
-功能却很常用，希望圈内人士可以把这个功能加进去。</p>
+  <div class="section" id="id1">
+<h1>什么是软件架构<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>软件架构的定义是很不严谨的，有很多不同的表述，有人还把这些表述分为所谓决策派和
+组成派什么的。我不准备在这里给读者们引经据典。那是考据者的事，不是工作者的事。
+我表述我的观点。同时我认为，如果你接受我的观点，用这个观点来重新看原来的那些观
+点，就会发现他们表达的是同一个事情。</p>
+<p>用什么办法可以“定义”一个软件呢？把软件Specification写成什么样才能严格“定义”一个
+软件呢？在我刚入行的时候，和身边的同事有过很多关于这个问题讨论，当时中国（也许
+全世界都一样，但当时我的眼界不够，也不知道是不是）的软件水平如此之低。我们在这
+个问题上是很迷惘的。我们经常纠缠于类似这样的问题： “软件设计文档要写到多细才叫
+设计好了？”，“软件设计文档是否要列出所有的函数？是否要指明这些函数所有的输入输
+出？”</p>
+<p>现在看来，这个问题其实很简单。什么东西能够严格定义一个软件的行为？当然是源代码
+啊。对于每个情形软件的状态机应该如何反应，不是只有软件源代码本身才能完整表述吗
+？理解这一点，你就会发现，严格定义的尽头，就是源代码本身，包括编译这个源代码的
+脚本。最严谨的设计文档，就是源代码。</p>
+<p>既然如此，如果我们要写一个“完美”的设计文档，就应该直接开始写源代码。实际上，现
+在很多人都是这样的，我们常常都是直接写源代码的。</p>
+<p>我有一个同学，他爸爸是美院的教授，他画画的时候，从来不定架子的，画个头，然后补
+眼睛，把眼睛全部画好了，然后画鼻子……他说他这种画法，被他爸爸批为不走正道。但无
+论如何，他的画是比我画得好多了，我拿笔对着要画的东西比半天比例，画出来都没有他
+画的传神。我举这个例子，是要说，你如果罩得住，在不断给代码加细节的时候你就脑子
+里永远都知道你这个细节在整体上的位置是什么，你根本不需要写设计文档，你写出代码
+来就好了。</p>
+<p>所以，并没有什么必然的如何写设计文档的方法，关键是你的脑子有多清晰。像我，几个
+电话号码都记不利索的，你让我不要进行设计推演，这是肯定不可能的。对端发过来一个
+请求，我创建一个会话，对端再发初始化信息，我进入准备态，然后超时，我切换到待机
+状态……这样的设计逻辑，你让我从代码中理出头绪来，我肯定是做不到的，那我就需要画
+STD（状态变迁图），推演所有可能的状态变迁，化简状态和Action的数量。这个STD，就
+是我的“设计”，这种设计同样可以表述在代码中。是写成文档，还是直接变成代码，取决
+于我（包括我的团队）对这个问题的理解能力有多强，以及代码在这个问题上需要综合表
+述多少个逻辑。我曾经写过一个驱动，状态机管理本身就是一个子模块，可以直接从数据
+结构上看到所有的状态以及变迁条件和变迁引起的action，这种情况，代码就可以是设计
+本身的。</p>
+<p>所以，“设计应该做到多细”，这个问题是没有答案的，设计是素描的时候你画的所有辅助
+线，以及你先画出来的部分，在这个设计过程中，你不断增加细节，这些细节很大部分可
+能就是代码，他们全部是设计的一部分。</p>
+<p>理解了设计意味着什么，你也就理解了构架设计意味着什么。然后你就可以理解克莱门茨
+在《软件架构编档》中的那个总结了——“架构是架构师眼中的设计”。我们从构架进展到设
+计，然后进展到代码。它们之间并没有清晰的界限。构架也许一开始就是代码，也许是状
+态图，也许是4+1视图，并没有固定的方法，这都取决于设计对象和设计本身。它们都是架
+构师对整个设计过程的预判。</p>
+<p>所以，构架是一门无法从学院和教材学习的学问，要装作自己在做架构设计很容易，要让
+架构设计变成最后的代码才是难点。就好像你叼根烟，皱着眉头对着地图的样子也很像个
+元帅。但是不是元帅看的是你能否把仗打赢，不是看你叼烟的样子是不是够屌。</p>
+<p>我们理解软件构架的这个特点，知道我们能做什么和不能做什么，面对的困难是什么，我
+们才有可能理解常用的构架工具，比如DFD/AFD，STD，Use Case这样的工具，到底可以解
+决什么问题，不能解决什么问题。而直接学习这些工具，并不能让你学会软件构架。</p>
 </div>
 
 
@@ -452,10 +456,10 @@ libvirt的应用场景和docker不一样，前者通常是用vxlan连接多个�
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="给普通人解释Spectre和Meltdown安全漏洞.html" class="btn btn-neutral float-right" title="给普通人解释Spectre和Meltdown安全漏洞" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="大型软件架构设计.html" class="btn btn-neutral float-right" title="大型软件架构设计" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="为什么你会在你的数据中心中部署ARM服务器.html" class="btn btn-neutral float-left" title="为什么你会在你的数据中心中部署ARM服务器" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="README.html" class="btn btn-neutral float-left" title="软件架构设计" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
