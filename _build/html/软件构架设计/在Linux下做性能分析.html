@@ -417,6 +417,10 @@
 <li class="toctree-l2"><a class="reference internal" href="软件之硬.html">软件之硬</a></li>
 <li class="toctree-l2"><a class="reference internal" href="诚其意.html">诚其意</a></li>
 <li class="toctree-l2"><a class="reference internal" href="把什么放入架构设计.html">把什么放入架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="线程的本质.html">线程的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="限制的可移动性.html">限制的可移动性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="指令寻址模式.html">指令寻址模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARMv8的安全特性的主线逻辑.html">ARMv8的安全特性的主线逻辑</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
@@ -980,7 +984,7 @@ perf命令，而通过的perf命令入其实只是个脚本，根据你当前的
 perf &lt;子命令&gt;这种模式。所有人首先需要学习的是两个最简单的命令：perf list和perf
 top。</p>
 <p>perf list列出perf可以支持的所有事件。例如这样：:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">figure</span><span class="p">::</span> <span class="n">perf4</span><span class="o">.</span><span class="n">jpg</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">figure</span><span class="p">::</span> <span class="n">_static</span><span class="o">/</span><span class="n">perf4</span><span class="o">.</span><span class="n">jpg</span>
 </pre></div>
 </div>
 <p>旧版本还会列出所有的tracepoint，但那个列表太长了，新版本已经不列这个东西了，读
@@ -1689,7 +1693,7 @@ stalled-cycles-backend，通过这两个统计，你可以看到，无论你如�
 ：</p>
 <blockquote>
 <div><div class="figure">
-<img alt="软件构架设计/iotune5.jpg" src="软件构架设计/iotune5.jpg" />
+<img alt="../_images/iotune5.png" src="../_images/iotune5.png" />
 </div>
 </div></blockquote>
 <p>这其中有三类参数，一个是实际的带宽，我们可以用这个来比较物理设备的线速。第二个

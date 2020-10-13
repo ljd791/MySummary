@@ -89,6 +89,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="README.html">软件架构设计</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="什么是软件架构.html">什么是软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大型软件架构设计.html">大型软件架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构师具体设计什么.html">架构师具体设计什么</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Use Case图有什么用？.html">Use Case图有什么用？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="使用软件的四种方法.html">使用软件的四种方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="从单元测试理解软件.html">从单元测试理解软件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="名可名.html">名可名</a></li>
 <li class="toctree-l2"><a class="reference internal" href="小国寡民.html">小国寡民</a></li>
@@ -324,15 +329,19 @@
 <li class="toctree-l3"><a class="reference internal" href="#id2">新版本说明</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id3">介绍</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#use-case">Use Case视图</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">概念空间建模</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id5">开发视图</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id6">处理视图</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id7">部署视图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">概念空间建模</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">开发视图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">处理视图</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">部署视图</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="软件之硬.html">软件之硬</a></li>
 <li class="toctree-l2"><a class="reference internal" href="诚其意.html">诚其意</a></li>
 <li class="toctree-l2"><a class="reference internal" href="把什么放入架构设计.html">把什么放入架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="线程的本质.html">线程的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="限制的可移动性.html">限制的可移动性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="指令寻址模式.html">指令寻址模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARMv8的安全特性的主线逻辑.html">ARMv8的安全特性的主线逻辑</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
@@ -438,13 +447,13 @@
 证用的软件和普通的软件是很不一样的。验证软件更关心的是如何可以重置芯片的状态，
 然后构造一个或者多个行为，判断芯片是否可以正常反应。而芯片的使用软件更关心的是
 如何选定一个使用这个芯片的方法，让其他不在选定范围中的状态根本进都进不去。</p>
-<p>比如说，一个网卡（注1）可以把多个通讯队列（Q)分给不同的虚拟网卡（VF），比如你有
-100个Q，你可以分配两个VF，每个50个Q。你也可以分成三个VF，两个30个Q，还有一个40
-个Q，甚至可以两个50个，还有一个没有VF（比如用于自环测试等等）诸如此类的。如果要
-进行验证，我们需要制造多种初始化手段，在网卡上创建不同的VF，每个VF上用不同数量
-的队列，而且尽量测试各种极端的分配情况看看会不会出错。而如果要用于实现功能，我
-们可能一开始就设置一种VF队列分配算法，那些分配0个队列给VF的情况，我们甚至在很多
-地方都加了控制逻辑，让这种情况发生不了。</p>
+<p>比如说，一个网卡（ <a class="footnote-reference" href="#id9" id="id4">[1]</a> ）可以把多个通讯队列（Q)分给不同的虚拟网卡（VF），比如
+你有100个Q，你可以分配两个VF，每个50个Q。你也可以分成三个VF，两个30个Q，还有一
+个40个Q，甚至可以两个50个，还有一个没有VF（比如用于自环测试等等）诸如此类的。如
+果要进行验证，我们需要制造多种初始化手段，在网卡上创建不同的VF，每个VF上用不同
+数量的队列，而且尽量测试各种极端的分配情况看看会不会出错。而如果要用于实现功能
+，我们可能一开始就设置一种VF队列分配算法，那些分配0个队列给VF的情况，我们甚至在
+很多地方都加了控制逻辑，让这种情况发生不了。</p>
 <p>这样，两个软件的代码行为和模块分解就是不一样的。验证代码可能会根据不同的队列分
 配关系，测试不同VF的带宽是否得到扩充。而功能软件可能会更关注比如按一定的策略分
 配了VF后，把两个VF组合起来形成Bonding的功能是否可以正常工作，或者其中一条链路断
@@ -529,8 +538,8 @@ Proxy正常工作。验证是要遍历接口所有可能性的，而功能软件
 他们还用了openssl.h呢？调用了perl和tcl的脚本呢？访问了Linux的sysfs呢？你的依赖
 就更多了。最后你的系统就不可控。</p>
 </div>
-<div class="section" id="id4">
-<h2>概念空间建模<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id5">
+<h2>概念空间建模<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>当你有了这方面的考量，你就会需要概念空间的建模。概念空间说明这些使用者每个怎么
 用你的系统。为了说明白这些功能，你需要一些基本的定义，说明这些定义之间的关系。
 比如这里提到的用例增加的功能，你可能需要说明白：</p>
@@ -611,8 +620,8 @@ fail或者通过uc_fault()抛出异常。……”</p>
 <p>有这张图你肯定更容易说明白你整个软件的组成，但概念空间的建模的重点就不是那几张
 UML图。</p>
 </div>
-<div class="section" id="id5">
-<h2>开发视图<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id6">
+<h2>开发视图<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p>概念视图不是实际的代码，所有其他视图都一样。所有的“模型”，都不是实际的代码（但
 他们可以是代码），因为如果我们有代码了，通常我们不需要建模。</p>
 <p>所以，我们应该理解，开发视图不是延续概念视图的逻辑出来的。它是换一个细节关心的
@@ -676,8 +685,8 @@ UML图。</p>
 </div>
 </div></blockquote>
 </div>
-<div class="section" id="id6">
-<h2>处理视图<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id7">
+<h2>处理视图<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p>处理视图建模另一个写代码的时候控制不住的维度，主要是Scalability。也就是说，如果
 你一个线程，一台机器搞不定，你怎么把业务展开到多个执行体上。</p>
 <p>看什么类型的验证了，我所知的很多验证，因为被验证平台执行速度上的问题，用集群进
@@ -701,8 +710,8 @@ TestBench”这样的维度，很可能你要定义针对处理视图的概念�
 胡陬几句上去。架构设计每句话都是针对细节设计的约束，而不是给某个专家或者领导检
 查看的。</p>
 </div>
-<div class="section" id="id7">
-<h2>部署视图<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id8">
+<h2>部署视图<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>最后，部署视图在我的职业生涯中用得很少，它也是个独立的维度，考虑最后运行起来，
 怎么安装到目标节点上，如何控制这个安装过程，具体每个节点跑什么这样一个维度。这
 个部分我作为答疑来讲吧——如果你们有问题，可以直接问。</p>
@@ -715,10 +724,10 @@ TestBench”这样的维度，很可能你要定义针对处理视图的概念�
 <div class="line">的时候控制不住的，而不是——如前所述——专家告诉你要满足的某些“原则”。</div>
 </div>
 </div></blockquote>
-<table class="docutils footnote" frame="void" id="id8" rules="none">
+<table class="docutils footnote" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[1]</td><td>没有相关背景的读者可能觉得网卡不是“芯片”，但现在的SoC中其实是内置网卡的。
+<tr><td class="label"><a class="fn-backref" href="#id4">[1]</a></td><td>没有相关背景的读者可能觉得网卡不是“芯片”，但现在的SoC中其实是内置网卡的。
 当然我也可以举CPU核测试的例子，但这样有直观感受的读者会更少，所以我们还
 是用网卡来举例子。</td></tr>
 </tbody>

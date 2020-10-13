@@ -89,6 +89,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="README.html">软件架构设计</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="什么是软件架构.html">什么是软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大型软件架构设计.html">大型软件架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构师具体设计什么.html">架构师具体设计什么</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Use Case图有什么用？.html">Use Case图有什么用？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="使用软件的四种方法.html">使用软件的四种方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="从单元测试理解软件.html">从单元测试理解软件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="名可名.html">名可名</a></li>
 <li class="toctree-l2"><a class="reference internal" href="小国寡民.html">小国寡民</a></li>
@@ -324,6 +329,10 @@
 <li class="toctree-l2"><a class="reference internal" href="软件之硬.html">软件之硬</a></li>
 <li class="toctree-l2"><a class="reference internal" href="诚其意.html">诚其意</a></li>
 <li class="toctree-l2"><a class="reference internal" href="把什么放入架构设计.html">把什么放入架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="线程的本质.html">线程的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="限制的可移动性.html">限制的可移动性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="指令寻址模式.html">指令寻址模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARMv8的安全特性的主线逻辑.html">ARMv8的安全特性的主线逻辑</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
@@ -413,12 +422,12 @@
 <p>换句话说，当一个对象包含很多的属性，记为：</p>
 <blockquote>
 <div><div class="math">
-<p><span class="math">Obj(a|a \in A)</span></p>
+<p><img src="../_images/math/68c0ee36938e3f41f6ce5fbeaf397f0760a6a067.png" alt="Obj(a|a \in A)"/></p>
 </div></div></blockquote>
 <dl class="docutils">
 <dt>那么，</dt>
 <dd><div class="first last math">
-<p><span class="math">Obj(b|b \in B, B \subseteq A)</span></p>
+<p><img src="../_images/math/b4798d1e49a168b77d772a5553083d313da5ba43.png" alt="Obj(b|b \in B, B \subseteq A)"/></p>
 </div></dd>
 </dl>
 <p>就是前者的一个抽象。</p>
@@ -463,7 +472,7 @@
 的约束，从而逐步细化出最后的结果。</p>
 <p>还是上面这个例子，高层架构掌握的情况是：</p>
 <blockquote>
-<div></div></blockquote>
+<div>（图片丢失）</div></blockquote>
 <p>系统需要从芯片的复位向量上开始启动运行，运行完成后需要停机io设备需要初始化系统
 的内存需要统一管理io设备可以按一定格式输出内容</p>
 <p>只要这些条件可以成立，这个逻辑就可以通了。至于io_init()是不是需要给定一个超时参

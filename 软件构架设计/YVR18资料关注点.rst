@@ -31,15 +31,15 @@ ARM在指令版本v8.3（这里都是指A系列）的时候开始引入PAC，到
 执行的指令的页面上给定一个标记c，跳转的目标指令如果不以btic开头，就异常。示例
 代码如下：::
 
-start:
-blrx0
-...
-good://如果x0定位在这里，就是正常的
-btic
-...
-bad://如果x0定位在这里，就会异常
-movx0,#16
-...
+        start:
+        blrx0
+        ...
+        good://如果x0定位在这里，就是正常的
+        btic
+        ...
+        bad://如果x0定位在这里，就会异常
+        movx0,#16
+        ...
 
 我最早看PAC的Spec的时候，第一反应是这东西是用来支持pkey_mprotect()的（要知道这
 是什么，请参考manmprotect，它是mprotect的升级版本）。但从这次会议的介绍来看，
@@ -73,17 +73,17 @@ qemuTCG功能可以用于qemu-user和qemu-system，我个人很少用user，我�
 当你启动qemu后，可以通过^ac切换到qemu的虚拟机控制台，然后你可以用如下命令来查
 你可以跟踪的事件：::
 
-infotrace-events
+        infotrace-events
 
 这个命令可以带参数对结果进行过滤：::
 
-infotrace-eventsgicv3_*
+        infotrace-eventsgicv3_*
 
 确定你要跟踪的事件后，用trace-event来跟踪对应事件，用trace-file设置跟踪文件（也
 可以直接通过命令行参数-trace指定）：::
 
-trace-eventsgicv3_*on
-trace-filesetmytrace.out
+        trace-eventsgicv3_*on
+        trace-filesetmytrace.out
 
 qemu不是时钟精确的模拟器，暂时来说我还找不到非要用这个东西调试的场景，不过我对
 这个东西的未来还是抱很高的期望。
@@ -91,7 +91,7 @@ qemu不是时钟精确的模拟器，暂时来说我还找不到非要用这个�
 注1：很多平台的qemu都没有开启trace功能，可以考虑自己编译一个，使用如下configure
 选项：::
 
---enable-trace-backends=ftrace|log|dtrace|syslog
+        --enable-trace-backends=ftrace|log|dtrace|syslog
 
 推荐选择log，这个比较容易实验。我简单试用了一下相关功能，Bug不少，功能的自恰性
 也比较差，暂时离实用还有距离。有人可能觉得这个东西用Foundation或者FPGAEmulator
@@ -148,21 +148,21 @@ Treble兼容性通过升级的HAL层实现，为此引入了一种HIDL语言来�
 HIDL本质上是对Binder接口的封装，源文件用hal做扩展名，很类似过去Binder的Java接口
 定义文件，像这样：::
 
-interfaceIBarextendsIFoo{//IFooisanotherinterface
-//embeddedtypes
-structMyStruct{/*...*/};
+        interfaceIBarextendsIFoo{//IFooisanotherinterface
+        //embeddedtypes
+        structMyStruct{/*...*/};
 
-//interfacemethods
-create(int32_tid)generates(MyStructs);
-close();
-};
+        //interfacemethods
+        create(int32_tid)generates(MyStructs);
+        close();
+        };
 
 如果是绑定式或者共享内存式，Framework和HAL间就是IPC调用，如果是SP-HAL方式，就变
 成dlopen，然后直接进行相关的本地调用。
 
 拿个现场的图来看更简单：
 
-..figure::treble.jpg
+        ..figure::treble.jpg
 
 在内核上，Treble推出了一个公共的主线：
 https://android.googlesource.com/kernel/common/，但从介绍材料上看是推荐性质的，
@@ -170,7 +170,7 @@ https://android.googlesource.com/kernel/common/，但从介绍材料上看是推
 的项目是要拉着几个主要的供应商一起维护这个内核，但以AOSP现在的升级速度，我觉得
 真正实现这个会比较困难。
 
-..figure::treble2.jpg
+        ..figure::treble2.jpg
 
 Treble要求各家必须使用ko的方式提供驱动，然后尝试把通用内核和驱动放在vboot分区上
 ，Soc相关驱动放SoC分区上，ODM的相关驱动放在ODM分区上。希望可以独立升级通用内核
@@ -200,7 +200,7 @@ SPDX
 
 最近上传LinuxKernel的代码的时候，都是拷贝别人的版权声明头，比如这样：::
 
-SPDX-License-Identifier:GPL-2.0+
+        SPDX-License-Identifier:GPL-2.0+
 
 一直没有认真去看看为什么现在都这样写声明了。209演讲里面，LinuxFoundation有人来
 讲了相关的背景，这都源自这个项目：SoftwarePackageDataExchange(SPDX)
@@ -210,7 +210,7 @@ SPDX-License-Identifier:GPL-2.0+
 
 实际上，根据最新定义的2.0版本，上面那个定义应该写成：::
 
-SPDX-License-Identifier:GPL-2.0-or-later
+        SPDX-License-Identifier:GPL-2.0-or-later
 
 GPL-2.0+已经被废弃了。
 
@@ -218,11 +218,13 @@ GPL-2.0+已经被废弃了。
 版权声明段，或者直接在输出中包含一个版权声明文件。
 
 所以，以后写开源代码，不妨查一些这个列表：
-SoftwarePackageDataExchange(SPDX)spdx.org
+
+        SoftwarePackageDataExchange(SPDX)spdx.org
 
 然后直接在源文件的最前面加上这个声明。更详细的表述方法，可以参考演讲221中的L4Re
 的声明方法：
-kernkonzept/l4re-core
+
+        kernkonzept/l4re-core
 
 
 当前的Linux调度器设计
@@ -277,7 +279,7 @@ Linux在O(1)之前的调度器基本上是个玩具，那个东西我们就忽�
 的原理。从名字就能看出来，O(1)算法是要保证取下一个运行任务的时候，算法复杂度是
 O(1)，它用这样的数据结构：
 
-..figure::o1调度.jpg
+        .. figure::o1调度.jpg
 
 待运行的任务都挂在Active队列下面，每个Active分优先级Hash开，在用一个bitmap标记
 哪个队列中有任务，这样，要投入运行，只要检查一下bitmap，然后拿那个队列的第一个
@@ -351,7 +353,7 @@ Linux内核进展越来越快，越来越成熟。现在上传一个特性到内
 静态检查的，除了checkpatch，我们还可以用sparse。用法如下（在安装了sparse的前提
 下）：::
 
-makeC=1
+        make C=1
 
 这会增加更严格的惯例检查。检查是附属在普通编译过程中的，如果你已经编译了所有.o
 了，这个检查不会发生。
@@ -359,19 +361,19 @@ makeC=1
 还有一个更强大的是胭脂虫(coccinelle)，用法如下（在安装了coccinelle以后，注1）：
 ::
 
-makecoccicheck
+        make coccicheck
 
 这个命令可以缩小到某个目录的范围内，比如：::
 
-makecoccicheckM=my/own/directory
+        makecoccicheckM=my/own/directory
 
 我试了一下，这个检查的功能还是很强大的，比如我的代码中有这么一行：::
 
-q->svas->nr_pages=(vma->vm_end-vma->vm_start)>>PAGE_SHIFT
+        q->svas->nr_pages=(vma->vm_end-vma->vm_start)>>PAGE_SHIFT
 
 它还能报这种错：::
 
-WARNING:Considerusingvma_pageshelperonvma
+        WARNING: Consider using vma_page shelperonvma
 
 这个可以作为上传前标准检查的一部分。
 
@@ -380,8 +382,8 @@ WARNING:Considerusingvma_pageshelperonvma
 
 kselftest：这个类似LTP，是内置的一组功能测试用例，这样编译和运行：::
 
-make-Ctools/testing/selftest
-makekselftest
+        make-Ctools/testing/selftest
+        makekselftest
 
 其实编译出来的就是一个个独立的可执行程序，拷贝过去直接运行就可以了。
 
@@ -393,7 +395,6 @@ gcov：这是把gcov的功能用到内核上。在用户态做单元测试一般
 率的，这个功能现在在内核中也可以用了。它通过配置项CONFIG_GCOV_KERNEL使能。开启
 后，可以在/sys/kernel/debugfs/gcov找到所有跟踪数据文件（*.gcda)，用gcov命令就可
 以直接看到代码的执行覆盖率。
-
 
 kmemleak和Kasan：这两个是自动内存检查，前者发现内存泄漏，后者发现use-after-free
 错误，分别通过CONFIG_DEBUG_KMEMLEAK和CONFIG_KASAN使能，发现有问题会自动抱错的，

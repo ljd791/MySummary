@@ -32,8 +32,8 @@ git的核心需求是一个文件树版本管理工具。这个事情的本质�
 
 你记录它的内容：::
 
-040000 tree e1b8ecbb1f19709f3a4867a0ffe08bb2e07acf19 dir 100644 blob
-9daeafb9864cf43055ae93beb0afd6c7d144bfa4 file
+        040000 tree e1b8ecbb1f19709f3a4867a0ffe08bb2e07acf19 dir
+        100644 blob 9daeafb9864cf43055ae93beb0afd6c7d144bfa4 file
 
 用e1b8...作为文件名，放dir的描述，用9dae...作为文件名，放file的内容，这个数据结
 构可以被复现在任何文件系统上，这样这个架构，就会有一个非常坚实的基础，任何时候

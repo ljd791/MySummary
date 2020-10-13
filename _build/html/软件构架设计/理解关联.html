@@ -89,6 +89,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="README.html">软件架构设计</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="什么是软件架构.html">什么是软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大型软件架构设计.html">大型软件架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构师具体设计什么.html">架构师具体设计什么</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Use Case图有什么用？.html">Use Case图有什么用？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="使用软件的四种方法.html">使用软件的四种方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="从单元测试理解软件.html">从单元测试理解软件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="名可名.html">名可名</a></li>
 <li class="toctree-l2"><a class="reference internal" href="小国寡民.html">小国寡民</a></li>
@@ -324,6 +329,10 @@
 <li class="toctree-l2"><a class="reference internal" href="软件之硬.html">软件之硬</a></li>
 <li class="toctree-l2"><a class="reference internal" href="诚其意.html">诚其意</a></li>
 <li class="toctree-l2"><a class="reference internal" href="把什么放入架构设计.html">把什么放入架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="线程的本质.html">线程的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="限制的可移动性.html">限制的可移动性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="指令寻址模式.html">指令寻址模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARMv8的安全特性的主线逻辑.html">ARMv8的安全特性的主线逻辑</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
@@ -426,14 +435,12 @@
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>或者另一个对象把两者关联起来：</p>
-<blockquote>
-<div><dl class="docutils">
-<dt>class C {</dt>
-<dd>Map&lt;class A, class B&gt; ab_map;</dd>
-</dl>
-<p>}</p>
-</div></blockquote>
+<p>或者另一个对象把两者关联起来：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span> <span class="p">{</span>
+        <span class="n">Map</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">A</span><span class="p">,</span> <span class="k">class</span> <span class="nc">B</span><span class="o">&gt;</span> <span class="n">ab_map</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>甚至可以从表面上看不出来的，下面是一个从表面上看不出的关联：:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">A</span> <span class="p">{</span>
         <span class="n">void</span> <span class="n">storeStudentData</span><span class="p">(</span><span class="n">FILE</span> <span class="o">*</span><span class="n">file</span><span class="p">);</span>

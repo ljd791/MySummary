@@ -89,6 +89,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../道德经直译/README.html">《道德经》直译</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../花朵的温室/README.html">花朵的温室</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="README.html">软件架构设计</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="什么是软件架构.html">什么是软件架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="大型软件架构设计.html">大型软件架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="架构师具体设计什么.html">架构师具体设计什么</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Use Case图有什么用？.html">Use Case图有什么用？</a></li>
+<li class="toctree-l2"><a class="reference internal" href="使用软件的四种方法.html">使用软件的四种方法</a></li>
 <li class="toctree-l2"><a class="reference internal" href="从单元测试理解软件.html">从单元测试理解软件</a></li>
 <li class="toctree-l2"><a class="reference internal" href="名可名.html">名可名</a></li>
 <li class="toctree-l2"><a class="reference internal" href="小国寡民.html">小国寡民</a></li>
@@ -334,6 +339,10 @@
 <li class="toctree-l2"><a class="reference internal" href="软件之硬.html">软件之硬</a></li>
 <li class="toctree-l2"><a class="reference internal" href="诚其意.html">诚其意</a></li>
 <li class="toctree-l2"><a class="reference internal" href="把什么放入架构设计.html">把什么放入架构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="线程的本质.html">线程的本质</a></li>
+<li class="toctree-l2"><a class="reference internal" href="限制的可移动性.html">限制的可移动性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="指令寻址模式.html">指令寻址模式</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ARMv8的安全特性的主线逻辑.html">ARMv8的安全特性的主线逻辑</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../Linux主线内核跟踪/README.html">Linux主线内核跟踪</a></li>
@@ -426,7 +435,7 @@
 <p>而BTI的作用从介绍上看是类似的，不过是作用于代码，如果你跳转到另一个地址，而你所
 执行的指令的页面上给定一个标记c，跳转的目标指令如果不以btic开头，就异常。示例
 代码如下：:</p>
-<p>start:
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>start:
 blrx0
 ...
 good://如果x0定位在这里，就是正常的
@@ -434,7 +443,9 @@ btic
 ...
 bad://如果x0定位在这里，就会异常
 movx0,#16
-...</p>
+...
+</pre></div>
+</div>
 <p>我最早看PAC的Spec的时候，第一反应是这东西是用来支持pkey_mprotect()的（要知道这
 是什么，请参考manmprotect，它是mprotect的升级版本）。但从这次会议的介绍来看，
 这两个特性首先考量的目标场景是保护ROP和JOP。</p>
@@ -461,13 +472,19 @@ movx0,#16
 <p>qemuTCG功能可以用于qemu-user和qemu-system，我个人很少用user，我用system为例。
 当你启动qemu后，可以通过^ac切换到qemu的虚拟机控制台，然后你可以用如下命令来查
 你可以跟踪的事件：:</p>
-<p>infotrace-events</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">infotrace</span><span class="o">-</span><span class="n">events</span>
+</pre></div>
+</div>
 <p>这个命令可以带参数对结果进行过滤：:</p>
-<p>infotrace-eventsgicv3_*</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">infotrace</span><span class="o">-</span><span class="n">eventsgicv3_</span><span class="o">*</span>
+</pre></div>
+</div>
 <p>确定你要跟踪的事件后，用trace-event来跟踪对应事件，用trace-file设置跟踪文件（也
 可以直接通过命令行参数-trace指定）：:</p>
-<p>trace-eventsgicv3_*on
-trace-filesetmytrace.out</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">trace</span><span class="o">-</span><span class="n">eventsgicv3_</span><span class="o">*</span><span class="n">on</span>
+<span class="n">trace</span><span class="o">-</span><span class="n">filesetmytrace</span><span class="o">.</span><span class="n">out</span>
+</pre></div>
+</div>
 <p>qemu不是时钟精确的模拟器，暂时来说我还找不到非要用这个东西调试的场景，不过我对
 这个东西的未来还是抱很高的期望。</p>
 <p>注1：很多平台的qemu都没有开启trace功能，可以考虑自己编译一个，使用如下configure
@@ -514,23 +531,28 @@ Workload管理）。</p>
 (SP-HAL），也可以通过共享内存来实现（比如传统的HWComposer）</p>
 <p>HIDL本质上是对Binder接口的封装，源文件用hal做扩展名，很类似过去Binder的Java接口
 定义文件，像这样：:</p>
-<p>interfaceIBarextendsIFoo{//IFooisanotherinterface
-//embeddedtypes
-structMyStruct{/<em>...</em>/};</p>
-<p>//interfacemethods
-create(int32_tid)generates(MyStructs);
-close();
-};</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">interfaceIBarextendsIFoo</span><span class="p">{</span><span class="o">//</span><span class="n">IFooisanotherinterface</span>
+<span class="o">//</span><span class="n">embeddedtypes</span>
+<span class="n">structMyStruct</span><span class="p">{</span><span class="o">/*...*/</span><span class="p">};</span>
+
+<span class="o">//</span><span class="n">interfacemethods</span>
+<span class="n">create</span><span class="p">(</span><span class="n">int32_tid</span><span class="p">)</span><span class="n">generates</span><span class="p">(</span><span class="n">MyStructs</span><span class="p">);</span>
+<span class="n">close</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
 <p>如果是绑定式或者共享内存式，Framework和HAL间就是IPC调用，如果是SP-HAL方式，就变
 成dlopen，然后直接进行相关的本地调用。</p>
 <p>拿个现场的图来看更简单：</p>
-<p>..figure::treble.jpg</p>
+<blockquote>
+<div>..figure::treble.jpg</div></blockquote>
 <p>在内核上，Treble推出了一个公共的主线：
 <a class="reference external" href="https://android.googlesource.com/kernel/common/">https://android.googlesource.com/kernel/common/</a>，但从介绍材料上看是推荐性质的，
 还没有能力让各家都使用同一个内核，这应该是一个合作效率的问题。Google在Linaro上
 的项目是要拉着几个主要的供应商一起维护这个内核，但以AOSP现在的升级速度，我觉得
 真正实现这个会比较困难。</p>
-<p>..figure::treble2.jpg</p>
+<blockquote>
+<div>..figure::treble2.jpg</div></blockquote>
 <p>Treble要求各家必须使用ko的方式提供驱动，然后尝试把通用内核和驱动放在vboot分区上
 ，Soc相关驱动放SoC分区上，ODM的相关驱动放在ODM分区上。希望可以独立升级通用内核
 部分，我个人不是很看好这种模式。我认为他们升不了几个版本的。</p>
@@ -552,21 +574,27 @@ close();
 <div class="section" id="spdx">
 <h2>SPDX<a class="headerlink" href="#spdx" title="永久链接至标题">¶</a></h2>
 <p>最近上传LinuxKernel的代码的时候，都是拷贝别人的版权声明头，比如这样：:</p>
-<p>SPDX-License-Identifier:GPL-2.0+</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPDX</span><span class="o">-</span><span class="n">License</span><span class="o">-</span><span class="n">Identifier</span><span class="p">:</span><span class="n">GPL</span><span class="o">-</span><span class="mf">2.0</span><span class="o">+</span>
+</pre></div>
+</div>
 <p>一直没有认真去看看为什么现在都这样写声明了。209演讲里面，LinuxFoundation有人来
 讲了相关的背景，这都源自这个项目：SoftwarePackageDataExchange(SPDX)</p>
 <p>它定义了被广泛使用的常见版权的“标识”，建议通过这些标识来唯一定义一个版权声明。
 所以现在Linux内核中都统一使用上面那样的声明方式。</p>
 <p>实际上，根据最新定义的2.0版本，上面那个定义应该写成：:</p>
-<p>SPDX-License-Identifier:GPL-2.0-or-later</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SPDX</span><span class="o">-</span><span class="n">License</span><span class="o">-</span><span class="n">Identifier</span><span class="p">:</span><span class="n">GPL</span><span class="o">-</span><span class="mf">2.0</span><span class="o">-</span><span class="ow">or</span><span class="o">-</span><span class="n">later</span>
+</pre></div>
+</div>
 <p>GPL-2.0+已经被废弃了。</p>
 <p>源代码中包含这样的声明，编译工具有就有机会找到对应的声明，生成内置在二进制中的
 版权声明段，或者直接在输出中包含一个版权声明文件。</p>
-<p>所以，以后写开源代码，不妨查一些这个列表：
-SoftwarePackageDataExchange(SPDX)spdx.org</p>
+<p>所以，以后写开源代码，不妨查一些这个列表：</p>
+<blockquote>
+<div>SoftwarePackageDataExchange(SPDX)spdx.org</div></blockquote>
 <p>然后直接在源文件的最前面加上这个声明。更详细的表述方法，可以参考演讲221中的L4Re
-的声明方法：
-kernkonzept/l4re-core</p>
+的声明方法：</p>
+<blockquote>
+<div>kernkonzept/l4re-core</div></blockquote>
 </div>
 <div class="section" id="linux">
 <h2>当前的Linux调度器设计<a class="headerlink" href="#linux" title="永久链接至标题">¶</a></h2>
@@ -611,7 +639,8 @@ bound的任务，1个shell，然后你在shell上按下一个a，这个a要等50
 <p>Linux在O(1)之前的调度器基本上是个玩具，那个东西我们就忽略了。我们先看O(1)调度器
 的原理。从名字就能看出来，O(1)算法是要保证取下一个运行任务的时候，算法复杂度是
 O(1)，它用这样的数据结构：</p>
-<p>..figure::o1调度.jpg</p>
+<blockquote>
+<div></div></blockquote>
 <p>待运行的任务都挂在Active队列下面，每个Active分优先级Hash开，在用一个bitmap标记
 哪个队列中有任务，这样，要投入运行，只要检查一下bitmap，然后拿那个队列的第一个
 任务运行就可以了（这就是这个算法称为O(1)的原因）。当一个任务的时间片用完了，就
@@ -662,22 +691,34 @@ O(1)可控。</p>
 <p>几年不看，其实现在已经不止有这些方法了，我们分两个维度来看：</p>
 <p>静态检查的，除了checkpatch，我们还可以用sparse。用法如下（在安装了sparse的前提
 下）：:</p>
-<p>makeC=1</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
 <p>这会增加更严格的惯例检查。检查是附属在普通编译过程中的，如果你已经编译了所有.o
 了，这个检查不会发生。</p>
 <p>还有一个更强大的是胭脂虫(coccinelle)，用法如下（在安装了coccinelle以后，注1）：</p>
-<p>makecoccicheck</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span> <span class="n">coccicheck</span>
+</pre></div>
+</div>
 <p>这个命令可以缩小到某个目录的范围内，比如：:</p>
-<p>makecoccicheckM=my/own/directory</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">makecoccicheckM</span><span class="o">=</span><span class="n">my</span><span class="o">/</span><span class="n">own</span><span class="o">/</span><span class="n">directory</span>
+</pre></div>
+</div>
 <p>我试了一下，这个检查的功能还是很强大的，比如我的代码中有这么一行：:</p>
-<p>q-&gt;svas-&gt;nr_pages=(vma-&gt;vm_end-vma-&gt;vm_start)&gt;&gt;PAGE_SHIFT</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span><span class="o">-&gt;</span><span class="n">svas</span><span class="o">-&gt;</span><span class="n">nr_pages</span><span class="o">=</span><span class="p">(</span><span class="n">vma</span><span class="o">-&gt;</span><span class="n">vm_end</span><span class="o">-</span><span class="n">vma</span><span class="o">-&gt;</span><span class="n">vm_start</span><span class="p">)</span><span class="o">&gt;&gt;</span><span class="n">PAGE_SHIFT</span>
+</pre></div>
+</div>
 <p>它还能报这种错：:</p>
-<p>WARNING:Considerusingvma_pageshelperonvma</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WARNING</span><span class="p">:</span> <span class="n">Consider</span> <span class="n">using</span> <span class="n">vma_page</span> <span class="n">shelperonvma</span>
+</pre></div>
+</div>
 <p>这个可以作为上传前标准检查的一部分。</p>
 <p>动态检查的，我们有如下工具可以用：</p>
 <p>kselftest：这个类似LTP，是内置的一组功能测试用例，这样编译和运行：:</p>
-<p>make-Ctools/testing/selftest
-makekselftest</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="o">-</span><span class="n">Ctools</span><span class="o">/</span><span class="n">testing</span><span class="o">/</span><span class="n">selftest</span>
+<span class="n">makekselftest</span>
+</pre></div>
+</div>
 <p>其实编译出来的就是一个个独立的可执行程序，拷贝过去直接运行就可以了。</p>
 <p>三星开源group在星期四的Keynote里介绍了这个东西的测试策略，要了解细节的可以听一
 下。我看了一下代码，这个基本上是个很自由的测试用例，框架本身仅仅是提供错误计数
