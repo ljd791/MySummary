@@ -326,6 +326,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -1066,16 +1067,13 @@ WrapDrive基于vfio-mdev的管理带来一个好处，就是进程退出，通�
 </ol>
 <div class="section" id="id2">
 <h3>附录<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[1]</td><td>dma_buf的功能在内核Documentation/driver-api/dma-buf.rst中表述。如果我没
-有记错，这是当初三星在Linaro首先推的特性，它主要解决像视频播放器这种：需
-要软件动两下，转给硬件动两下，然后软件再动两下，交给下个硬件动两下这样的
-场景的。它的核心就是让用户态可以分配一片DMA内存，然后让这个内存可以在多
-个驱动和进程之间互相传递。</td></tr>
-</tbody>
-</table>
+<dl class="docutils">
+<dt>[1] dma_buf的功能在内核Documentation/driver-api/dma-buf.rst中表述。如果我没</dt>
+<dd>有记错，这是当初三星在Linaro首先推的特性，它主要解决像视频播放器这种：需要
+软件动两下，转给硬件动两下，然后软件再动两下，交给下个硬件动两下这样的场景
+的。它的核心就是让用户态可以分配一片DMA内存，然后让这个内存可以在多个驱动和
+进程之间互相传递。</dd>
+</dl>
 </div>
 </div>
 </div>

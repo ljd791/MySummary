@@ -321,6 +321,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -424,11 +425,13 @@
 ”。我们一个Team的人，只是分工一下而已，要不要弄成几个公司一样啊？</p>
 <p>但在讨论现场，这一点可以Keep in mind，我们暂时忽略掉，不讨论它。那我们针对怎么
 对客户好，继续讨论下去，实施方继续讨论要分多少个分支进行开发，开发方法是什么。</p>
-<p>我还是觉得这个讨论“根子”上是不对的。这就是我以前讨论过的问题：in nek：“知不知”
-如何影响决策的？。我们在讨论一个抽象：“一个新功能进来，由哪个版本负责”。这个新
-功能是什么？都没有确定呢。所以“新功能”这个名字，在这个语境中就是个“名”，是个抽
-象，不是具体“可以按Channel独立复位设备功能”或者“可以设置设备水线深度”这样的具体
-需求。在这个高层抽象中，你没有足够的信息对现在这个逻辑进行抽象设计。</p>
+<p>我还是觉得这个讨论“根子”上是不对的。这就是我以前讨论过的问题：</p>
+<blockquote>
+<div><a class="reference internal" href="“知不知”如何影响决策的？.html"><span class="doc">“知不知”如何影响决策的？</span></a></div></blockquote>
+<p>我们在讨论一个抽象：“一个新功能进来，由哪个版本负责”。这个新功能是什么？都没有
+确定呢。所以“新功能”这个名字，在这个语境中就是个“名”，是个抽象，不是具体“可以按
+Channel独立复位设备功能”或者“可以设置设备水线深度”这样的具体需求。在这个高层抽
+象中，你没有足够的信息对现在这个逻辑进行抽象设计。</p>
 <p>那这个问题应该如何入题呢？</p>
 <p>我的看法是这样的：首先，这个支持新市场域是谁提出来的？谁来埋单？你不要告诉我你
 和市场部的人或者客户的工程师聊两句，觉得挺有道理，就屁颠屁颠给我接个需求进来，

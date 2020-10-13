@@ -318,6 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -422,7 +423,7 @@
 作用。</p>
 <p>我给你的数据里面是否有保证数据处理输出要求的商业决策必须的逻辑？这个才是问题的
 关键。所谓抽象层，关键是你是否看到变数。抽象层是有成本的，这个我们以前就谈过了
-：in nek：线程的本质。</p>
+：<a class="reference internal" href="线程的本质.html"><span class="doc">线程的本质</span></a> 。</p>
 <p>如何平衡这个成本？这在于你如何确定这个控制变量（这是通用概念的控制变量，不是函
 数的参数），比如你有这样一个接口：:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">input_data</span><span class="p">(</span><span class="nb">int</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="n">data</span><span class="p">);</span>

@@ -318,6 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -441,8 +442,8 @@ drivers/leds里面随便找一个文件，拷贝一份，仿照他写一个程�
 通的C程序一样，或者像调试一个本地程序一样，用gdb来单步跟踪。在你的PC上，你可以
 用qemu模拟一个硬件，然后启动你自己编译的内核，我这里有两个模拟方法：</p>
 <blockquote>
-<div><p>in nek：怎样快速调试Linux内核</p>
-<p>in nek：X86上的ARM Linux调试环境</p>
+<div><p><a class="reference internal" href="怎样快速调试Linux内核.html"><span class="doc">怎样快速调试Linux内核</span></a></p>
+<p><a class="reference internal" href="X86上的ARM Linux调试环境.html"><span class="doc">X86上的ARM Linux调试环境</span></a></p>
 </div></blockquote>
 <p>我个人推荐在PC上模拟ARM的环境，以我的经验，这样问题少很多，比如模拟x86很容易单
 步不下来，在ARM上就不会。x86的历史包袱太重了。</p>
@@ -558,7 +559,7 @@ P9PATH=~/work/xxxx-repo/xxxx/test
 记住那么多“功能”呢？</p>
 <p>甚至，我在一台机器上编译，拷贝到另一个机器上，然后调用那边的控制台，用某种参数
 执行这个程序。这也是脚本。因为，我们一旦把一个东西“语言化”，我们可以极大地提高
-我们的跨实体的“控制力”：in nek：语言的控制力问题</p>
+我们的跨实体的“控制力”：<a class="reference internal" href="语言的控制力问题.html"><span class="doc">语言的控制力问题</span></a></p>
 <p>所以，相应地，我们会喜欢vim这样的编辑器。我在大学里编程序用ultraEditor，刚工作
 的时候用Source Insight，但我现在只用vim。首先就是vim具有普适性，几乎在什么地方
 都能用，这本身就是个控制力的问题。更重要的是，大部分时候我连gvim都不用，因为我

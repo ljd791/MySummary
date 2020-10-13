@@ -318,6 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -404,7 +405,7 @@
             
   <div class="section" id="id1">
 <h1>基于逻辑链建立约束<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>上一个文档：in nek：管理上的判断和技术上的判断，引入了一个我自己很喜欢的概念：
+<p>上一个文档：<a class="reference internal" href="管理上的判断和技术上的判断.html"><span class="doc">管理上的判断和技术上的判断</span></a> ，引入了一个我自己很喜欢的概念：
 抽象的本质就是减少属性。</p>
 <blockquote>
 <div><div class="line-block">
@@ -518,7 +519,7 @@ LED数字屏，甚至变成地外太空发射信号都行，我这个模块的�
 大部分时候，我们不轻易提前引入约束。比如我们这里说io子系统可能也要用内存，但内
 存子系统可能也要用io呢？没有这个信息前，提前做这种设计，就是过度设计，很容易制
 造多余的约束的。</p>
-<p>补充1：这个文档其实也解释了那个《in nek：“解决方案”》中提到的问题。架构设计实际
+<p>补充1：这个文档其实也解释了那个《<a class="reference internal" href="“解决方案”.html"><span class="doc">“解决方案”</span></a> 》中提到的问题。架构设计实际
 上是完整设计的其中一步，是刻意留下设计余地，以便下一层设计可以在这个基础上进行“
 创造性”的劳动。但如果你对它的预期是“可以照着执行”，那其实你就是把自己看做是死物
 了，并不认为是一个创造者，而是一台机器。而软件业，机器是计算机，不是人。</p>

@@ -326,6 +326,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -543,7 +544,7 @@
 </div>
 <div class="line-block">
 <div class="line">这个问题还有更多的细节可以补充，但再这里加就离开这里讨论的逻辑链了，</div>
-<div class="line">我独立写出来：in nek：架构设计的大忌：我没错</div>
+<div class="line">我独立写出来：<a class="reference internal" href="架构设计的大忌：我没错.html"><span class="doc">架构设计的大忌：我没错</span></a></div>
 </div>
 </div></blockquote>
 <p>本节小结：理解架构是一种形而上的逻辑非常重要，因为架构语言中说的一个东西不是那
@@ -735,7 +736,7 @@ OS平台，然后你的输入就得满足关系数据库来描述你的持久化
 <p>概念空间建模很多时候不需要详细到用户手册这个层次，比如我这里这个文档也是概念空
 间建模：</p>
 <blockquote>
-<div>in nek：binfmt概念空间建模</div></blockquote>
+<div><a class="reference internal" href="binfmt概念空间建模.html"><span class="doc">binfmt概念空间建模</span></a></div></blockquote>
 <p>我重点抓住的是一个异构的程序在原来Linux对同构的程序在进程线程管理，内存占用，异
 常和中断处理，调试等问题上是否还有原来的意思。这如果你还分不出哪些概念才是左右
 发展的，那些是细节，那么用户手册是最容易实施的控制概念空间的方法。</p>
@@ -796,11 +797,11 @@ OS平台，然后你的输入就得满足关系数据库来描述你的持久化
 </div>
 <div class="section" id="id6">
 <h2>总结<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
-<p>架构的目的是在混沌中制造规律，使我们可以控制庞大复杂的系统（参考：in nek：设计
-的减熵原理），自然发展的东西总是混沌而没有规律的，好比一个树林，肯定是看不到一
-点平地的，而人控制自然，就会磨平这种复杂性，会制造平直的地面，见方见圆的房子，
-这样人的脑子可以对它们有很简单的预期。简单是设计的目的，复杂是“专业”的无可奈何
-。这时很多从设计进入架构的工程师意识不到的问题。</p>
+<p>架构的目的是在混沌中制造规律，使我们可以控制庞大复杂的系统（参考：
+<a class="reference internal" href="设计的减熵原理.html"><span class="doc">设计的减熵原理</span></a> ），自然发展的东西总是混沌而没有规律的，好比一个树林，肯
+定是看不到一点平地的，而人控制自然，就会磨平这种复杂性，会制造平直的地面，见方
+见圆的房子，这样人的脑子可以对它们有很简单的预期。简单是设计的目的，复杂是“专业
+”的无可奈何。这时很多从设计进入架构的工程师意识不到的问题。</p>
 <p>在本演讲中，我们初步为听众点出架构设计的关注重点是什么，这一点我认为比掌握一些
 具体的工具使用方法重要得多。作为形而上的设计，方向错了，完全起的就是反作用。我
 希望这个演讲，能让更多的工程师感受到架构设计的重要性，在进行设计的时候，总从架

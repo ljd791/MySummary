@@ -318,6 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -456,8 +457,10 @@ EP）之间的通讯。但这种保证，不能改变我们前面说过的那个
 ：</p>
 <p>第一，写操作（Posted），可以由网桥直接响应完成。也就是说，CPU发下去的一个IO写，
 在发到EP前，就可以结束（由PCIE的中间网桥响应结束）。（注：这个结论本身是错的，
-只是说原理如此，帮助理解，理由下文解释）比如你执行：</p>
-<p><a href="#id1"><span class="problematic" id="id2">*</span></a>((volatile u32 <a href="#id3"><span class="problematic" id="id4">*</span></a>)0x12345678)=0x01;</p>
+只是说原理如此，帮助理解，理由下文解释）比如你执行：:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span><span class="p">((</span><span class="n">volatile</span> <span class="n">u32</span> <span class="o">*</span><span class="p">)</span><span class="mh">0x12345678</span><span class="p">)</span><span class="o">=</span><span class="mh">0x01</span><span class="p">;</span>
+</pre></div>
+</div>
 <p>向EP的特定地址写1（假定这是命令EP“开始执行”），这条指令返回（结束）了，其实EP并
 没有执行，如果你随后发出另一个依赖这个“执行”的指令，后一个依赖的指令就可能失败
 。这个设计带来的好处是，如果多个写操作之间没有依赖关系，你连续执行写操作，就有

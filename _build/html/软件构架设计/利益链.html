@@ -318,6 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -405,7 +406,7 @@
   <div class="section" id="id1">
 <h1>利益链<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>本文为我的架构定义名称空间引入一个新的概念，利益逻辑链，简称利益链。</p>
-<p>利益逻辑链是一种逻辑链，逻辑链的定义在这里：in nek：关于设计方案中的逻辑链问题
+<p>利益逻辑链是一种逻辑链，逻辑链的定义在这里：<a class="reference internal" href="关于设计方案中的逻辑链问题.html"><span class="doc">关于设计方案中的逻辑链问题</span></a>
 。对于设计来说，逻辑链的每个节点（因果）都是一个约束或者限制，因为如果你承认这
 个逻辑链（假定已经化简为最简逻辑链了），就表示你承认你必须符合这个逻辑链每个节
 点的定义，你才能达到目标。</p>
@@ -424,9 +425,10 @@ C++编译器上加一个函数统计特性，则可以统计全系统的函数�
 ，限制住了整个逻辑链的生存能力。设计师负责增加逻辑（限制），而架构师在过滤逻辑
 ，把多余的限制隔离在系统的核心限制之外。</p>
 <p>而做这种判断的核心方法，主要是两个。其一是避免错误代理，比如前面的，“不能运行
-Office”，不能被代理为“不能编辑Word文档”。以前我写过的比如：in nek：弟子规：美国
-军方禁止在C语言程序中使用malloc，也是这类问题。这种方法是就信息谈信息的，主要是
-避免信息本身传递的错误。</p>
+Office”，不能被代理为“不能编辑Word文档”。以前我写过的比如：</p>
+<blockquote>
+<div><a class="reference internal" href="弟子规：美国军方禁止在C语言程序中使用malloc.html"><span class="doc">弟子规：美国军方禁止在C语言程序中使用malloc</span></a></div></blockquote>
+<p>也是这类问题。这种方法是就信息谈信息的，主要是避免信息本身传递的错误。</p>
 <p>另一个判断方法是外在的，是判断一个限制的定义，是否在“利益链”上。所谓利益链，就
 是这个逻辑链或者逻辑链的一部分，是否包含了被承认的有可见利益的“原始因”。这样的
 原始因称为这个子逻辑链或者限制的“原始利益”。</p>
@@ -448,7 +450,8 @@ Office”，不能被代理为“不能编辑Word文档”。以前我写过的�
 片开发组提出这个特性：进行系统调用的时候，我自动帮你保存所有的寄存器。</p>
 <p>我会反对：这个特性没有利益链支撑。</p>
 <p>芯片开发组会这样说：难道软件不需要保存寄存器吗？</p>
-<p>“需要，但这只能由软件开发组提出来。因为他们有利益链支撑，你没有。你可以建议他们提出来，但不能是你们提出来”</p>
+<p>“需要，但这只能由软件开发组提出来。因为他们有利益链支撑，你没有。你可以建议他们
+提出来，但不能是你们提出来”</p>
 <p>这话听起来好像在争地盘，其实不是，因为芯片团队没有软件团队的语义空间，你的需求
 是粗糙的，比如，你会保存所有的寄存器，但软件团队可能只需要保存其中3个寄存器。他
 们提出保存这三个寄存器，他们必须给出他们的原始利益（比如，如果不保存这三个寄存

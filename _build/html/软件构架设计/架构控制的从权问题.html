@@ -318,6 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -460,10 +461,9 @@ Linux解决方案，方案中有一个硬件，需要做一个驱动，这个驱
 辑，维护下去一定会发生滑动，优化不会考虑发展和细节接口（因为根本没得想，对方是
 动态的）。觉得这个方案可行的人，背后其实根本没有打算做一个严密的语义逻辑，这种
 烂架构，你也只能见一步走一步，架构控制就没有了。</p>
-<dl class="docutils">
-<dt>这些情形，我称为“压扁”。架构本来是立体的：</dt>
-<dd>in nek：让代码变立体</dd>
-</dl>
+<p>这些情形，我称为“压扁”。架构本来是立体的：</p>
+<blockquote>
+<div><a class="reference internal" href="让代码变立体.html"><span class="doc">让代码变立体</span></a></div></blockquote>
 <p>压扁了，它能跑，但它不再具有活性了，这种代码没有未来。没有未来不表示它活不下去
 （有钱继续投资，什么都能活下去），没有未来表示它没有办法面对更多的需求。所以，
 一个架构不好的代码，只要市场还在，它就能活，但你要它做出更多的变化，它就是不行

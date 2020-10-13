@@ -318,6 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -499,7 +500,7 @@ API，你的模块内部实现必然已经被这个API定义绑定了。这些AP
 我们的软件，这也没有任何困难（下面这个例子是模拟设备的，其实模拟CPU的原理完全一
 样）：</p>
 <blockquote>
-<div>in nek：在qemu中模拟设备</div></blockquote>
+<div><a class="reference internal" href="在qemu中模拟设备.html"><span class="doc">在qemu中模拟设备</span></a></div></blockquote>
 <p>比如，你要做一个加法，你可能下这样一条“指令”：:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>add input1_addr, input2_addr，output_addr
 </pre></div>
@@ -519,7 +520,7 @@ API，你的模块内部实现必然已经被这个API定义绑定了。这些AP
 业务，比如对于神经网络计算，这种解决方案就很低效的，如果你有兴趣，也可以看看我
 们都为此解决些什么具体问题：</p>
 <blockquote>
-<div>in nek：流水线深度​</div></blockquote>
+<div><a class="reference internal" href="流水线深度.html"><span class="doc">流水线深度</span></a></div></blockquote>
 <p>但硬件设计的约束，又确实和我们软件的约束会很不一样，比如我们软件是基本上没有物
 理成本的，而芯片放一个加法器就是一个实实在在的加法器，放两个面积就会加倍，面积
 大了（电路多了），Wafer成本，静态功耗，动态功耗都会增加。而且芯片有控制通道和计

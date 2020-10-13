@@ -318,6 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -404,7 +405,7 @@
             
   <div class="section" id="id1">
 <h1>高层封装的设计战略<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>本文延续前一篇（in nek：不知为美）的逻辑，讨论一下高层封装的设计战略问题。</p>
+<p>本文延续前一篇（<a class="reference internal" href="不知为美.html"><span class="doc">不知为美</span></a> ）的逻辑，讨论一下高层封装的设计战略问题。</p>
 <p>如前所述，我们围绕“身份”进行高层设计，避免破坏身份定义进行逻辑组装。这会导向两
 种及接口封装逻辑。一种是“贴紧身份”的原始接口。一种是“紧贴需求”的高层接口。</p>
 <p>还是用前一篇的设备管理做例子：</p>
@@ -438,8 +439,9 @@ ioctl, mmap, signal等等。做这种接口是没有多少风险的。因为要�
 个锁。就这两个锁怎么能不互相死锁都是你未来面对的巨大挑战，你这不是找死？</p>
 <p>所以，高层封装的设计战略，大部分时候，就是“依附主业务”，不能独立于主业务进行设
 计。</p>
-<p>这个逻辑其实也解释了之前在这里讨论过的问题：in nek：弟子规：美国军方禁止在C语言
-程序中使用malloc。</p>
+<p>这个逻辑其实也解释了之前在这里讨论过的问题：</p>
+<blockquote>
+<div><a class="reference internal" href="弟子规：美国军方禁止在C语言程序中使用malloc.html"><span class="doc">弟子规：美国军方禁止在C语言程序中使用malloc</span></a></div></blockquote>
 <p>为什么“弟子规”或者“弟子规一样的编程规范”不可接受？因为它们作为辅助设计，不能超
 过主业务逻辑的位置。C++好不好？好，但你不能要求全公司只能用C++。git管理代码好不
 好，但你也不能要求全行业只能有git。更不要说你这个项目不用goto很好，你要求所有人

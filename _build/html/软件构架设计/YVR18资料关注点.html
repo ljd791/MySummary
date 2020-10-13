@@ -199,9 +199,14 @@
 <li class="toctree-l3"><a class="reference internal" href="#treble">Treble</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#spdx">SPDX</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#linux">当前的Linux调度器设计</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">内核测试手段</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">内核测试手段</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#kselftest">kselftest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gcov">gcov</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kmemleakkasan">kmemleak和Kasan</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#autofdo-arm">AutoFDO&#64;ARM</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id4">其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">其他</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="理解关联.html">理解关联</a></li>
@@ -328,6 +333,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -714,7 +720,9 @@ O(1)可控。</p>
 </div>
 <p>这个可以作为上传前标准检查的一部分。</p>
 <p>动态检查的，我们有如下工具可以用：</p>
-<p>kselftest：这个类似LTP，是内置的一组功能测试用例，这样编译和运行：:</p>
+<div class="section" id="kselftest">
+<h3>kselftest<a class="headerlink" href="#kselftest" title="永久链接至标题">¶</a></h3>
+<p>这个类似LTP，是内置的一组功能测试用例，这样编译和运行：:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">make</span><span class="o">-</span><span class="n">Ctools</span><span class="o">/</span><span class="n">testing</span><span class="o">/</span><span class="n">selftest</span>
 <span class="n">makekselftest</span>
 </pre></div>
@@ -723,17 +731,24 @@ O(1)可控。</p>
 <p>三星开源group在星期四的Keynote里介绍了这个东西的测试策略，要了解细节的可以听一
 下。我看了一下代码，这个基本上是个很自由的测试用例，框架本身仅仅是提供错误计数
 一类的东西，其他是你爱怎么写就怎么写。</p>
-<p>gcov：这是把gcov的功能用到内核上。在用户态做单元测试一般会用gcov和lcov检查覆盖
-率的，这个功能现在在内核中也可以用了。它通过配置项CONFIG_GCOV_KERNEL使能。开启
-后，可以在/sys/kernel/debugfs/gcov找到所有跟踪数据文件（<a href="#id2"><span class="problematic" id="id3">*</span></a>.gcda)，用gcov命令就可
-以直接看到代码的执行覆盖率。</p>
-<p>kmemleak和Kasan：这两个是自动内存检查，前者发现内存泄漏，后者发现use-after-free
-错误，分别通过CONFIG_DEBUG_KMEMLEAK和CONFIG_KASAN使能，发现有问题会自动抱错的，
-可以作为基本CI系统的一部分来用。</p>
+</div>
+<div class="section" id="gcov">
+<h3>gcov<a class="headerlink" href="#gcov" title="永久链接至标题">¶</a></h3>
+<p>这是把gcov的功能用到内核上。在用户态做单元测试一般会用gcov和lcov检查覆盖率的，
+这个功能现在在内核中也可以用了。它通过配置项CONFIG_GCOV_KERNEL使能。开启后，可
+以在/sys/kernel/debugfs/gcov找到所有跟踪数据文件（.gcda)，用gcov命令就可以直接
+看到代码的执行覆盖率。</p>
+</div>
+<div class="section" id="kmemleakkasan">
+<h3>kmemleak和Kasan<a class="headerlink" href="#kmemleakkasan" title="永久链接至标题">¶</a></h3>
+<p>这两个是自动内存检查，前者发现内存泄漏，后者发现use-after-free错误，分别通过
+CONFIG_DEBUG_KMEMLEAK和CONFIG_KASAN使能，发现有问题会自动抱错的，可以作为基本CI
+系统的一部分来用。</p>
 <p>还有一个Kcov，我在ARM64平台跑不起来，就不讨论了。</p>
 <p>注1：我自己使用Ubuntu18.04，这上面的coccinelle版本很旧，在最新的内核（4.19）上
 运行不起来，建议下源代码自行编译。另外注意：coccinelle的configure写得有问题，检
 查不到部分开发库不存在的问题，所以如果编译失败，根据名称安装对应的开发库即可。</p>
+</div>
 </div>
 <div class="section" id="autofdo-arm">
 <h2><a class="reference external" href="mailto:AutoFDO&#37;&#52;&#48;ARM">AutoFDO<span>&#64;</span>ARM</a><a class="headerlink" href="#autofdo-arm" title="永久链接至标题">¶</a></h2>
@@ -804,8 +819,8 @@ perf是没有这个问题的。所以，gcc还推出一个特性，叫AutoFDO（
 ，它可以直接从硬件的角度跟踪事件，我感觉对芯片设计师的作用大于软件设计师。用法
 和不同的perfrecord/report的模式基本上是一样的。</p>
 </div>
-<div class="section" id="id4">
-<h2>其他<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id2">
+<h2>其他<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>最后补充一些零碎的关注点：</p>
 <ul>
 <li><dl class="first docutils">

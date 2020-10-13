@@ -318,6 +318,7 @@
 <li class="toctree-l2"><a class="reference internal" href="讨论一下eBPF.html">讨论一下eBPF</a></li>
 <li class="toctree-l2"><a class="reference internal" href="交付中的Version和Revision.html">交付中的Version和Revision</a></li>
 <li class="toctree-l2"><a class="reference internal" href="约束选择.html">约束选择</a></li>
+<li class="toctree-l2"><a class="reference internal" href="在概念空间选择方案.html">在概念空间选择方案</a></li>
 <li class="toctree-l2"><a class="reference internal" href="git-submodule的理解.html">git submodule的理解</a></li>
 <li class="toctree-l2"><a class="reference internal" href="思维的串行化要求.html">思维的串行化要求</a></li>
 <li class="toctree-l2"><a class="reference internal" href="什么是函数式编程.html">什么是函数式编程</a></li>
@@ -423,7 +424,7 @@ lower和higher层，那你相当于没有分层，你就一层就可以了。</p
 个限制。比如我还有很多接口，为了使用那些接口，我们不得已引入了一把锁，已经让整
 个调用串行了，这时我在lower层内部再加入这个限制，这个性能就不得不降下来了。甚至
 如果lower层里面有回调，还有造成死锁一类的问题。所以既然在最低层，我们就需要把高
-层逻辑留给高层，而不是在底层越俎代庖。（这算是回答这个文档：in nek：线程的本质
+层逻辑留给高层，而不是在底层越俎代庖。（这算是回答这个文档：<a class="reference internal" href="线程的本质.html"><span class="doc">线程的本质</span></a>
 ，有人问的，没有锁怎么实现功能的问题了）</p>
 <p>所以，事实上的正确，不是接口上的正确。接口定义常常就是架构设计，因为它代表了你
 对未来变化的判断。不要把接口写得好像拉家常一样，谨言慎行一点。</p>
